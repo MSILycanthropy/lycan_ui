@@ -11,3 +11,6 @@
 inherit_gem:
   rubocop-rails-omakase: rubocop.yml
   rubocop-shopify: rubocop.yml
+AllCops:
+  Exclude:
+    - 'lib/generators/cog_ui/templates/**/*'
