@@ -1,4 +1,4 @@
-class <%= class_name %>::Item::Heading < CogUiComponent
+class Accordion::Item::Heading < CogUiComponent
   attr_accessor :disabled, :controls, :labelledby
 
   renders_one :trigger, ->(**attributes) {

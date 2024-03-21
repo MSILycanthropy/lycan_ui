@@ -1,10 +1,11 @@
-class <%= class_name %>::Item::Heading::Trigger < CogUiComponent
+class Accordion::Item::Heading::Trigger < CogUiComponent
   erb_template <<~ERB
-    <%%= content %>
+    <%%= tag.button(**attributes) do %>
+      <%%= content %>
+    <%% end %>
   ERB
 
   def initialize(controls:, **attributes)
-    attributes[:tag] = :button
     attributes[:type] = :button
 
     disabled = attributes[:disabled]
@@ -12,7 +13,7 @@ class <%= class_name %>::Item::Heading::Trigger < CogUiComponent
     attributes[:data] =
       merge_data(
         attributes,
-        data: { <%= file_name %>__item_target: :trigger, action: "click-><%= file_name.to_s.dasherize %>--item#toggle" },
+        data: { accordion__item_target: :trigger, action: "click->accordion--item#toggle" },
       )
     attributes[:aria] = merge_aria(attributes, aria: { expanded: false, controls:, disabled: })
 

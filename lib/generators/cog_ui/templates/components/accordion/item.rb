@@ -1,4 +1,4 @@
-class <%= class_name %>::Item < CogUiComponent
+class Accordion::Item < CogUiComponent
   attr_accessor :disabled, :opened_class, :closed_class, :controls, :labelledby
 
   renders_one :heading, ->(**attributes) {
@@ -24,7 +24,7 @@ class <%= class_name %>::Item < CogUiComponent
     @opened_class = opened_class
     @closed_class = closed_class
     @controls = generate_id
-    @labelledby = generate_id(base: "<%= file_name.to_s.dasherize %>-trigger")
+    @labelledby = generate_id(base: "accordion-trigger")
 
     attributes[:data] = merge_data(data_attributes, attributes)
 
@@ -35,12 +35,12 @@ class <%= class_name %>::Item < CogUiComponent
 
   def data_attributes
     data = {
-      <%= file_name %>__item_state_value: "opened",
-      controller: "<%= file_name.to_s.dasherize %>--item",
+      accordion__item_state_value: "opened",
+      controller: "accordion--item",
     }
 
-    data[:<%= file_name %>__item_opened_class] = opened_class if opened_class
-    data[:<%= file_name %>__item_closed_class] = closed_class if closed_class
+    data[:accordion__item_opened_class] = opened_class if opened_class
+    data[:accordion__item_closed_class] = closed_class if closed_class
 
     { data: }
   end

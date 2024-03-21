@@ -1,4 +1,4 @@
-class <%= class_name %>::Item::Body < CogUiComponent
+class Accordion::Item::Body < CogUiComponent
   erb_template <<~ERB
     <%%= tag.div do %>
       <%%= content %>
@@ -6,7 +6,7 @@ class <%= class_name %>::Item::Body < CogUiComponent
   ERB
 
   def initialize(**attributes)
-    attributes[:data] = merge_data(attributes, data: { <%= file_name %>__item_target: "body" })
+    attributes[:data] = merge_data(attributes, data: { accordion__item_target: "body" })
 
     super(**attributes)
   end

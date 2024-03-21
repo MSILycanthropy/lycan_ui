@@ -2,10 +2,8 @@
 
 module CogUi
   module Generators
-    class InstallGenerator < Rails::Generators::NamedBase
+    class AddGenerator < Rails::Generators::NamedBase
       source_root File.expand_path("templates", __dir__)
-
-      class_option :name, type: :string, desc: "The name of the Component"
 
       def create_helpers
         copy_file("lib/attributes_helper.rb", "lib/cog_ui/attributes_helper.rb", skip: true)
@@ -19,7 +17,7 @@ module CogUi
       end
 
       def create_component
-        class_name = (options[:name] || file_name).classify
+        class_name = file_name.classify
         file_name = class_name.underscore
 
         template("components/#{file_name}.rb", "app/components/#{file_name}.rb")
@@ -28,7 +26,7 @@ module CogUi
       end
 
       def create_javascript
-        class_name = (options[:name] || file_name).classify
+        class_name = file_name.classify
         file_name = class_name.underscore
 
         template("javascript/#{file_name}_controller.js", "app/components/#{file_name}_controller.js")

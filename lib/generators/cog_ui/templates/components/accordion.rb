@@ -1,5 +1,5 @@
-class <%= class_name %> < CogUiComponent
-  renders_many :items, <%= class_name %>::Item
+class Accordion < CogUiComponent
+  renders_many :items, Accordion::Item
 
   erb_template <<~ERB
     <%%= tag.div(**attributes) do %>
@@ -10,11 +10,11 @@ class <%= class_name %> < CogUiComponent
   ERB
 
   ACTIONS = [
-    "<%= file_name.to_s.dasherize %>--item:opened-><%= file_name.to_s.dasherize %>#closeOthers",
-    "keydown.up-><%= file_name.to_s.dasherize %>#focusPrevious",
-    "keydown.down-><%= file_name.to_s.dasherize %>#focusNext",
-    "keydown.home-><%= file_name.to_s.dasherize %>#focusFirst",
-    "keydown.end-><%= file_name.to_s.dasherize %>#focusLast",
+    "accordion--item:opened->accordion#closeOthers",
+    "keydown.up->accordion#focusPrevious",
+    "keydown.down->accordion#focusNext",
+    "keydown.home->accordion#focusFirst",
+    "keydown.end->accordion#focusLast",
   ].freeze
 
   def initialize(multiple: false, **attributes)
@@ -28,8 +28,8 @@ class <%= class_name %> < CogUiComponent
       {
         data: {
           action: ACTIONS.join(" "),
-          <%= file_name.to_s.dasherize %>_<%= file_name.to_s.dasherize %>__item_outlet: "[data-controller='<%= file_name.to_s.dasherize %>--item']".html_safe,
-          <%= file_name.to_s.dasherize %>_multiple_value: multiple,
+          accordion_accordion__item_outlet: "[data-controller='accordion--item']".html_safe,
+          accordion_multiple_value: multiple,
         },
       },
       attributes,
