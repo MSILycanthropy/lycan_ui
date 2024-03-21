@@ -1,4 +1,4 @@
-class Avatar < Component
+class Avatar < CogUiComponent
   attr_accessor :src, :alt, :loading
 
   renders_one :image, ->(**attributes) {
@@ -11,25 +11,31 @@ class Avatar < Component
                       }
   renders_one :fallback, "Fallback"
 
-  forward_to :image
+  erb_template <<~ERB
+    <%%= tag.div(**attributes) do %>
+      <%%= image %>
+      <%%= fallback %>
+    <%% end %>
+  ERB
+
+
+  def before_render
+    with_image(alt:, loading:) unless image?
+  end
 
   def initialize(src:, alt: nil, loading: nil, **attributes)
     @src = src
     @alt = alt
     @loading = loading
 
-    attributes[:tag] ||= :div
     attributes[:data] = merge_data(
       {
         data: { controller: "avatar", avatar_src_value: src },
       },
       attributes,
     )
+    attributes[:class] = merge_classes("flex items-center justify-center rounded-full overflow-hidden", attributes[:class])
 
     super(**attributes)
-  end
-
-  def call
-    super { safe_join([ image, fallback ]) }
   end
 end

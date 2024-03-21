@@ -1,4 +1,4 @@
-class <Avatar::Fallback < CogUi::Component
+class Avatar::Fallback < CogUiComponent
   erb_template <<~ERB
     <%%= tag.div(**attributes) do %>
       <%%= content %>

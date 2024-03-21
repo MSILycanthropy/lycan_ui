@@ -1,4 +1,4 @@
-class Avatar::Image < CogUi::Component
+class Avatar::Image < CogUiComponent
   erb_template <<~ERB
     <%%= tag.img(**attributes) %>
   ERB
@@ -11,6 +11,10 @@ class Avatar::Image < CogUi::Component
         },
       },
       attributes,
+    )
+    attributes[:class] = merge_classes(
+      "object-cover",
+      attributes[:class],
     )
 
     super(alt:, loading:, **attributes)
