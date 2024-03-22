@@ -39,7 +39,7 @@ $ rails generate cog_ui:add button
 ```
 
 ## Contributing
-# TODO: Add contributing guidelines
+#### TODO: Add contributing guidelines
 
 ## License
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
