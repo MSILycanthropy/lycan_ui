@@ -39,6 +39,12 @@ Say you want to install the `Button` component. You can do so by running the fol
 $ rails generate cog_ui:add button
 ```
 
+You'll now see some things in `components/button.rb`, you can now use that component in _any_ view or helper like so
+
+```erb
+<%= render Button.new %>
+```
+
 ## Contributing
 #### TODO: Add contributing guidelines
 
