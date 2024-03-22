@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Avatar::Fallback < CogUiComponent
+class Alert::Description < CogUiComponent
   erb_template <<~ERB
     <%%= tag.div(**attributes) do %>
       <%%= content %>
@@ -8,12 +8,7 @@ class Avatar::Fallback < CogUiComponent
   ERB
 
   def initialize(**attributes)
-    attributes[:data] = merge_data(
-      {
-        data: { avatar_target: :fallback },
-      },
-      attributes,
-    )
+    attributes[:class] = merge_classes("text-sm [&_p]:leading-relaxed", attributes[:class])
 
     super(**attributes)
   end

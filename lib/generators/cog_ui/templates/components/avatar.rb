@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Avatar < CogUiComponent
   attr_accessor :src, :alt, :loading
 
@@ -34,7 +36,8 @@ class Avatar < CogUiComponent
       },
       attributes,
     )
-    attributes[:class] = merge_classes("flex items-center justify-center rounded-full overflow-hidden", attributes[:class])
+    attributes[:class] =
+merge_classes("flex items-center justify-center rounded-full overflow-hidden", attributes[:class])
 
     super(**attributes)
   end

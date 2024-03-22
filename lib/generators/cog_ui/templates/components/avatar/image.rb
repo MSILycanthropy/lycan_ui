@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Avatar::Image < CogUiComponent
   erb_template <<~ERB
     <%%= tag.img(**attributes) %>

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module CogUi
   module ClassesHelper
     def merge_classes(*classes)

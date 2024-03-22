@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CogUiComponent < ViewComponent::Base
   include CogUi::ClassesHelper
   include CogUi::AttributesHelper

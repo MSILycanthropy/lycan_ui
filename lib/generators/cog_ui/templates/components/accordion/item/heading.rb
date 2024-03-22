@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Accordion::Item::Heading < CogUiComponent
   attr_accessor :disabled, :controls, :labelledby
 

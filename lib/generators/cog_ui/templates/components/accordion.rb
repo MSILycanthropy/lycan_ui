@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Accordion < CogUiComponent
   renders_many :items, Accordion::Item
 

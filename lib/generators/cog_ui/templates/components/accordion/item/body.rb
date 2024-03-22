@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Accordion::Item::Body < CogUiComponent
   erb_template <<~ERB
     <%%= tag.div do %>

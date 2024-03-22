@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Accordion::Item::Heading::Trigger < CogUiComponent
   erb_template <<~ERB
     <%%= tag.button(**attributes) do %>

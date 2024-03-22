@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module CogUi
   module AttributesHelper
     def merge_data(*hashes)
