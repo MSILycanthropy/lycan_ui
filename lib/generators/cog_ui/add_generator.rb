@@ -26,14 +26,32 @@ module CogUi
         class_name = file_name.classify
         file_name = class_name.downcase.underscore
 
+        if file_name == "all"
+          generate_all
+          return
+        end
+
+        generate(class_name, file_name)
+      end
+
+      private
+
+      def generate_all
+        source_paths.each do |source|
+          Dir["#{source}/components/*.rb"].each do |file|
+            template_name = file.gsub("#{source}/", "")
+            class_name = File.basename(file, ".rb").classify
+            file_name = class_name.downcase.underscore
+
+            generate(class_name, file_name)
+          end
+        end
+      end
+
+      def generate(class_name, file_name)
         template("components/#{file_name}.rb", "app/components/#{file_name}.rb")
 
         create_ruby_deps(file_name)
-      end
-
-      def create_javascript
-        class_name = file_name.classify
-        file_name = class_name.downcase.underscore
 
         js_file_exists = source_paths.any? do |source|
           File.exist?("#{source}/javascript/#{file_name}_controller.js")
@@ -46,7 +64,6 @@ module CogUi
         create_javascript_deps(file_name)
       end
 
-      private
 
       def create_ruby_deps(file_name)
         source_paths.each do |source|
