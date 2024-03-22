@@ -12,12 +12,12 @@ CogUI is a collection of UI components that can be easily added to your Rails ap
 
 Yep, copy and paste. Inspired by [shadcn/ui](https://ui.shadcn.com/docs), CogUI just gives you the code.
 
-The worst part about interacting with any UI framework is when you need to customize their designs or funcitonality. If you're designs change outside
-the scope of what they were initially designed with it can become _impossible_ to do what your app needs.
+The worst part about interacting with any UI framework is when you need to customize their designs or funcitonality.
+If you need to do something that is outside what the component was originally designed for, you normally.. just can't.
+Not to mention overriding their provided CSS is normally hellish.
 
-But, with CogUI, you have all the code, so you can just modify it to your hearts content.
-
-CogUI provides sensible defaults for styles and functionality. But go crazy with it, it's _your_ code.
+CogUI provides sensible defaults for styles and functionality. It's designed to grow with your app.
+Start with the default functionality and styling, and then when you need to expand or change anything, you can.
 
 ## Installation
 Add this line to your application's Gemfile:
