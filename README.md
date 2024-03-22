@@ -16,7 +16,8 @@ The worst part about interacting with any UI framework is when you need to custo
 If you need to do something that is outside what the component was originally designed for, you normally.. just can't.
 Not to mention overriding their provided CSS is normally hellish.
 
-CogUI provides sensible defaults for styles and functionality. It's designed to grow with your app.
+CogUI provides sensible defaults for styles and functionality, that way you get something that works and follows accessibility guidelines. 
+
 Start with the default functionality and styling, and then when you need to expand or change anything, you can.
 
 ## Installation
