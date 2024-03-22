@@ -5,20 +5,26 @@ module CogUi
     class AddGenerator < Rails::Generators::NamedBase
       source_root File.expand_path("templates", __dir__)
 
+      class_option :force, type: :boolean, default: false
+
+      def set_options
+        @copy_opts = options[:force] ? { force: true } : { skip: true }
+      end
+
       def create_helpers
-        copy_file("lib/attributes_helper.rb", "lib/cog_ui/attributes_helper.rb", skip: true)
-        copy_file("lib/classes_helper.rb", "lib/cog_ui/classes_helper.rb", skip: true)
-        copy_file("lib/validations_helper.rb", "lib/cog_ui/validations_helper.rb", skip: true)
+        copy_file("lib/attributes_helper.rb", "lib/cog_ui/attributes_helper.rb", **@copy_opts)
+        copy_file("lib/classes_helper.rb", "lib/cog_ui/classes_helper.rb", **@copy_opts)
+        copy_file("lib/validations_helper.rb", "lib/cog_ui/validations_helper.rb", **@copy_opts)
       end
 
       def create_base_component
-        empty_directory("app/components", skip: true)
-        copy_file("components/component.rb", "app/components/cog_ui_component.rb", skip: true)
+        empty_directory("app/components", **@copy_opts)
+        copy_file("components/component.rb", "app/components/cog_ui_component.rb", **@copy_opts)
       end
 
       def create_component
         class_name = file_name.classify
-        file_name = class_name.underscore
+        file_name = class_name.downcase.underscore
 
         template("components/#{file_name}.rb", "app/components/#{file_name}.rb")
 
@@ -27,7 +33,13 @@ module CogUi
 
       def create_javascript
         class_name = file_name.classify
-        file_name = class_name.underscore
+        file_name = class_name.downcase.underscore
+
+        js_file_exists = source_paths.any? do |source|
+          File.exist?("#{source}/javascript/#{file_name}_controller.js")
+        end
+
+        return unless js_file_exists
 
         template("javascript/#{file_name}_controller.js", "app/components/#{file_name}_controller.js")
 
@@ -42,9 +54,9 @@ module CogUi
             template_name = file.gsub("#{source}/", "")
 
             if File.directory?(file)
-              empty_directory("app/#{template_name}", skip: true)
+              empty_directory("app/#{template_name}", **@copy_opts)
             else
-              template(template_name, "app/#{template_name}", skip: true)
+              template(template_name, "app/#{template_name}", **@copy_opts)
             end
           end
         end
@@ -56,10 +68,10 @@ module CogUi
             template_name = file.gsub("#{source}", "")
 
             if File.directory?(file)
-              empty_directory("app/#{template_name}", skip: true)
+              empty_directory("app/#{template_name}", **@copy_opts)
             else
               output_name = template_name.sub("javascript/", "components/")
-              template(template_name.sub("/", ""), "app/#{output_name}", skip: true)
+              template(template_name.sub("/", ""), "app/#{output_name}", **@copy_opts)
             end
           end
         end
