@@ -37,7 +37,7 @@ class Avatar < CogUiComponent
       attributes,
     )
     attributes[:class] =
-merge_classes("flex items-center justify-center rounded-full overflow-hidden", attributes[:class])
+      merge_classes("flex items-center justify-center rounded-full overflow-hidden", attributes[:class])
 
     super(**attributes)
   end
