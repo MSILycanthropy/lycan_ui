@@ -5,9 +5,11 @@ class Separator < CogUiComponent
     <%%= tag.div(**attributes) %>
   ERB
 
-  ORIENTATIONS = [ :horizontal, :vertical ]
+  ORIENTATIONS = [ :horizontal, :vertical ].freeze
 
   def initialize(orientation: :horizontal, **attributes)
+    validates_argument_in(orientation, ORIENTATIONS)
+
     attributes[:role] = :none
     attributes[:data] = merge_data(
       { orientation: },

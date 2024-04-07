@@ -4,13 +4,13 @@ class Label < CogUiComponent
   attr_accessor :form, :name, :text
 
   erb_template <<~ERB
-    <% if content.present? %>
-      <%= form.label name, **attributes do %>
-        <%= content %>
-      <% end %>
-    <% else %>
-      <%= form.label name, text, **attributes %>
-    <% end %>
+    <%% if content.present? %>
+      <%%= form.label name, **attributes do %>
+        <%%= content %>
+      <%% end %>
+    <%% else %>
+      <%%= form.label name, text, **attributes %>
+    <%% end %>
   ERB
 
   def initialize(form:, name:, text: nil, **attributes)
