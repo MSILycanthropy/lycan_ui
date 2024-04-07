@@ -13,12 +13,22 @@ class Alert < CogUiComponent
     <%% end %>
   ERB
 
-  def initialize(**attributes)
+  VARIANTS = [ :default, :danger ]
+
+  def initialize(variant: :default, **attributes)
+    variant_classes = if variant == :danger
+      "text-red-800 border-red-800 [&>svg]:text-red-800"
+    else
+      "text-white [&>svg]:text-white"
+    end
+
     attributes[:class] = merge_classes(
       "relative w-full rounded-lg border px-4 py-3 text-sm " \
-        "[&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:fill-current [&>svg]:text-white [&>svg~*]:pl-7 " \
-        "bg-black text-white",
-      attributes[:class])
+        "[&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:fill-current [&>svg~*]:pl-7",
+      variant_classes,
+      attributes[:class],
+    )
+
     attributes[:role] = "alert"
 
     super(**attributes)
