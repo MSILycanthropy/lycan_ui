@@ -12,6 +12,7 @@ class Button < CogUiComponent
   VARIANTS = [ :primary, :secondary, :danger, :outline, :ghost, :link ].freeze
 
   def initialize(variant: :primary, **attributes)
+    variant = variant.to_sym
     validates_argument_in(variant, VARIANTS)
 
     variant_classes = case variant
@@ -29,11 +30,15 @@ class Button < CogUiComponent
       "text-black underline-offset-4 hover:underline h-10 px-4 py-2"
     end
 
+    animation_classes = unless variant == :link
+      "transition-transform active:scale-95 ease-in-out"
+    end
+
     attributes[:class] = merge_classes(
       "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium " \
         "transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black " \
-        "focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 " \
-        "transition-transform active:scale-95 ease-in-out",
+        "focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 ",
+      animation_classes,
       variant_classes,
       attributes[:class],
     )

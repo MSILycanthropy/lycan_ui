@@ -10,6 +10,7 @@ class Badge < CogUiComponent
   VARIANTS = [ :default, :danger, :outline ].freeze
 
   def initialize(variant: :default, **attributes)
+    variant = variant.to_sym
     validates_argument_in(variant, VARIANTS)
 
     variant_classes = case variant

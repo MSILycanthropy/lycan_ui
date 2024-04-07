@@ -8,6 +8,7 @@ class Separator < CogUiComponent
   ORIENTATIONS = [ :horizontal, :vertical ].freeze
 
   def initialize(orientation: :horizontal, **attributes)
+    orientation = orientation.to_sym
     validates_argument_in(orientation, ORIENTATIONS)
 
     attributes[:role] = :none
