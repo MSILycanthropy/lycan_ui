@@ -3,6 +3,10 @@
 class Textarea < CogUiComponent
   attr_accessor :form, :name, :type
 
+  erb_template <<~ERB
+    <%%= form.text_area(name, **attributes) %>
+  ERB
+
   def initialize(form:, name:, type: :text, **attributes)
     @form = form
     @name = name
@@ -17,9 +21,5 @@ class Textarea < CogUiComponent
     )
 
     super(**attributes)
-  end
-
-  def call
-    form.text_area(name, **attributes)
   end
 end
