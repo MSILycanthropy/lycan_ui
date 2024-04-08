@@ -10,6 +10,7 @@ class Badge < CogUiComponent
   VARIANTS = [ :default, :danger, :outline ].freeze
 
   def initialize(variant: :default, **attributes)
+    variant = variant.to_sym
     validates_argument_in(variant, VARIANTS)
 
     variant_classes = case variant
@@ -22,7 +23,7 @@ class Badge < CogUiComponent
     end
 
     attributes[:class] = merge_classes(
-      "inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors " \
+      "inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold motion-safe:transition-colors " \
         "focus:outline-none focus:ring-2 focus:ring-offset-2",
       variant_classes,
       attributes[:class])

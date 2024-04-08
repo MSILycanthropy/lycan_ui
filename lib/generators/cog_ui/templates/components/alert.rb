@@ -16,6 +16,8 @@ class Alert < CogUiComponent
   VARIANTS = [ :default, :danger ]
 
   def initialize(variant: :default, **attributes)
+    variant = variant.to_sym
+
     variant_classes = if variant == :danger
       "text-red-800 border-red-800 [&>svg]:text-red-800"
     else
