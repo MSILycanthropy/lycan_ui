@@ -31,7 +31,7 @@ class Button < CogUiComponent
     end
 
     animation_classes = unless variant == :link
-      "transition-transform active:scale-95 ease-in-out"
+      "motion-safe:transition-transform motion-safe:active:scale-95 ease-in-out"
     end
 
     attributes[:class] = merge_classes(
