@@ -103,22 +103,8 @@ module CogUi
 
         return unless css_exists
 
-        source_paths.each do |source|
-          content = []
-          File.open("#{source}/css/#{file_name}.css").each_line { |l| content << "\t#{l}" }
-
-          content = content.join()
-
-          default_content = <<~CSS
-            @layer base {
-
-            }
-          CSS
-
-          create_file("app/assets/stylesheets/cog_ui.css", default_content, **@opts)
-          insert_into_file("app/assets/stylesheets/cog_ui.css", content, before: /}\Z/)
-          insert_into_file("app/assets/stylesheets/application.tailwind.css", '@import "cog_ui.css";')
-        end
+        template("css/#{file_name}.css", "app/components/#{file_name}.css")
+        insert_into_file("app/assets/stylesheets/application.tailwind.css", "@import \"#{file_name}.css\";\n")
       end
     end
   end

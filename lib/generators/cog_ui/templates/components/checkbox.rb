@@ -1,16 +1,15 @@
 # frozen_string_literal: true
 
 class Checkbox < CogUiComponent
-  attr_accessor :form, :name, :type, :on, :off
+  attr_accessor :form, :name, :on, :off
 
   erb_template <<~ERB
     <%%= form.check_box(name, attributes, on, off) %>
   ERB
 
-  def initialize(form:, name:, type: :text, on: "1", off: "0", **attributes)
+  def initialize(form:, name:, on: "1", off: "0", **attributes)
     @form = form
     @name = name
-    @type = type
     @on = on
     @off = off
 
