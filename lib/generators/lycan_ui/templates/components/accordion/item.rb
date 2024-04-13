@@ -37,7 +37,7 @@ class Accordion::Item < LycanUiComponent
 
   def data_attributes
     data = {
-      accordion__item_state_value: "opened",
+      accordion__item_state_value: "closed",
       controller: "accordion--item",
     }
 
