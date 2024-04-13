@@ -3,7 +3,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-# Specify your gem's dependencies in cog_ui.gemspec.
+# Specify your gem's dependencies in lycan_ui.gemspec.
 gemspec
 
 gem "puma"
