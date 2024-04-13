@@ -7,6 +7,11 @@ module LycanUi
 
       class_option :force, type: :boolean, default: false
 
+      def detect_installation_type
+        @use_importmap = File.exist?("config/importmap.rb")
+        @use_postcss = File.exist?("tailwind.config.js")
+      end
+
       def set_options
         @opts = options[:force] ? { force: true } : { skip: true }
       end
@@ -63,6 +68,18 @@ module LycanUi
 
         template("javascript/#{file_name}_controller.js", "app/components/#{file_name}_controller.js")
 
+        unless @use_importmap
+          append_to_file(
+            "app/javascript/controllers/index.js",
+            "\nimport #{file_name.camelcase} from \"../../components/#{file_name}_controller.js\"\n",
+          )
+
+          append_to_file(
+            "app/javascript/controllers/index.js",
+            "application.register(\"#{file_name.dasherize}\", #{file_name.camelcase})\n",
+          )
+        end
+
         create_javascript_deps(file_name)
       end
 
@@ -91,6 +108,25 @@ module LycanUi
             else
               output_name = template_name.sub("javascript/", "components/")
               template(template_name.sub("/", ""), "app/#{output_name}", **@opts)
+
+              controller_name = output_name
+                .sub("/components/", "")
+                .gsub("/", "__")
+                .gsub(".js", "")
+                .sub("_controller", "")
+
+
+              unless @use_importmap
+                append_to_file(
+                  "app/javascript/controllers/index.js",
+                  "\nimport #{controller_name.camelcase} from \"../..#{output_name}\"\n",
+                )
+
+                append_to_file(
+                  "app/javascript/controllers/index.js",
+                  "application.register(\"#{controller_name.dasherize}\", #{controller_name.camelcase})\n",
+                )
+              end
             end
           end
         end
@@ -104,7 +140,15 @@ module LycanUi
         return unless css_exists
 
         template("css/#{file_name}.css", "app/components/#{file_name}.css")
-        insert_into_file("app/assets/stylesheets/application.tailwind.css", "@import \"#{file_name}.css\";\n")
+
+        if @use_postcss
+          prepend_to_file(
+            "app/assets/stylesheets/application.tailwind.css",
+            "@import \"../../components/#{file_name}.css\";\n",
+          )
+        else
+          insert_into_file("app/assets/stylesheets/application.tailwind.css", "@import \"#{file_name}.css\";\n")
+        end
       end
     end
   end

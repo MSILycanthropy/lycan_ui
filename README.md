@@ -35,6 +35,12 @@ And then execute:
 $ bundle
 ```
 
+Now to make sure your app is set up for use, run
+
+```bash
+$ rails generate lycan_ui:setup
+```
+
 ## Usage
 
 Say you want to install the `Button` component. You can do so by running the following command:
