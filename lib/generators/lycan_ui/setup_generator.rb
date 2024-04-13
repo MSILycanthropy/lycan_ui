@@ -3,32 +3,46 @@
 module LycanUi
   module Generators
     class SetupGenerator < Rails::Generators::Base
+      class InvalidInstallationTypeError < StandardError; end
+
       def detect_installation_type
         # TODO: other installation types, bun, esbuild, etc.
-        @installation_type = :importmap
-        @uses_sprockets = Object.const_defined?("Sprockets")
+
+        @use_importmap = File.exist?("config/importmap.rb")
+        @use_postcss =  File.exist?("tailwind.config.js")
+        @use_sprockets = Object.const_defined?("Sprockets")
       end
 
       def install_for_type
-        send("install_#{@installation_type}")
+        install_importmap if @use_importmap
 
-        install_sprockets if @uses_sprockets
+        install_sprockets if @use_sprockets
       end
 
       def install_assets_path
+        return if @use_postcss
+
         insert_into_file(
           "config/initializers/assets.rb",
           "Rails.application.config.assets.paths << Rails.root.join('app', 'components')")
       end
 
       def install_tailwind_config
-        insert_into_file(
-          "config/tailwind.config.js",
-          ",\n    './app/components/**/*.{rb,erb,haml,html,slim}',",
-          after:  "    './app/views/**/*.{erb,haml,html,slim}'",
-        )
+        if @use_postcss
+          insert_into_file(
+            "tailwind.config.js",
+            ",\n    './app/components/**/*.{rb,erb,haml,html,slim}',",
+            after:  "    './app/javascript/**/*.js'",
+          )
+        else
+          insert_into_file(
+            "config/tailwind.config.js",
+            ",\n    './app/components/**/*.{rb,erb,haml,html,slim}',",
+            after:  "    './app/views/**/*.{erb,haml,html,slim}'",
+          )
 
-        gsub_file("config/tailwind.config.js", "require('@tailwindcss/forms'),", "")
+          gsub_file("config/tailwind.config.js", "require('@tailwindcss/forms'),", "")
+        end
       end
 
       def install_gem
