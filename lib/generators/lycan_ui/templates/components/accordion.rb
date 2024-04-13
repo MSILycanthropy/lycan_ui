@@ -30,6 +30,7 @@ class Accordion < LycanUiComponent
       {
         data: {
           action: ACTIONS.join(" "),
+          controller: "accordion",
           accordion_accordion__item_outlet: "[data-controller='accordion--item']".html_safe,
           accordion_multiple_value: multiple,
         },
