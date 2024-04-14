@@ -1,11 +1,7 @@
 # frozen_string_literal: true
 
 class Table::Body::Row < LycanUiComponent
-  renders_many :cells, ->(**attributes) {
-    attributes[:class] = class_names("p-4 align-middle", attributes[:class])
-
-    Table::Cell.new(**attributes)
-  }
+  renders_many :cells, "Table::Cell"
 
   erb_template <<~ERB
     <%%= tag.tr(**attributes) do %>
