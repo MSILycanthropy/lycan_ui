@@ -2,7 +2,7 @@
 
 module LycanUi
   module ClassesHelper
-    def merge_classes(*classes)
+    def class_names(*classes)
       combined = []
 
       classes.each do |c|
@@ -10,7 +10,7 @@ module LycanUi
         when Symbol
           combined << c.to_s.dasherize
         when Array
-          combined << merge_classes(*c).presence
+          combined << class_names(*c).presence
         when Hash
           c.each do |key, value|
             combined << key.to_s.dasherize if value

@@ -9,7 +9,7 @@ class Skeleton < LycanUiComponent
   ERB
 
   def initialize(**attributes)
-    attributes[:class] = merge_classes(
+    attributes[:class] = class_names(
       "animate-pulse rounded-md bg-neutral-700",
       attributes[:class],
     )

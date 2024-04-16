@@ -13,11 +13,11 @@ class Accordion::Item::Heading::Trigger < LycanUiComponent
     disabled = attributes[:disabled]
 
     attributes[:data] =
-      merge_data(
+      data_attributes(
         attributes,
         data: { accordion__item_target: :trigger, action: "click->accordion--item#toggle" },
       )
-    attributes[:aria] = merge_aria(attributes, aria: { expanded: false, controls:, disabled: })
+    attributes[:aria] = aria_attributes(attributes, aria: { expanded: false, controls:, disabled: })
 
     super(**attributes)
   end

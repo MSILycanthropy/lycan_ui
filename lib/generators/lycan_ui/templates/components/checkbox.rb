@@ -13,7 +13,7 @@ class Checkbox < LycanUiComponent
     @on = on
     @off = off
 
-    attributes[:class] = merge_classes(
+    attributes[:class] = class_names(
       "appearance-none checkbox cursor-pointer rounded-sm disabled:opacity-50 disabled:cursor-not-allowed " \
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 " \
         "indeterminate:motion-safe:animate-[checked_250ms_ease-out] " \

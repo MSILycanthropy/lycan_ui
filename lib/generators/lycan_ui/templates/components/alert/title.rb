@@ -8,7 +8,7 @@ class Alert::Title < LycanUiComponent
   ERB
 
   def initialize(**attributes)
-    attributes[:class] = merge_classes("mb-1 font-medium leading-none tracking-tight", attributes[:class])
+    attributes[:class] = class_names("mb-1 font-medium leading-none tracking-tight", attributes[:class])
 
     super(**attributes)
   end

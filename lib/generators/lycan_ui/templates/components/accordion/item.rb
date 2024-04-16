@@ -8,8 +8,8 @@ class Accordion::Item < LycanUiComponent
   }
   renders_one :body, ->(**attributes) {
     attributes[:id] = controls
-    attributes[:class] = merge_classes(attributes[:class], closed_class)
-    attributes[:aria] = merge_aria(attributes, { aria: { labelledby: } })
+    attributes[:class] = class_names(attributes[:class], closed_class)
+    attributes[:aria] = aria_attributes(attributes, { aria: { labelledby: } })
 
     Body.new(**attributes)
   }
@@ -28,7 +28,7 @@ class Accordion::Item < LycanUiComponent
     @controls = generate_id
     @labelledby = generate_id(base: "accordion-trigger")
 
-    attributes[:data] = merge_data(data_attributes, attributes)
+    attributes[:data] = data_attributes(data_attributes, attributes)
 
     super(**attributes)
   end

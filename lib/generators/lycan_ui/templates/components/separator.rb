@@ -12,11 +12,11 @@ class Separator < LycanUiComponent
     validates_argument_in(orientation, ORIENTATIONS)
 
     attributes[:role] = :none
-    attributes[:data] = merge_data(
+    attributes[:data] = data_attributes(
       { orientation: },
       attributes,
     )
-    attributes[:aria] = merge_aria(
+    attributes[:aria] = aria_attributes(
       { hidden: true },
       attributes,
     )
@@ -27,7 +27,7 @@ class Separator < LycanUiComponent
       "w-[1px] h-full mx-4"
     end
 
-    attributes[:classes] = merge_classes(
+    attributes[:classes] = class_names(
       "shrink-0 bg-black",
       orientation_classes,
       attributes[:classes],

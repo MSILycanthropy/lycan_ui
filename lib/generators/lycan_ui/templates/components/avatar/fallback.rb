@@ -8,7 +8,7 @@ class Avatar::Fallback < LycanUiComponent
   ERB
 
   def initialize(**attributes)
-    attributes[:data] = merge_data(
+    attributes[:data] = data_attributes(
       {
         data: { avatar_target: :fallback },
       },

@@ -2,11 +2,11 @@
 
 module LycanUi
   module AttributesHelper
-    def merge_data(*hashes)
+    def data_attributes(*hashes)
       merge_attributes(*hashes, prefix: :data)
     end
 
-    def merge_aria(*hashes)
+    def aria_attributes(*hashes)
       merge_attributes(*hashes, prefix: :aria)
     end
 
