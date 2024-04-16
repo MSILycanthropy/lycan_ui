@@ -9,7 +9,7 @@ module LycanUi
 
       def detect_installation_type
         @use_importmap = File.exist?("config/importmap.rb")
-        @use_postcss = File.exist?("tailwind.config.js")
+        @use_node = File.exist?("tailwind.config.js")
       end
 
       def set_options
@@ -141,7 +141,7 @@ module LycanUi
 
         template("css/#{file_name}.css", "app/components/#{file_name}.css")
 
-        if @use_postcss
+        if @use_node
           prepend_to_file(
             "app/assets/stylesheets/application.tailwind.css",
             "@import \"../../components/#{file_name}.css\";\n",
