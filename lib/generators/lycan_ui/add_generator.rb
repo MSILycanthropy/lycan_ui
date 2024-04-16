@@ -28,15 +28,13 @@ module LycanUi
       end
 
       def create_component
-        class_name = file_name.classify
-        file_name = class_name.downcase.underscore
-
         if file_name == "all"
           generate_all
           return
         end
 
-        generate(class_name, file_name)
+        generate(file_name)
+        generate_dependencies(file_name)
       end
 
       private
@@ -45,15 +43,17 @@ module LycanUi
         source_paths.each do |source|
           Dir["#{source}/components/*.rb"].each do |file|
             template_name = file.gsub("#{source}/", "")
-            class_name = File.basename(file, ".rb").classify
-            file_name = class_name.downcase.underscore
+            file_name = File.basename(file, ".rb").downcase.underscore
 
-            generate(class_name, file_name)
+            generate(file_name)
+            generate_dependencies(file_name)
           end
         end
       end
 
-      def generate(class_name, file_name)
+      def generate(file_name)
+        class_name = file_name.to_s.classify
+
         template("components/#{file_name}.rb", "app/components/#{file_name}.rb")
 
         create_ruby_deps(file_name)
@@ -81,6 +81,17 @@ module LycanUi
         end
 
         create_javascript_deps(file_name)
+      end
+
+      DEPENDENCIES = { alert_dialog: [ :button ] }.with_indifferent_access.freeze
+      def generate_dependencies(file_name)
+        file_names = DEPENDENCIES[file_name]
+
+        return if file_names.blank?
+
+        file_names.each do |file_name|
+          generate(file_name)
+        end
       end
 
 
