@@ -8,7 +8,7 @@ class Accordion::Item::Body < LycanUiComponent
   ERB
 
   def initialize(**attributes)
-    attributes[:data] = merge_data({ data: { accordion__item_target: "body" } }, attributes)
+    attributes[:data] = data_attributes({ data: { accordion__item_target: "body" } }, attributes)
 
     super(**attributes)
   end

@@ -18,7 +18,7 @@ class Label < LycanUiComponent
     @name = name
     @text = text
 
-    attributes[:class] = merge_classes(
+    attributes[:class] = class_names(
       "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
       attributes[:class],
     )

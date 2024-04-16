@@ -22,7 +22,7 @@ class Accordion::Item::Heading < LycanUiComponent
     @controls = controls
     @labelledby = labelledby
 
-    attributes[:aria] = merge_aria(attributes, {})
+    attributes[:aria] = aria_attributes(attributes, {})
 
     super(**attributes)
   end

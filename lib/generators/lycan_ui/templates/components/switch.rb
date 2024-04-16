@@ -13,7 +13,7 @@ class Switch < LycanUiComponent
     @on = on
     @off = off
 
-    attributes[:class] = merge_classes(
+    attributes[:class] = class_names(
       "appearance-none cursor-pointer rounded-full disabled:opacity-50 disabled:cursor-not-allowed " \
         "w-10 h-5 bg-black shadow-[-1.25rem_0_0_2px_white_inset,0_0_0_2px_white_inset] " \
         "checked:bg-white checked:shadow-[1.25rem_0_0_2px_black_inset,0_0_0_2px_black_inset] " \

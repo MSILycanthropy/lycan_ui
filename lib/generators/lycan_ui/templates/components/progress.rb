@@ -11,7 +11,7 @@ class Progress < LycanUiComponent
     @max = max
     @value = value
 
-    attributes[:class] = merge_classes(
+    attributes[:class] = class_names(
       "appearance-none h-2 rounded-full overflow-hidden " \
         "[&::-webkit-progress-value]:transition-all [&::-webkit-progress-value]:duration-300 " \
         "[&::-webkit-progress-value]:ease-in-out [&::-webkit-progress-value]:bg-black " \

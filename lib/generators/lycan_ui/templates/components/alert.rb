@@ -24,7 +24,7 @@ class Alert < LycanUiComponent
       "text-white [&>svg]:text-white"
     end
 
-    attributes[:class] = merge_classes(
+    attributes[:class] = class_names(
       "relative w-full rounded-lg border px-4 py-3 text-sm " \
         "[&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:fill-current [&>svg~*]:pl-7",
       variant_classes,

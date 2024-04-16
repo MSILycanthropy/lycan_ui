@@ -30,14 +30,14 @@ class Avatar < LycanUiComponent
     @alt = alt
     @loading = loading
 
-    attributes[:data] = merge_data(
+    attributes[:data] = data_attributes(
       {
         data: { controller: "avatar", avatar_src_value: src },
       },
       attributes,
     )
     attributes[:class] =
-      merge_classes("flex items-center justify-center rounded-full overflow-hidden", attributes[:class])
+      class_names("flex items-center justify-center rounded-full overflow-hidden", attributes[:class])
 
     super(**attributes)
   end

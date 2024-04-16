@@ -6,7 +6,7 @@ class Avatar::Image < LycanUiComponent
   ERB
 
   def initialize(alt: nil, loading: nil, **attributes)
-    attributes[:data] = merge_data(
+    attributes[:data] = data_attributes(
       {
         data: {
           avatar_target: "avatar",
@@ -14,7 +14,7 @@ class Avatar::Image < LycanUiComponent
       },
       attributes,
     )
-    attributes[:class] = merge_classes(
+    attributes[:class] = class_names(
       "object-cover",
       attributes[:class],
     )

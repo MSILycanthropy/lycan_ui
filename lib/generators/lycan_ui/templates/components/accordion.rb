@@ -22,11 +22,11 @@ class Accordion < LycanUiComponent
   def initialize(multiple: false, **attributes)
     @multiple = multiple
 
-    attributes[:classes] = merge_classes(
+    attributes[:classes] = class_names(
       "p-4",
       attributes[:classes],
     )
-    attributes[:data] = merge_data(
+    attributes[:data] = data_attributes(
       {
         data: {
           action: ACTIONS.join(" "),

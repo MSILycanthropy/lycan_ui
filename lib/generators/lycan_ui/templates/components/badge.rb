@@ -22,7 +22,7 @@ class Badge < LycanUiComponent
       "text-white bg-black focus:ring-black border-transparent"
     end
 
-    attributes[:class] = merge_classes(
+    attributes[:class] = class_names(
       "inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold " \
         "motion-safe:transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2",
       variant_classes,
