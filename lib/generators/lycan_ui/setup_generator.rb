@@ -8,8 +8,6 @@ module LycanUi
       class InvalidInstallationTypeError < StandardError; end
 
       def detect_installation_type
-        # TODO: other installation types, bun, esbuild, etc.
-
         @use_importmap = File.exist?("config/importmap.rb")
         @use_node =  File.exist?("tailwind.config.js")
         @use_sprockets = Object.const_defined?("Sprockets")
