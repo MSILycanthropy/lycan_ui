@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 class AlertDialog < LycanUiComponent
-  renders_one :title, "Title"
-  renders_one :description, "Description"
+  attr_reader :description_id, :title_id
+
+  renders_one :title, ->(**attributes) { Title.new(id: @title_id, **attributes) }
+  renders_one :description, ->(**attributes) { Description.new(id: @title_id, **attributes) }
 
   renders_one :confirm, "Confirm"
   renders_one :deny, "Deny"
@@ -28,6 +30,16 @@ class AlertDialog < LycanUiComponent
           action: "turbo:submit-end@document->alert-dialog#completeSubmission",
         },
       },
+      attributes,
+    )
+
+    attributes[:role] = :alertdialog
+
+    @description_id = generate_id
+    @title_id = generate_id
+
+    attributes[:aria] = aria_attributes(
+      { aria: { describedby: description_id, labelledby: title_id } },
       attributes,
     )
 
