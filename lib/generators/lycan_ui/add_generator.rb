@@ -8,7 +8,6 @@ module LycanUi
       class_option :force, type: :boolean, default: false
 
       def detect_installation_type
-        @use_importmap = File.exist?("config/importmap.rb")
         @use_node = File.exist?("tailwind.config.js")
       end
 
@@ -35,6 +34,19 @@ module LycanUi
 
         generate(file_name)
         generate_dependencies(file_name)
+      end
+
+      REQUIRES_FLOATING_UI = [ :tooltip, :all ]
+      def add_floating_ui
+        return if REQUIRES_FLOATING_UI.exclude?(file_name)
+
+        if @use_node
+          installed_already = File.read("package.json").match?("@floating-ui/dom")
+
+          return if installed_already
+
+          %x(yarn add @floating-ui/dom)
+        end
       end
 
       private
@@ -68,7 +80,7 @@ module LycanUi
 
         template("javascript/#{file_name}_controller.js", "app/components/#{file_name}_controller.js")
 
-        unless @use_importmap
+        if @use_node
           append_to_file(
             "app/javascript/controllers/index.js",
             "\nimport #{file_name.camelcase} from \"../../components/#{file_name}_controller.js\"\n",
@@ -127,7 +139,7 @@ module LycanUi
                 .sub("_controller", "")
 
 
-              unless @use_importmap
+              if @use_node
                 append_to_file(
                   "app/javascript/controllers/index.js",
                   "\nimport #{controller_name.camelcase} from \"../..#{output_name}\"\n",

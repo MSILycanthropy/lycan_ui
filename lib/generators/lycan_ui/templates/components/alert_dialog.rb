@@ -25,8 +25,7 @@ class AlertDialog < LycanUiComponent
       {
         data: {
           controller: "alert-dialog",
-          action: "turbo:submit-start@document->alert-dialog#pauseSubmission " \
-            "turbo:submit-end@document->alert-dialog#completeSubmission",
+          action: "turbo:submit-end@document->alert-dialog#completeSubmission",
         },
       },
       attributes,

@@ -14,10 +14,7 @@ class Avatar::Image < LycanUiComponent
       },
       attributes,
     )
-    attributes[:class] = class_names(
-      "object-cover",
-      attributes[:class],
-    )
+    attributes[:class] = class_names("object-cover col-start-1 row-start-1", attributes[:class])
 
     super(alt:, loading:, **attributes)
   end
