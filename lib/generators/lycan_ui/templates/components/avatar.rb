@@ -4,10 +4,10 @@ class Avatar < LycanUiComponent
   attr_accessor :src, :alt, :loading
 
   renders_one :image, ->(**attributes) {
-                        loading = if fallback?
-                          "lazy"
+                        if fallback?
+                          loading = :lazy
                         else
-                          loading
+                          attributes[:src] = src
                         end
                         Image.new(alt:, loading:, **attributes)
                       }
@@ -22,6 +22,17 @@ class Avatar < LycanUiComponent
 
 
   def before_render
+    @src = helpers.polymorphic_url(@src) unless @src.is_a?(String)
+
+    if fallback?
+      @attributes[:data] = data_attributes(
+        {
+          data: { controller: "avatar", avatar_src_value: src },
+        },
+        @attributes,
+      )
+    end
+
     with_image(alt:, loading:) unless image?
   end
 
@@ -30,14 +41,11 @@ class Avatar < LycanUiComponent
     @alt = alt
     @loading = loading
 
-    attributes[:data] = data_attributes(
-      {
-        data: { controller: "avatar", avatar_src_value: src },
-      },
-      attributes,
-    )
     attributes[:class] =
-      class_names("flex items-center justify-center rounded-full overflow-hidden", attributes[:class])
+      class_names(
+        "grid place-items-center rounded-full overflow-hidden",
+        attributes[:class],
+      )
 
     super(**attributes)
   end

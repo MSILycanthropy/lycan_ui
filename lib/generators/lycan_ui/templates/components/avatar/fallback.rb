@@ -14,7 +14,7 @@ class Avatar::Fallback < LycanUiComponent
       },
       attributes,
     )
-
+    attributes[:class] = class_names("col-start-1 row-start-1", attributes[:class])
     super(**attributes)
   end
 end

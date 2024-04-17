@@ -25,6 +25,9 @@ module LycanUi
         insert_into_file(
           "config/initializers/assets.rb",
           "Rails.application.config.assets.paths << Rails.root.join(\"app\", \"components\")")
+        insert_into_file(
+          "config/initializers/assets.rb",
+          "Rails.application.config.importmap.cache_sweepers << Rails.root.join(\"app\", \"components\")")
       end
 
       def install_tailwind_config
@@ -38,6 +41,10 @@ module LycanUi
       end
 
       def install_gem
+        installed_already = File.read("Gemfile").match?("view_component")
+
+        return if installed_already
+
         %x(bundle add view_component)
       end
 
