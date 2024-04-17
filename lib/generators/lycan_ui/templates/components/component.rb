@@ -14,6 +14,6 @@ class LycanUiComponent < ViewComponent::Base
   end
 
   def generate_id(base: self.class.name.demodulize.underscore.dasherize)
-    "#{base}-#{SecureRandom.uuid}"
+    "#{base}-#{SecureRandom.base64(5)}"
   end
 end
