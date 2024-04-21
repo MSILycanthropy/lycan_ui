@@ -36,7 +36,7 @@ module LycanUi
         generate_dependencies(file_name)
       end
 
-      REQUIRES_FLOATING_UI = [ :tooltip, :all ]
+      REQUIRES_FLOATING_UI = [ :popover, :all ]
       def add_floating_ui
         return if REQUIRES_FLOATING_UI.exclude?(file_name)
 
@@ -46,6 +46,8 @@ module LycanUi
           return if installed_already
 
           %x(yarn add @floating-ui/dom)
+        else
+          %x(bin/importmap pin @floating-ui/dom)
         end
       end
 
