@@ -48,7 +48,8 @@ class AlertDialog < LycanUiComponent
         "p-6 shadow-lg rounded-lg max-w-lg w-full [&[open]]:flex flex-col " \
         "data-[closing]:animate-out [&[open]:not([data-closing])]:animate-in data-[closing]:fade-out-0 " \
         "[&[open]:not([data-closing])]:fade-in-0 data-[closing]:zoom-out-95 [&[open]:not([data-closing])]:zoom-in-95 " \
-        "[&[data-closing]::backdrop]:hidden",
+        "[&[data-closing]::backdrop]:animate-out [&[data-closing]::backdrop]:fade-out-0 [&::backdrop]:animate-in" \
+        "[&::backdrop]:fade-in-0",
       attributes[:class],
     )
 

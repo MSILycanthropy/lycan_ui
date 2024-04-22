@@ -36,16 +36,48 @@ module LycanUi
         generate_dependencies(file_name)
       end
 
-      REQUIRES_FLOATING_UI = [ :tooltip, :all ]
+      REQUIRES_HOVER = [ :popover, :all ]
       def add_floating_ui
-        return if REQUIRES_FLOATING_UI.exclude?(file_name)
+        return if REQUIRES_HOVER.exclude?(file_name.to_sym)
 
         if @use_node
           installed_already = File.read("package.json").match?("@floating-ui/dom")
 
           return if installed_already
 
+          puts "Installing @floating-ui/dom..."
+
           %x(yarn add @floating-ui/dom)
+        else
+          installed_already = File.read("config/importmap.rb").match?("@floating-ui/dom")
+
+          return if installed_already
+
+          puts "Installing @floating-ui/dom..."
+
+          %x(bin/importmap pin @floating-ui/dom)
+        end
+      end
+
+      def add_focus_trap
+        return if REQUIRES_HOVER.exclude?(file_name.to_sym)
+
+        if @use_node
+          installed_already = File.read("package.json").match?("focus-trap")
+
+          return if installed_already
+
+          puts "Installing focus-trap..."
+
+          %x(yarn add focus-trap)
+        else
+          installed_already = File.read("config/importmap.rb").match?("focus-trap")
+
+          return if installed_already
+
+          puts "Installing focus-trap..."
+
+          %x(bin/importmap pin focus-trap)
         end
       end
 
@@ -95,7 +127,7 @@ module LycanUi
         create_javascript_deps(file_name)
       end
 
-      DEPENDENCIES = { alert_dialog: [ :button ] }.with_indifferent_access.freeze
+      DEPENDENCIES = { alert_dialog: [ :button ], popover: [ :button ] }.with_indifferent_access.freeze
       def generate_dependencies(file_name)
         file_names = DEPENDENCIES[file_name]
 
@@ -105,7 +137,6 @@ module LycanUi
           generate(file_name)
         end
       end
-
 
       def create_ruby_deps(file_name)
         source_paths.each do |source|

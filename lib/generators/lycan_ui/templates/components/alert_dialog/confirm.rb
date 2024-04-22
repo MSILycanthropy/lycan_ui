@@ -8,6 +8,7 @@ class AlertDialog::Confirm < LycanUiComponent
   ERB
 
   def initialize(**attributes)
+    attributes[:type] = :button
     attributes[:data] = data_attributes({ data: { action: "alert-dialog#confirm" } }, attributes)
 
     super(**attributes)

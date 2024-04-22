@@ -8,13 +8,9 @@ class Avatar::Fallback < LycanUiComponent
   ERB
 
   def initialize(**attributes)
-    attributes[:data] = data_attributes(
-      {
-        data: { avatar_target: :fallback },
-      },
-      attributes,
-    )
+    attributes[:data] = data_attributes({  data: { avatar_target: :fallback }  }, attributes)
     attributes[:class] = class_names("col-start-1 row-start-1", attributes[:class])
+
     super(**attributes)
   end
 end

@@ -11,7 +11,7 @@ class Button < LycanUiComponent
 
   VARIANTS = [ :primary, :secondary, :danger, :outline, :ghost, :link ].freeze
 
-  def initialize(variant: :primary, **attributes)
+  def initialize(variant: :primary, type: :button, **attributes)
     variant = variant.to_sym
     validates_argument_in(variant, VARIANTS)
 
@@ -43,6 +43,6 @@ class Button < LycanUiComponent
       attributes[:class],
     )
 
-    super(**attributes)
+    super(type:, **attributes)
   end
 end
