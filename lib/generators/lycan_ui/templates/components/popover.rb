@@ -13,7 +13,7 @@ class Popover < LycanUiComponent
     <%% end %>
   ERB
 
-  def initialize(arrow: false, **attributes)
+  def initialize(**attributes)
     attributes[:data] = data_attributes({ data: { controller: :popover } }, attributes)
 
     @id = generate_id
