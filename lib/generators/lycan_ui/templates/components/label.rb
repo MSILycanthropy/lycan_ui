@@ -1,21 +1,21 @@
 # frozen_string_literal: true
 
 class Label < LycanUiComponent
-  attr_accessor :form, :name, :text
+  attr_accessor :object_name, :method, :text
 
   erb_template <<~ERB
     <%% if content.present? %>
-      <%%= form.label name, **attributes do %>
+      <%%= label object_name, method, **attributes do %>
         <%%= content %>
       <%% end %>
     <%% else %>
-      <%%= form.label name, text, **attributes %>
+      <%%= label object_name, method, text, **attributes %>
     <%% end %>
   ERB
 
-  def initialize(form:, name:, text: nil, **attributes)
-    @form = form
-    @name = name
+  def initialize(object_name, method, text = nil, **attributes)
+    @object_name = object_name
+    @method = method
     @text = text
 
     attributes[:class] = class_names(

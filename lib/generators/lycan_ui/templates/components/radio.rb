@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
 class Radio < LycanUiComponent
-  attr_accessor :form, :name, :value
+  attr_accessor :object_name, :method, :value
 
   erb_template <<~ERB
-    <%%= form.radio_button(name, value, attributes) %>
+    <%%= radio_button(object_name, method, value, attributes) %>
   ERB
 
-  def initialize(form:, name:, value:, **attributes)
-    @form = form
-    @name = name
+  def initialize(object_name, method, value, **attributes)
+    @object_name = object_name
+    @method = method
     @value = value
 
     attributes[:class] = class_names(
