@@ -12,7 +12,30 @@ class Form
     view_context.form_with(*args, builder: Builder, **kwargs, &block)
   end
 
+  class Control
+    def initialize(name, builder)
+      @builder = builder
+      @name = name
+    end
+
+    def method_missing(method, ...)
+      @builder.send(method, @name, ...)
+    end
+  end
+
   class Builder < ActionView::Helpers::FormBuilder
+    def form_control(method)
+      control = Control.new(method, self)
+
+      @template.tag.div(class: "flex flex-col gap-1") { yield control }
+    end
+
+    def alert_dialog(options = {})
+      @template.render(AlertDialog.new) do |alert_dialog|
+        yield alert_dialog
+      end
+    end
+
     (field_helpers - [
       :label,
       :check_box,
@@ -56,7 +79,7 @@ class Form
       value, options = nil, value if value.is_a?(Hash)
       value ||= submit_default_value
 
-      @template.render(Button.new(**options).with_content(value))
+      @template.render(Button.new(type: :submit, **options).with_content(value))
     end
 
     def button(value = nil, options = {}, &block)
@@ -74,9 +97,9 @@ class Form
       end
 
       if block_given?
-        @template.render(Button.new(**options, &block))
+        @template.render(Button.new(type: :submit, **options, &block))
       else
-        @template.render(Button.new(**options).with_content(value))
+        @template.render(Button.new(type: :submit, **options).with_content(value))
       end
     end
   end
