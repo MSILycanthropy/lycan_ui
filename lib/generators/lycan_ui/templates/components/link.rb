@@ -1,15 +1,19 @@
 # frozen_string_literal: true
 
-class Button < LycanUiComponent
+class Link < LycanUiComponent
+  attr_accessor :args
+
   erb_template <<~ERB
-    <%%= tag.button(**attributes) do %>
+    <%%= link_to(*args, **attributes) do %>
       <%%= content %>
     <%% end %>
   ERB
 
   VARIANTS = [ :primary, :secondary, :danger, :outline, :ghost, :link ].freeze
 
-  def initialize(variant: :primary, type: :button, **attributes)
+  def initialize(*args, variant: :link, **attributes)
+    @args = args
+
     variant = variant.to_sym
     validates_argument_in(variant, VARIANTS)
 
@@ -41,6 +45,6 @@ class Button < LycanUiComponent
       attributes[:class],
     )
 
-    super(type:, **attributes)
+    super(**attributes)
   end
 end

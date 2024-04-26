@@ -27,7 +27,8 @@ class AlertDialog < LycanUiComponent
       {
         data: {
           controller: "alert-dialog",
-          action: "turbo:submit-end@document->alert-dialog#completeSubmission",
+          action: "turbo:submit-end@document->alert-dialog#completeSubmission " \
+            "keydown.esc->alert-dialog#deny:prevent",
         },
       },
       attributes,
@@ -44,7 +45,7 @@ class AlertDialog < LycanUiComponent
     )
 
     attributes[:class] = class_names(
-      "[&::backdrop]:bg-black/80 border border-black gap-4 " \
+      "[&::backdrop]:bg-black/80 gap-4 focus:outline-none " \
         "p-6 shadow-lg rounded-lg max-w-lg w-full [&[open]]:flex flex-col " \
         "data-[closing]:animate-out [&[open]:not([data-closing])]:animate-in data-[closing]:fade-out-0 " \
         "[&[open]:not([data-closing])]:fade-in-0 data-[closing]:zoom-out-95 [&[open]:not([data-closing])]:zoom-in-95 " \
