@@ -23,6 +23,51 @@ class Form
     end
   end
 
+  class Dialog
+    def initialize(template, builder, options)
+      @alert_dialog = AlertDialog.new
+      @template = template
+      @builder = builder
+      @options = options
+    end
+
+    def title(text = nil, &block)
+      if block_given?
+        @alert_dialog.with_title(&block)
+      else
+        @alert_dialog.with_title_content(text)
+      end
+    end
+
+    def description(text = nil, &block)
+      if block_given?
+        @alert_dialog.with_description(&block)
+      else
+        @alert_dialog.with_description_content(text)
+      end
+    end
+
+    def confirm(text = nil, &block)
+      if block_given?
+        @alert_dialog.with_confirm(&block)
+      else
+        @alert_dialog.with_confirm_content(text)
+      end
+    end
+
+    def deny(text = nil, &block)
+      if block_given?
+        @alert_dialog.with_deny(&block)
+      else
+        @alert_dialog.with_deny_content(text)
+      end
+    end
+
+    def render
+      @template.render(@alert_dialog)
+    end
+  end
+
   class Builder < ActionView::Helpers::FormBuilder
     def form_control(method)
       control = Control.new(method, self)
@@ -31,9 +76,11 @@ class Form
     end
 
     def alert_dialog(options = {})
-      @template.render(AlertDialog.new) do |alert_dialog|
-        yield alert_dialog
-      end
+      dialog = Dialog.new(@template, self, options)
+
+      yield dialog if block_given?
+
+      dialog.render
     end
 
     (field_helpers - [
