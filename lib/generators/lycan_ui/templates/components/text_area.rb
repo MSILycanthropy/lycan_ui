@@ -1,16 +1,15 @@
 # frozen_string_literal: true
 
-class Textarea < LycanUiComponent
-  attr_accessor :form, :name, :type
+class TextArea < LycanUiComponent
+  attr_accessor :object_name, :method, :type
 
   erb_template <<~ERB
-    <%%= form.text_area(name, **attributes) %>
+    <%%= text_area(object_name, method, attributes) %>
   ERB
 
-  def initialize(form:, name:, type: :text, **attributes)
-    @form = form
-    @name = name
-    @type = type
+  def initialize(object_name, method, **attributes)
+    @object_name = object_name
+    @method = method
 
     attributes[:class] = class_names(
       "flex min-h-[5rem] w-full rounded-md border border-black px-3 py-2 text-sm " \

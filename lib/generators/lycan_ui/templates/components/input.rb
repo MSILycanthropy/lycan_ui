@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 class Input < LycanUiComponent
-  attr_accessor :form, :name, :type
+  attr_accessor :object_name, :method, :type
 
-  def initialize(form:, name:, type: :text, **attributes)
-    @form = form
-    @name = name
-    @type = type
+  def initialize(object_name, method, type: :text_field, **attributes)
+    @object_name = object_name
+    @method = method
+    @type = type.to_s
 
     attributes[:class] = class_names(
       "flex h-10 w-full rounded-md border border-black px-3 py-2 text-sm " \
@@ -20,6 +20,14 @@ class Input < LycanUiComponent
   end
 
   def call
-    form.send("#{type}_field", name, **attributes)
+    helpers.send(fieldified_type, object_name, method, attributes)
+  end
+
+  private
+
+  def fieldified_type
+    return type if type.ends_with?("_field")
+
+    "#{type}_field"
   end
 end
