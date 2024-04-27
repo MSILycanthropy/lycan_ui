@@ -127,7 +127,20 @@ module LycanUi
         create_javascript_deps(file_name)
       end
 
-      DEPENDENCIES = { alert_dialog: [ :button ], popover: [ :button ] }.with_indifferent_access.freeze
+      DEPENDENCIES = {
+        alert_dialog: [ :button ],
+        popover: [ :button ],
+        form: [
+          :label,
+          :input,
+          :pin_input,
+          :switch,
+          :text_area,
+          :checkbox,
+          :radio,
+          :button,
+        ],
+      }.with_indifferent_access.freeze
       def generate_dependencies(file_name)
         file_names = DEPENDENCIES[file_name]
 
