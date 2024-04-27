@@ -100,6 +100,13 @@ class Form
       end
     end
 
+    def pin(method, options = {})
+      type = options.delete(:type) || :text
+      length = options.delete(:length) || 5
+
+      @template.render(PinInput.new(self.object_name, method, options, type: type, length: length))
+    end
+
     def label(method, text = nil, options = {}, &block)
       @template.render(Label.new(self.object_name, method, text, **objectify_options(options), &block))
     end
@@ -107,6 +114,11 @@ class Form
     def check_box(method, options = {}, checked_value = "1", unchecked_value = "0")
       options = objectify_options(options)
       @template.render(Checkbox.new(self.object_name, method, options, checked_value, unchecked_value))
+    end
+
+    def switch(method, options = {}, checked_value = "1", unchecked_value = "0")
+      options = objectify_options(options)
+      @template.render(Switch.new(self.object_name, method, options, checked_value, unchecked_value))
     end
 
     def text_area(method, options = {})
