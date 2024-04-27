@@ -1,17 +1,17 @@
 # frozen_string_literal: true
 
 class Switch < LycanUiComponent
-  attr_accessor :form, :name, :on, :off
+  attr_accessor :object_name, :method, :checked_value, :unchecked_value
 
   erb_template <<~ERB
-    <%%= form.check_box(name, attributes, on, off) %>
+    <%%= check_box(object_name, method, attributes, checked_value, unchecked_value) %>
   ERB
 
-  def initialize(form:, name:, on: "1", off: "0", **attributes)
-    @form = form
-    @name = name
-    @on = on
-    @off = off
+  def initialize(object_name, method, attributes = {}, checked_value = "1", unchecked_value = "0")
+    @object_name = object_name
+    @method = method
+    @checked_value = checked_value
+    @unchecked_value = unchecked_value
 
     attributes[:role] = :switch
 
