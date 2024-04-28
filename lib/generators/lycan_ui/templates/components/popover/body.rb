@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Popover::Body < LycanUiComponent
+class Popover::Body < ApplicationComponent
   attr_accessor :arrow
 
   erb_template <<~ERB

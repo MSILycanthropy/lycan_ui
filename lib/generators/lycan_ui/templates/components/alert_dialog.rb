@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AlertDialog < LycanUiComponent
+class AlertDialog < ApplicationComponent
   attr_reader :description_id, :title_id
 
   renders_one :title, ->(**attributes) { Title.new(id: @title_id, **attributes) }

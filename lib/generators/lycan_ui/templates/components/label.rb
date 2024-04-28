@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Label < LycanUiComponent
+class Label < ApplicationComponent
   attr_accessor :object_name, :method, :text
 
   erb_template <<~ERB

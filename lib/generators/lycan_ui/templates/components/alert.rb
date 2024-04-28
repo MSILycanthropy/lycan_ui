@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Alert < LycanUiComponent
+class Alert < ApplicationComponent
   renders_one :icon
   renders_one :title, "Title"
   renders_one :description, "Description"

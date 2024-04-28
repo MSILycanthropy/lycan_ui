@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Badge < LycanUiComponent
+class Badge < ApplicationComponent
   erb_template <<~ERB
     <%%= tag.div(**attributes) do %>
       <%%= content %>

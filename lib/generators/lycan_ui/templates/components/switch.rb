@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Switch < LycanUiComponent
+class Switch < ApplicationComponent
   attr_accessor :object_name, :method, :checked_value, :unchecked_value
 
   erb_template <<~ERB

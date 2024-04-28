@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Table::Cell < LycanUiComponent
+class Table::Cell < ApplicationComponent
   attr_reader :type
 
   erb_template <<~ERB

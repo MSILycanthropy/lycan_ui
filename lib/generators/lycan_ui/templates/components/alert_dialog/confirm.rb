@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AlertDialog::Confirm < LycanUiComponent
+class AlertDialog::Confirm < ApplicationComponent
   erb_template <<~ERB
     <%%= render Button.new(**attributes) do %>
       <%%= content %>

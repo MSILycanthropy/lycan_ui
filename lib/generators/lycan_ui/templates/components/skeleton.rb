@@ -1,7 +1,7 @@
 
 # frozen_string_literal: true
 
-class Skeleton < LycanUiComponent
+class Skeleton < ApplicationComponent
   erb_template <<~ERB
     <%%= tag.div(**attributes) do %>
       &nbsp;

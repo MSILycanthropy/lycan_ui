@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AlertDialog::Title < LycanUiComponent
+class AlertDialog::Title < ApplicationComponent
   erb_template <<~ERB
     <%%= tag.h2(**attributes) do %>
       <%%= content %>

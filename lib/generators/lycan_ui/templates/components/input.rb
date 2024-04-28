@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Input < LycanUiComponent
+class Input < ApplicationComponent
   attr_accessor :object_name, :method, :type
 
   def initialize(object_name, method, type: :text_field, **attributes)

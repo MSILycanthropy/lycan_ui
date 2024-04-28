@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Accordion < LycanUiComponent
+class Accordion < ApplicationComponent
   renders_many :items, Accordion::Item
 
   erb_template <<~ERB

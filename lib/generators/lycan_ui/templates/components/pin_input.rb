@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class PinInput < LycanUiComponent
+class PinInput < ApplicationComponent
   attr_accessor :object_name, :method, :type, :length, :options
 
   erb_template <<~ERB

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class LycanUiComponent < ViewComponent::Base
+class ApplicationComponent < ViewComponent::Base
   include LycanUi::ClassesHelper
   include LycanUi::AttributesHelper
   include LycanUi::ValidationsHelper

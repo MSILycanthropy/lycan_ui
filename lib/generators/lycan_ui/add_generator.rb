@@ -23,7 +23,7 @@ module LycanUi
 
       def create_base_component
         empty_directory("app/components", **@opts)
-        copy_file("components/component.rb", "app/components/lycan_ui_component.rb", **@opts)
+        copy_file("components/component.rb", "app/components/application_component.rb", **@opts)
       end
 
       def create_component
