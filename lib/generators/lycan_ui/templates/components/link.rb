@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Link < LycanUiComponent
+class Link < ApplicationComponent
   attr_accessor :args
 
   erb_template <<~ERB

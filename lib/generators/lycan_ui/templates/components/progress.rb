@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Progress < LycanUiComponent
+class Progress < ApplicationComponent
   attr_accessor :max, :value
 
   erb_template <<~ERB

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Table::Foot < LycanUiComponent
+class Table::Foot < ApplicationComponent
   renders_many :cells, "Table::Cell"
 
   erb_template <<~ERB

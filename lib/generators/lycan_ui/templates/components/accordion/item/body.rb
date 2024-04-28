@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Accordion::Item::Body < LycanUiComponent
+class Accordion::Item::Body < ApplicationComponent
   erb_template <<~ERB
     <%%= tag.div(**attributes) do %>
       <%%= content %>

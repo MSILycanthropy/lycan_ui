@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Popover::Trigger < LycanUiComponent
+class Popover::Trigger < ApplicationComponent
   erb_template <<~ERB
     <%%= render Button.new(**attributes) do %>
       <%%= content %>

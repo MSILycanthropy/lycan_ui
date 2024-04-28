@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Alert::Title < LycanUiComponent
+class Alert::Title < ApplicationComponent
   erb_template <<~ERB
     <%%= tag.h5(**attributes) do %>
       <%%= content %>

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Radio < LycanUiComponent
+class Radio < ApplicationComponent
   attr_accessor :object_name, :method, :value
 
   erb_template <<~ERB

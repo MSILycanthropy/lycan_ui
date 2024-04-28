@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Popover < LycanUiComponent
+class Popover < ApplicationComponent
   attr_accessor :id
 
   renders_one :trigger, ->(**attributes) { Trigger.new(aria_controls: id, **attributes) }

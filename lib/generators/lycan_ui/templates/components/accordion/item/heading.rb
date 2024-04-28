@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Accordion::Item::Heading < LycanUiComponent
+class Accordion::Item::Heading < ApplicationComponent
   attr_accessor :disabled, :controls, :labelledby
 
   renders_one :trigger, ->(**attributes) {

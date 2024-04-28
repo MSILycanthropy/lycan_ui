@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class TextArea < LycanUiComponent
+class TextArea < ApplicationComponent
   attr_accessor :object_name, :method, :type
 
   erb_template <<~ERB

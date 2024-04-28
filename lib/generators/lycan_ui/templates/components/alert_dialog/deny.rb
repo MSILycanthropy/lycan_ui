@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AlertDialog::Deny < LycanUiComponent
+class AlertDialog::Deny < ApplicationComponent
   erb_template <<~ERB
     <%%= render Button.new(**attributes) do %>
       <%%= content %>

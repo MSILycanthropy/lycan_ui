@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Separator < LycanUiComponent
+class Separator < ApplicationComponent
   erb_template <<~ERB
     <%%= tag.div(**attributes) %>
   ERB

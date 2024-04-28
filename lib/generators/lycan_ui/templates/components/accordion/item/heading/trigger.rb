@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Accordion::Item::Heading::Trigger < LycanUiComponent
+class Accordion::Item::Heading::Trigger < ApplicationComponent
   erb_template <<~ERB
     <%%= tag.button(**attributes) do %>
       <%%= content %>

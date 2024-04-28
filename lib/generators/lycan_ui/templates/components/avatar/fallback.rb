@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Avatar::Fallback < LycanUiComponent
+class Avatar::Fallback < ApplicationComponent
   erb_template <<~ERB
     <%%= tag.div(**attributes) do %>
       <%%= content %>

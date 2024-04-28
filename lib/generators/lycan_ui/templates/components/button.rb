@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Button < LycanUiComponent
+class Button < ApplicationComponent
   erb_template <<~ERB
     <%%= tag.button(**attributes) do %>
       <%%= content %>

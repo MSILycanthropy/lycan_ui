@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Table < LycanUiComponent
+class Table < ApplicationComponent
   renders_one :head, "Head"
   renders_one :body, "Body"
   renders_one :foot, "Foot"

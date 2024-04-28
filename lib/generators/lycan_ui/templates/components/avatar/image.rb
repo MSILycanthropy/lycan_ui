@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Avatar::Image < LycanUiComponent
+class Avatar::Image < ApplicationComponent
   erb_template <<~ERB
     <%%= tag.img(**attributes) %>
   ERB

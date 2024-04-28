@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Avatar < LycanUiComponent
+class Avatar < ApplicationComponent
   attr_accessor :src, :alt, :loading
 
   renders_one :image, ->(**attributes) {
