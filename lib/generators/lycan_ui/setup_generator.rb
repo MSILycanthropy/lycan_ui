@@ -51,6 +51,10 @@ module LycanUi
       def install_application_component
         empty_directory("app/components")
         copy_file("components/component.rb", "app/components/application_component.rb", force: true)
+
+        copy_file("lib/attributes_helper.rb", "lib/lycan_ui/attributes_helper.rb")
+        copy_file("lib/classes_helper.rb", "lib/lycan_ui/classes_helper.rb")
+        copy_file("lib/validations_helper.rb", "lib/lycan_ui/validations_helper.rb")
       end
 
       private

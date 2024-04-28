@@ -15,12 +15,6 @@ module LycanUi
         @opts = options[:force] ? { force: true } : { skip: true }
       end
 
-      def create_helpers
-        copy_file("lib/attributes_helper.rb", "lib/lycan_ui/attributes_helper.rb", **@opts)
-        copy_file("lib/classes_helper.rb", "lib/lycan_ui/classes_helper.rb", **@opts)
-        copy_file("lib/validations_helper.rb", "lib/lycan_ui/validations_helper.rb", **@opts)
-      end
-
       def create_component
         if file_name == "all"
           generate_all
