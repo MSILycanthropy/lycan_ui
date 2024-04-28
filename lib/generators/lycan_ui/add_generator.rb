@@ -9,6 +9,7 @@ module LycanUi
 
       def detect_installation_type
         @use_node = File.exist?("tailwind.config.js")
+        @use_sprockets = Object.const_defined?("Sprockets")
       end
 
       def set_options
@@ -197,13 +198,24 @@ module LycanUi
 
         template("css/#{file_name}.css", "app/components/#{file_name}.css")
 
-        if @use_node
-          prepend_to_file(
-            "app/assets/stylesheets/application.tailwind.css",
-            "@import \"../../components/#{file_name}.css\";\n",
-          )
+        if @use_sprockets
+          if @use_node
+            prepend_to_file(
+              "app/assets/stylesheets/application.tailwind.css",
+              "@import \"../../components/#{file_name}.css\";\n",
+            )
+          else
+            insert_into_file("app/assets/stylesheets/application.tailwind.css", "@import \"#{file_name}.css\";\n")
+          end
         else
-          insert_into_file("app/assets/stylesheets/application.tailwind.css", "@import \"#{file_name}.css\";\n")
+          if @use_node
+            prepend_to_file(
+              "app/assets/stylesheets/application.tailwind.css",
+              "@import \"../../components/#{file_name}.css\";\n",
+            )
+          else
+            insert_into_file("app/assets/stylesheets/application.css", "@import url(\"#{file_name}.css\");\n")
+          end
         end
       end
     end

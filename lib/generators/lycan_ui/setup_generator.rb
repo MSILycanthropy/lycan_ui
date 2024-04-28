@@ -24,7 +24,7 @@ module LycanUi
 
         insert_into_file(
           "config/initializers/assets.rb",
-          "Rails.application.config.assets.paths << Rails.root.join(\"app\", \"components\")")
+          "Rails.application.config.assets.paths << Rails.root.join(\"app\", \"components\")\n")
         insert_into_file(
           "config/initializers/assets.rb",
           "Rails.application.config.importmap.cache_sweepers << Rails.root.join(\"app\", \"components\")")
@@ -60,15 +60,25 @@ module LycanUi
       private
 
       def install_importmap
-        insert_into_file("config/importmap.rb", <<~RB
-
-            components_path = Rails.root.join('app/components')
-            components_path.glob('**/*_controller.js').each do |controller|
-              name = controller.relative_path_from(components_path).to_s.remove(/\\.js$/)
-              pin "controllers/\#{name}", to: name, preload: false
+        if @use_sprockets
+          insert_into_file("config/importmap.rb", <<~RB
+              components_path = Rails.root.join('app/components')
+              components_path.glob('**/*_controller.js').each do |controller|
+                name = controller.relative_path_from(components_path).to_s.remove(/\\.js$/)
+                pin "controllers/\#{name}", to: name, preload: false
+              end
+            RB
+          )
+        else
+          insert_into_file("config/importmap.rb", <<~RB
+            components_path = Rails.root.join("app/components")
+            components_path.glob("**/*_controller.js").each do |controller|
+              name = controller.relative_path_from(components_path).to_s.remove(/\.js$/)
+              pin "controllers/#{name}", to: "#{name}.js", preload: false
             end
-          RB
-        )
+            RB
+          )
+        end
       end
 
       def install_sprockets
