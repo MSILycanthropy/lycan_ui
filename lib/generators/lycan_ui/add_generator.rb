@@ -21,11 +21,6 @@ module LycanUi
         copy_file("lib/validations_helper.rb", "lib/lycan_ui/validations_helper.rb", **@opts)
       end
 
-      def create_base_component
-        empty_directory("app/components", **@opts)
-        copy_file("components/component.rb", "app/components/application_component.rb", **@opts)
-      end
-
       def create_component
         if file_name == "all"
           generate_all

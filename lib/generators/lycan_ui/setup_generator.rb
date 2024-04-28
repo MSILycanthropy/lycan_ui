@@ -48,6 +48,11 @@ module LycanUi
         %x(bundle add view_component)
       end
 
+      def install_application_component
+        empty_directory("app/components")
+        copy_file("components/component.rb", "app/components/application_component.rb", force: true)
+      end
+
       private
 
       def install_importmap
