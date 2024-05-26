@@ -74,7 +74,7 @@ module LycanUi
             components_path = Rails.root.join("app/components")
             components_path.glob("**/*_controller.js").each do |controller|
               name = controller.relative_path_from(components_path).to_s.remove(/\.js$/)
-              pin "controllers/#{name}", to: "#{name}.js", preload: false
+              pin "controllers/\#{name}", to: "\#{name}.js", preload: false
             end
             RB
           )
