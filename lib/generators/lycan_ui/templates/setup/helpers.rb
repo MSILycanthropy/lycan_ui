@@ -5,6 +5,23 @@ module LycanUiHelper
     def initialize(context, prefix: nil)
       @context = context
       @prefix = prefix
+      @locals = {}
+    end
+
+    def with_prefix(prefix)
+      @prefix = prefix
+
+      yield
+
+      @prefix = nil
+    end
+
+    def with_locals(**kwargs)
+      @locals = kwargs
+
+      yield
+
+      @locals = {}
     end
 
     def method_missing(method, *args, **kwargs, &block)
@@ -20,21 +37,22 @@ module LycanUiHelper
       end
 
       if block_given?
-        @context.render("ui/#{template_name}/template", *args, opts:, **kwargs) do
-          if @prefix.present?
-            block.call
-          else
-            block.call(LycanUiBuilder.new(@context, prefix: method))
-          end
-        end
+        @context.render("ui/#{template_name}/template", *args, opts:, **@locals, **kwargs, &block)
       else
-        @context.render("ui/#{template_name}/template", *args, opts:, **kwargs)
+        @context.render("ui/#{template_name}/template", *args, opts:, **@locals, **kwargs)
       end
     end
   end
 
   def ui
     @ui ||= LycanUiBuilder.new(self)
+  end
+
+  def use_id
+    @counter ||= 0
+    @counter += 1
+
+    ":l#{@counter}:"
   end
 
   def select_variant(options, variant)

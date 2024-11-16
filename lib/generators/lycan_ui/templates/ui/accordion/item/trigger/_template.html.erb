@@ -1,0 +1,11 @@
+<%= tag.div(class: classes, **opts) do %>
+  <h3>
+    <button type="button"
+            class="flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline"
+            aria-expanded="false" 
+            aria-controls="<%= content_id %>" 
+            id="<%= trigger_id %>">
+      <%= yield %>
+    </button>
+  </h3>
+<% end %>

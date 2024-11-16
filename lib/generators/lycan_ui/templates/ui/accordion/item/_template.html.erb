@@ -1,0 +1,10 @@
+<% trigger_id = unique_id %>
+<% content_id = unique_id %>
+
+<%= tag.div(class: classes, **opts) do %>
+  <% ui.with_prefix("accordion/item") do %>
+    <% ui.with_locals(trigger_id:, content_id:) do %>
+      <%= yield ui %>
+    <% end %>
+  <% end %>
+<% end %>

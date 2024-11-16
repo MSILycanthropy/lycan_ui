@@ -1,0 +1,7 @@
+<%= tag.div(hidden: true, 
+            class: class_names("overflow-hidden text-sm transition-all", classes),
+            role: :region, 
+            aria_labelledby: trigger_id, 
+            **opts) do %>
+  <%= yield %>
+<% end %>
