@@ -1,7 +1,7 @@
-<% trigger_id = unique_id %>
-<% content_id = unique_id %>
+<% trigger_id = use_id %>
+<% content_id = use_id %>
 
-<%= tag.div(class: classes, **opts) do %>
+<%= tag.div(class: classes, data: { controller: "ui--accordion--item" }, **opts) do %>
   <% ui.with_prefix("accordion/item") do %>
     <% ui.with_locals(trigger_id:, content_id:) do %>
       <%= yield ui %>

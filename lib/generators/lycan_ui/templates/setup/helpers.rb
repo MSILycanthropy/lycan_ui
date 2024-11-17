@@ -37,9 +37,9 @@ module LycanUiHelper
       end
 
       if block_given?
-        @context.render("ui/#{template_name}/template", *args, opts:, **@locals, **kwargs, &block)
+        @context.render("ui/#{template_name}", *args, opts:, **@locals, **kwargs, &block)
       else
-        @context.render("ui/#{template_name}/template", *args, opts:, **@locals, **kwargs)
+        @context.render("ui/#{template_name}", *args, opts:, **@locals, **kwargs)
       end
     end
   end

@@ -2,6 +2,7 @@
             class: class_names("overflow-hidden text-sm transition-all", classes),
             role: :region, 
             aria_labelledby: trigger_id, 
+            data: { ui__accordion__item_target: :content },
             **opts) do %>
   <%= yield %>
 <% end %>
