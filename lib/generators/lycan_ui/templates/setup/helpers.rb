@@ -9,11 +9,12 @@ module LycanUiHelper
     end
 
     def with_prefix(prefix)
+      previous = @prefix
       @prefix = prefix
 
       yield
 
-      @prefix = nil
+      @prefix = previous
     end
 
     def with_locals(**kwargs)
@@ -52,7 +53,7 @@ module LycanUiHelper
     @counter ||= 0
     @counter += 1
 
-    ":l#{@counter}:"
+    "_l#{@counter}_"
   end
 
   def select_variant(options, variant)

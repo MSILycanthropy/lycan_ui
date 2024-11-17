@@ -1,9 +1,12 @@
+<% id = local_assigns[:id] || use_id %>
+
 <%= tag.div(class: classes, 
+            id:,
             data: { controller: "ui--accordion", 
                     action:  "ui--accordion--item:opened->ui--accordion#closeOthers keydown.up->ui--accordion#focusPrevious " \
                              "keydown.down->ui--accordion#focusNext keydown.home->ui--accordion#focusFirst keydown.end->ui--accordion#focusLast",
                     ui__accordion_multiple_value: local_assigns[:multiple],
-                    ui__accordion_ui__accordion__item_outlet: "[data-controller='ui--accordion--item']".html_safe }, 
+                    ui__accordion_ui__accordion__item_outlet: "##{id} > [data-controller='ui--accordion--item']" }, 
             **opts.except(:multiple)) do %>
   <% ui.with_prefix('accordion') do %>
     <%= yield ui %>
