@@ -1,8 +1,13 @@
+<% default_classes = "overflow-hidden text-sm transition-all [&[opened='true']]:animate-accordion-down [&[opened='false']]:animate-accordion-up"%>
+
 <%= tag.div(hidden: true, 
-            class: class_names("overflow-hidden text-sm transition-all", classes),
+            class: class_names(default_classes, classes),
             role: :region, 
-            aria_labelledby: trigger_id, 
+            'aria-labelledby': trigger_id, 
+            opened: false,
             data: { ui__accordion__item_target: :content },
             **opts) do %>
-  <%= yield %>
+  <div class="pb-4">
+    <%= yield %>
+  </div>
 <% end %>

@@ -1,9 +1,9 @@
 <%= tag.div(class: classes, 
             data: { controller: "ui--accordion", 
-                    action:  "accordion--item:opened->ui--accordion#closeOthers keydown.up->ui--accordion#focusPrevious " \
+                    action:  "ui--accordion--item:opened->ui--accordion#closeOthers keydown.up->ui--accordion#focusPrevious " \
                              "keydown.down->ui--accordion#focusNext keydown.home->ui--accordion#focusFirst keydown.end->ui--accordion#focusLast",
                     ui__accordion_multiple_value: false,
-                    ui__accordion_accordion__item_outlet: "[data-controller='accordion--item']".html_safe }, 
+                    ui__accordion_ui__accordion__item_outlet: "[data-controller='ui--accordion--item']".html_safe }, 
             **opts) do %>
   <% ui.with_prefix('accordion') do %>
     <%= yield ui %>

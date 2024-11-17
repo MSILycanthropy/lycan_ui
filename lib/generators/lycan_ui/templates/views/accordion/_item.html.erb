@@ -1,7 +1,9 @@
 <% trigger_id = use_id %>
 <% content_id = use_id %>
 
-<%= tag.div(class: classes, data: { controller: "ui--accordion--item" }, **opts) do %>
+<%= tag.div(class: class_names('border-b', classes), 
+            data: { controller: "ui--accordion--item", ui__accordion__item_state_value: "closed" }, 
+            **opts) do %>
   <% ui.with_prefix("accordion/item") do %>
     <% ui.with_locals(trigger_id:, content_id:) do %>
       <%= yield ui %>
