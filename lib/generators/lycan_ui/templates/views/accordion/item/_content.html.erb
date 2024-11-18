@@ -5,7 +5,7 @@
             role: :region, 
             'aria-labelledby': trigger_id, 
             opened: false,
-            data: { ui__accordion__item_target: :content },
+            data: data_attributes({ data: { ui__accordion__item_target: :content } }, kwargs),
             **kwargs) do %>
   <div class="pb-4">
     <%= yield %>

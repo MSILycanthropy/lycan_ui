@@ -23,7 +23,9 @@ module LycanUi
       end
 
       def copy_helpers
-        template("helpers.rb.tt", "app/helpers/lycan_ui_helper.rb")
+        copy_file("attributes_helper.rb", "app/helpers/attributes_helper.rb")
+        template("classes_helper.rb.tt", "app/helpers/classes_helper.rb")
+        copy_file("lycan_ui_helper.rb", "app/helpers/lycan_ui_helper.rb")
       end
 
       private
