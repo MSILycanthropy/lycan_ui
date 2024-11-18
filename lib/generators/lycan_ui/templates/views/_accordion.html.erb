@@ -7,7 +7,7 @@
                              "keydown.down->ui--accordion#focusNext keydown.home->ui--accordion#focusFirst keydown.end->ui--accordion#focusLast",
                     ui__accordion_multiple_value: local_assigns[:multiple],
                     ui__accordion_ui__accordion__item_outlet: "##{id} > [data-controller='ui--accordion--item']" }, 
-            **opts.except(:multiple)) do %>
+            **kwargs.except(:multiple)) do %>
   <% ui.with_prefix('accordion') do %>
     <%= yield ui %>
   <% end %>

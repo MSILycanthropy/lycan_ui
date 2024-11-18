@@ -38,9 +38,9 @@ module LycanUiHelper
       end
 
       if block_given?
-        @context.render("ui/#{template_name}", *args, opts:, **@locals, **kwargs, &block)
+        @context.render("ui/#{template_name}", args:, kwargs: opts, **@locals, **kwargs, &block)
       else
-        @context.render("ui/#{template_name}", *args, opts:, **@locals, **kwargs)
+        @context.render("ui/#{template_name}", args:, kwargs: opts, **@locals, **kwargs)
       end
     end
   end
@@ -62,14 +62,22 @@ module LycanUiHelper
 
     options[variant]
   end
-
+  
   def class_names(*args)
     return if args.all?(&:nil?)
+<% if tailwind? %>
+    classes = args.flat_map do |classes|
+      classes = classes.split(" ") if classes.is_a?(String)
 
+      classes
+    end
+
+    @merger ||= TailwindMerge::Merger.new
+    @merger.merge(classes)<% else %>
     args.flat_map do |classes|
       classes = classes.split(" ") if classes.is_a?(String)
 
       classes
-    end.uniq.compact.join(" ")
+    end.compact.uniq.join(" ")<% end %>
   end
 end

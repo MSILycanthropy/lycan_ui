@@ -5,11 +5,16 @@ module LycanUi
     class SetupGenerator < Rails::Generators::Base
       source_root File.expand_path("templates/setup", __dir__)
 
-      def copy_helpers
-        copy_file("helpers.rb", "app/helpers/lycan_ui_helper.rb")
+      def install_tailwind_merge
+        return unless tailwind?
+        return if tailwind_merge_installed?
+
+        run("bundle add tailwind_merge")
       end
 
       def install_tailwind_css_animate
+        return unless tailwind?
+
         if importmaps?
           copy_file("importmaps/tailwind.config.js", "config/tailwind.config.js", force: true)
         else
@@ -17,7 +22,19 @@ module LycanUi
         end
       end
 
+      def copy_helpers
+        template("helpers.rb.tt", "app/helpers/lycan_ui_helper.rb")
+      end
+
       private
+
+      def tailwind_merge_installed?
+        Gem.loaded_specs.key?("tailwind_merge")
+      end
+
+      def tailwind?
+        true
+      end
 
       def importmaps?
         File.exist?("#{Rails.root}/config/importmap.rb")

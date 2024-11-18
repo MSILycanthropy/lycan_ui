@@ -18,6 +18,6 @@
   "transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black " \
   "focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 " %>
 
-<%= tag.button(class: class_names(default_classes, variant_classes, animation_classes, classes), **opts) do %>
+<%= tag.button(class: class_names(default_classes, variant_classes, animation_classes, classes), **kwargs) do %>
   <%= yield %>
 <% end %>
