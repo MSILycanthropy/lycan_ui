@@ -3,7 +3,7 @@
 <%= tag.div(hidden: true, 
             class: class_names(default_classes, classes),
             role: :region, 
-            'aria-labelledby': trigger_id, 
+            aria: aria_attributes({ aria: { labelledby: trigger_id } }, kwargs), 
             opened: false,
             data: data_attributes({ data: { ui__accordion__item_target: :content } }, kwargs),
             **kwargs) do %>

@@ -2,7 +2,7 @@
 <% content_id = use_id %>
 
 <%= tag.div(class: class_names('border-b', classes), 
-            data: data_attributes({ controller: "ui--accordion--item", ui__accordion__item_opened_value: local_assigns[:open] }, kwargs.delete(:data)), 
+            data: data_attributes({ data: { controller: "ui--accordion--item", ui__accordion__item_opened_value: local_assigns[:open] } }, kwargs), 
             **kwargs.except(:open)) do %>
   <% ui.with_prefix("accordion/item") do %>
     <% ui.with_locals(trigger_id:, content_id:) do %>
