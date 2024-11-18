@@ -9,12 +9,15 @@ module LycanUi
 
       def copy_views
         copy_file("views/_#{component}.html.erb", "app/views/ui/_#{component}.html.erb")
-        directory("views/#{component}", "app/views/ui/#{component}")
+        directory("views/#{component}", "app/views/ui/#{component}") if Dir.exist?("app/views/ui/#{component}")
       end
 
       def copy_js
         copy_file("javascript/#{component}_controller.js", "app/javascript/controllers/ui/#{component}_controller.js")
-        directory("javascript/#{component}", "app/javascript/controllers/ui/#{component}")
+
+        if Dir.exist?("app/javascript/controllers/ui/#{component}")
+          directory("javascript/#{component}", "app/javascript/controllers/ui/#{component}")
+        end
       end
     end
   end
