@@ -1,0 +1,13 @@
+<% active = current_page?(*args) if local_assigns[:active].nil? %>
+
+<li class="inline-flex items-center gap-1.5">
+  <% if active %>
+    <%= tag.div class: class_names("text-black", classes), **kwargs.except(:active) do %>
+      <%= yield %>
+    <% end %>
+  <% else %>
+    <%= link_to *args, class: class_names("transition-colors hover:text-black", classes), **kwargs.except(:active) do %>
+      <%= yield %>
+    <% end %>
+  <% end %>
+</li>

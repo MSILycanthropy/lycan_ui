@@ -1,0 +1,7 @@
+<%= tag.nav(aria: aria_attributes({ aria: { label: :breadcrumb } }, kwargs), class: classes, **kwargs) do %>
+  <ol class="flex flex-wrap items-center gap-1.5 break-words text-sm text-black/80 sm:gap-2.5">
+    <% ui.with_prefix('breadcrumb') do %>
+      <%= yield ui %>
+    <% end %>
+  </ol>
+<% end %>
