@@ -12,13 +12,13 @@ module LycanUi
         run("bundle add tailwind_merge")
       end
 
-      def install_tailwind_css_animate
+      def install_tailwind_config
         return unless tailwind?
 
         if importmaps?
-          copy_file("importmaps/tailwind.config.js", "config/tailwind.config.js", force: true)
+          copy_file("tailwind.config.js", "config/tailwind.config.js", force: true)
         else
-          raise "Non-importmaps setup currently doesn't work :("
+          copy_file("tailwind.config.js", "tailwind.config.js", force: true)
         end
       end
 

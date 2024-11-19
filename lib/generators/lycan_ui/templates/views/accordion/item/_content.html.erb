@@ -1,10 +1,10 @@
-<% default_classes = "overflow-hidden text-sm transition-all [&[opened='true']]:animate-accordion-down [&[opened='false']]:animate-accordion-up"%>
+<% default_classes = "h-auto interpolate-keywords overflow-hidden text-sm transition-all " \
+                     "duration-200 ease-out hidden:invisible hidden:block hidden:h-0" %>
 
-<%= tag.div(hidden: true, 
+<%= tag.div(hidden: !local_assigns[:open], 
             class: class_names(default_classes, classes),
             role: :region, 
             aria: aria_attributes({ aria: { labelledby: trigger_id } }, kwargs), 
-            opened: false,
             data: data_attributes({ data: { ui__accordion__item_target: :content } }, kwargs),
             **kwargs) do %>
   <div class="pb-4">
