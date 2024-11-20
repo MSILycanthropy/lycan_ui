@@ -1,16 +1,16 @@
-<% variant_classes = select_variant({ 
+<% variant_classes = select_variant({
   primary:
-    "bg-black text-white hover:bg-black/90", 
+    "bg-black text-white hover:bg-black/90",
   secondary:
-    "bg-stone-600 text-white hover:bg-stone-600/80 h-10 px-4 py-2", 
+    "bg-stone-600 text-white hover:bg-stone-600/80 h-10 px-4 py-2",
   danger:
-    "bg-red-800 text-white hover:bg-red-800/90 h-10 px-4 py-2", 
+    "bg-red-800 text-white hover:bg-red-800/90 h-10 px-4 py-2",
   outline:
-    "border border-black hover:bg-stone-600 hover:text-white h-10 px-4 py-2", 
+    "border border-black hover:bg-stone-600 hover:text-white h-10 px-4 py-2",
   ghost:
-    "hover:bg-stone-600 hover:text-white h-10 px-4 py-2", 
+    "hover:bg-stone-600 hover:text-white h-10 px-4 py-2",
   link:
-    "text-black underline-offset-4 hover:underline h-10 px-4 py-2", 
+    "text-black underline-offset-4 hover:underline h-10 px-4 py-2",
   none: nil
 }, variant) %>
 <% animation_classes = "motion-safe:transition-transform motion-safe:active:scale-95 ease-in-out" unless variant&.to_sym == :link %>
