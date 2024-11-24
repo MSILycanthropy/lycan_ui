@@ -25,7 +25,14 @@ module LycanUi
       def copy_helpers
         copy_file("attributes_helper.rb", "app/helpers/attributes_helper.rb")
         template("classes_helper.rb.tt", "app/helpers/classes_helper.rb")
-        copy_file("lycan_ui_helper.rb", "app/helpers/lycan_ui_helper.rb")
+
+        enhanced = yes?("Would you like the `ui` helper method for ease of use?")
+
+        if enhanced 
+          copy_file("lycan_ui_helper_enhanced.rb", "app/helpers/lycan_ui_helper.rb")
+        else
+          copy_file("lycan_ui_helper.rb", "app/helpers/lycan_ui_helper.rb")
+        end
       end
 
       private
