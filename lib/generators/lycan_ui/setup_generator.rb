@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "tty-prompt"
+
 module LycanUi
   module Generators
     class SetupGenerator < Rails::Generators::Base
@@ -26,12 +28,27 @@ module LycanUi
         copy_file("attributes_helper.rb", "app/helpers/attributes_helper.rb")
         template("classes_helper.rb.tt", "app/helpers/classes_helper.rb")
 
-        enhanced = yes?("Would you like the `ui` helper method for ease of use?")
+        enhanced = yes?("Would you like the `ui` helper method for ease of use? (y/n)")
 
-        if enhanced 
+        if enhanced
           copy_file("lycan_ui_helper_enhanced.rb", "app/helpers/lycan_ui_helper.rb")
         else
           copy_file("lycan_ui_helper.rb", "app/helpers/lycan_ui_helper.rb")
+        end
+      end
+
+      def install_components
+        prompt = TTY::Prompt.new
+        path = source_paths.first.sub("/setup", "/views")
+        choices = Dir.glob("#{path}/*.html.erb").map do |c|
+          c.sub(path, "").sub(".html.erb", "").gsub("_", " ").slice(1..).strip
+        end.index_by { |comp| comp.titleize }
+
+        selected = prompt.multi_select("Select your options:", choices, filter: true, cycle: true)
+
+        selected.each do |component|
+          puts "Installing #{component.titleize}..."
+          %x(rails g lycanui:add #{component} --force)
         end
       end
 
