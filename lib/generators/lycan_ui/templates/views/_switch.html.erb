@@ -4,4 +4,4 @@
                      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 " \
                      "motion-safe:transition-all motion-safe:duration-500 motion-safe:ease-in-out border border-black" %>
 
-<%= check_box *args, class: class_names(default_classes, classes), **kwargs %>
+<%= check_box *args, class: class_names(default_classes, local_assigns[:class]), **local_assigns.except(:class) %>

@@ -7,6 +7,13 @@ module LycanUi
 
       alias_method :component, :file_name
 
+      def install_all
+        return unless file_name == "all"
+
+        directory("views", "app/views/ui")
+        exit
+      end
+
       def copy_views
         copy_file("views/_#{component}.html.erb", "app/views/ui/_#{component}.html.erb")
         directory("views/#{component}", "app/views/ui/#{component}") if dir_exists?("views/#{component}")

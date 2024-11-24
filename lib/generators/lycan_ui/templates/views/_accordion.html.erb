@@ -7,10 +7,8 @@
     ui__accordion_multiple_value: local_assigns[:multiple],
     ui__accordion_ui__accordion__item_outlet: "##{id} > [data-controller='ui--accordion--item']"
     }
-  }, kwargs) %>
+  }, local_assigns) %>
 
-<%= tag.div(class: classes, id:, data:, **kwargs.except(:multiple)) do %>
-  <% ui.with_prefix('accordion') do %>
-    <%= yield ui %>
-  <% end %>
+<%= tag.div(class: local_assigns[:class], id:, data:, **local_assigns.except(:classes, :data, :multiple)) do %>
+  <%= yield %>
 <% end %>

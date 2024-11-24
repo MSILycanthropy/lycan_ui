@@ -1,9 +1,7 @@
 <% default_classes = "relative w-full rounded-lg border p-4 [&>svg~*]:pl-7 [&>svg+div]:translate-y-[-3px] " \
                      "[&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4" %>
-<% variant_classes = select_variant({ danger: "border-red-600 text-red-600 [&>svg]:text-red-600", none: nil }, variant) %>
+<% variant_classes = select_variant({ primary: nil, danger: "border-red-600 text-red-600 [&>svg]:text-red-600" }, local_assigns[:variant]) %>
 
-<%= tag.div(class: class_names(default_classes, variant_classes, classes), **kwargs) do %>
-  <% ui.with_prefix('alert') do %>
-    <%= yield ui %>
-  <% end %>
+<%= tag.div(class: class_names(default_classes, variant_classes, local_assigns[:class]), **local_assigns.except(:class)) do %>
+  <%= yield %>
 <% end %>

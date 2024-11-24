@@ -6,8 +6,8 @@
   secondary: "border-transparent bg-gray-600 text-white hover:bg-gray-600/80",
   outline: "text-black",
   danger: "border-transparent bg-red-600 text-white hover:bg-red-600/80"
-}, variant) %>
+}, local_assigns[:variant]) %>
 
-<%= tag.div(class: class_names(default_classes, variant_classes, classes), **kwargs) do %>
+<%= tag.div(class: class_names(default_classes, variant_classes, local_assigns[:class]), **local_assigns.except(:class)) do %>
   <%= yield %>
 <% end %>

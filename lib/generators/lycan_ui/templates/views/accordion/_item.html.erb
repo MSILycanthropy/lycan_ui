@@ -1,12 +1,9 @@
-<% trigger_id = use_id %>
-<% content_id = use_id %>
+<% @current_item_trigger_id = use_id %>
+<% @current_item_content_id = use_id %>
+<% @current_item_open = local_assigns[:open] || false %>
 
-<%= tag.div(class: class_names('border-b', classes),
-            data: data_attributes({ data: { controller: "ui--accordion--item", ui__accordion__item_opened_value: local_assigns[:open] } }, kwargs),
-            **kwargs.except(:open)) do %>
-  <% ui.with_prefix("accordion/item") do %>
-    <% ui.with_locals(trigger_id:, content_id:, open:) do %>
-      <%= yield ui %>
-    <% end %>
-  <% end %>
+<%= tag.div(class: class_names('border-b', local_assigns[:class]),
+            data: data_attributes({ data: { controller: "ui--accordion--item", ui__accordion__item_opened_value: local_assigns[:open] } }, local_assigns),
+            **local_assigns.except(:class, :data)) do %>
+  <%= yield @current_item_trigger_id, @current_item_content_id %>
 <% end %>
