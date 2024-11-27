@@ -4,5 +4,5 @@
                      "checked:border-red-600 checked:before:size-2 " \
                      "motion-safe:before:transition-all motion-safe:before:duration-300" %>
 
-<%= radio_button *args, class: class_names(default_classes, local_assigns[:class]), **local_assigns.except(:class) %>
+<%= radio_button *local_assigns.delete(:args), class: class_names(default_classes, local_assigns[:class]), **local_assigns.except(:class) %>
 

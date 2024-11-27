@@ -1,0 +1,8 @@
+<% type = local_assigns.delete(:type)&.to_s || :text %>
+
+<% default_classes = "flex h-10 w-full rounded-md border border-black px-3 py-2 text-sm " \
+        "file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground " \
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 " \
+        "disabled:cursor-not-allowed disabled:opacity-50" %>
+
+<%= send("#{type.underscore}_field", *local_assigns.delete(:args), class: class_names(default_classes, local_assigns.delete(:class)), **local_assigns) %>
