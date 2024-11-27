@@ -25,16 +25,22 @@ module LycanUi
       end
 
       def copy_helpers
-        copy_file("attributes_helper.rb", "app/helpers/attributes_helper.rb")
-        template("classes_helper.rb.tt", "app/helpers/classes_helper.rb")
+        copy_file("attributes_helper.rb", "app/lib/lycan_ui/attributes_helper.rb")
+        template("classes_helper.rb.tt", "app/lib/lycan_ui/classes_helper.rb")
 
         enhanced = yes?("Would you like the `ui` helper method for ease of use? (y/n)")
 
         if enhanced
-          copy_file("lycan_ui_helper_enhanced.rb", "app/helpers/lycan_ui_helper.rb")
+          copy_file("lycan_ui_helper_enhanced.rb", "app/lib/lycan_ui/lycan_ui_helper.rb")
         else
-          copy_file("lycan_ui_helper.rb", "app/helpers/lycan_ui_helper.rb")
+          copy_file("lycan_ui_helper.rb", "app/lib/lycan_ui/lycan_ui_helper.rb")
         end
+
+        insert_into_file(
+          "app/helpers/application_helper.rb",
+          "  inlude LycanUi::Helpers\n",
+          after: "module ApplicationHelper\n",
+        )
       end
 
       def install_components
@@ -42,13 +48,21 @@ module LycanUi
         path = source_paths.first.sub("/setup", "/views")
         choices = Dir.glob("#{path}/*.html.erb").map do |c|
           c.sub(path, "").sub(".html.erb", "").gsub("_", " ").slice(1..).strip
-        end.index_by { |comp| comp.titleize }
+        end.unshift("all").index_by { |comp| comp.titleize }
 
-        selected = prompt.multi_select("Select your options:", choices, filter: true, cycle: true)
+        selected = prompt.multi_select("Select your options:", choices, filter: true) do |menu|
+          menu.default(1)
+        end
+
+        if selected.include?("all")
+          puts "Installing all components..."
+          %x(rails g lycan_ui:add all --force)
+          exit
+        end
 
         selected.each do |component|
           puts "Installing #{component.titleize}..."
-          %x(rails g lycanui:add #{component} --force)
+          %x(rails g lycan_ui:add #{component} --force)
         end
       end
 

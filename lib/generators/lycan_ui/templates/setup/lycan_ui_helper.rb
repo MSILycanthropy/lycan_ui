@@ -1,10 +1,15 @@
 # frozen_string_literal: true
 
-module LycanUiHelper
-  def use_id
-    @counter ||= 0
-    @counter += 1
+module LycanUi
+  module Helpers
+    include LycanUi::AttributesHelper
+    include LycanUi::ClassesHelper
 
-    "_l#{@counter}_"
+    def use_id
+      @counter ||= 0
+      @counter += 1
+
+      "_l#{@counter}_"
+    end
   end
 end
