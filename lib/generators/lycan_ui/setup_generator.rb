@@ -31,9 +31,9 @@ module LycanUi
         enhanced = yes?("Would you like the `ui` helper method for ease of use? (y/n)")
 
         if enhanced
-          copy_file("lycan_ui_helper_enhanced.rb", "app/lib/lycan_ui/lycan_ui_helper.rb")
+          copy_file("lycan_ui_helper_enhanced.rb", "app/lib/lycan_ui/helpers.rb")
         else
-          copy_file("lycan_ui_helper.rb", "app/lib/lycan_ui/lycan_ui_helper.rb")
+          copy_file("lycan_ui_helper.rb", "app/lib/lycan_ui/helpers.rb")
         end
 
         insert_into_file(
@@ -48,7 +48,7 @@ module LycanUi
         path = source_paths.first.sub("/setup", "/views")
         choices = Dir.glob("#{path}/*.html.erb").map do |c|
           c.sub(path, "").sub(".html.erb", "").gsub("_", " ").slice(1..).strip
-        end.unshift("all").index_by { |comp| comp.titleize }
+        end.unshift("form").sort.unshift("all").index_by { |comp| comp.titleize }
 
         selected = prompt.multi_select("Select your options:", choices, filter: true) do |menu|
           menu.default(1)

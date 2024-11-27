@@ -3,6 +3,7 @@
                      "before:size-0 before:rounded-full before:bg-red-600 " \
                      "checked:border-red-600 checked:before:size-2 " \
                      "motion-safe:before:transition-all motion-safe:before:duration-300" %>
+<% args = local_assigns.delete(:args) %>
+<% args.fourth&.merge!(class: class_names(default_classes, args.fourth.delete(:class))) %>
 
-<%= radio_button *local_assigns.delete(:args), class: class_names(default_classes, local_assigns[:class]), **local_assigns.except(:class) %>
-
+<%= radio_button *args %>
