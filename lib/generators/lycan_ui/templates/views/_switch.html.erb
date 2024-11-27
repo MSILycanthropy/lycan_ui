@@ -3,7 +3,8 @@
                      "checked:bg-white checked:shadow-[1.25rem_0_0_2px_black_inset,0_0_0_2px_black_inset] " \
                      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 " \
                      "motion-safe:transition-all motion-safe:duration-500 motion-safe:ease-in-out border border-black" %>
-<% args = local_assigns.delete(:args) %>
-<% args.third&.merge!(class: class_names(default_classes, args.third.delete(:class))) %>
+<% options = args.third || local_assigns.except(:args) %>
+<% options[:class] = class_names(default_classes, options[:class]) %>
+<% args[2] = options %>
 
 <%= check_box *args %>

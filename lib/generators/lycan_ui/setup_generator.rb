@@ -48,7 +48,7 @@ module LycanUi
         path = source_paths.first.sub("/setup", "/views")
         choices = Dir.glob("#{path}/*.html.erb").map do |c|
           c.sub(path, "").sub(".html.erb", "").gsub("_", " ").slice(1..).strip
-        end.unshift("form").sort.unshift("all").index_by { |comp| comp.titleize }
+        end.push("form").sort.unshift("all").index_by { |comp| comp.titleize }
 
         selected = prompt.multi_select("Select your options:", choices, filter: true) do |menu|
           menu.default(1)

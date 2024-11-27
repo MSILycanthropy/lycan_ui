@@ -17,9 +17,9 @@ module LycanUi
       def install_form
         return unless file_name == "form"
 
-        copy_file("extras/form_builder.rb", "app/lib/lycan_ui/form_builder.rb")
+        copy_file("extras/form_builder.rb", "app/lib/lycan_ui/form_helper.rb")
         insert_into_file(
-          "app/lib/lycan_ui/lycan_ui_helper.rb",
+          "app/lib/lycan_ui/helpers.rb",
           "    include LycanUi::FormHelper\n",
           after: "    include LycanUi::ClassesHelper\n",
         )

@@ -6,7 +6,8 @@
                      "after:-translate-y-1/2 after:rotate-45 after:scale-0 " \
                      "after:transition-transform after:checked:scale-100 after:checked:opacity-100 " \
                      "disabled:opacity-65 disabled:cursor-not-allowed" %>
-<% args = local_assigns.delete(:args) %>
-<% args.third&.merge!(class: class_names(default_classes, args.third.delete(:class))) %>
+<% options = args.third || local_assigns.except(:args) %>
+<% options[:class] = class_names(default_classes, options[:class]) %>
+<% args[2] = options %>
 
 <%= check_box *args %>
