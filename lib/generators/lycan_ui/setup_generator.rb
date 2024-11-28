@@ -38,7 +38,7 @@ module LycanUi
 
         insert_into_file(
           "app/helpers/application_helper.rb",
-          "  inlude LycanUi::Helpers\n",
+          "  include LycanUi::Helpers\n",
           after: "module ApplicationHelper\n",
         )
       end

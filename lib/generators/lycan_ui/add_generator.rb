@@ -24,7 +24,8 @@ module LycanUi
           after: "    include LycanUi::ClassesHelper\n",
         )
 
-        [ "input", "checkbox", "button", "radio", "switch" ].each do |comp|
+        [ "label", "input", "textarea", "checkbox", "button", "radio", "switch" ].each do |comp|
+          puts "Installing #{comp.titleize}..."
           %x(rails g lycan_ui:add #{comp})
         end
 

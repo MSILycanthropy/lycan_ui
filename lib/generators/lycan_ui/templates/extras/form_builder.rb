@@ -13,6 +13,7 @@ module LycanUi
         :search,
         :telephone,
         :text,
+        :url,
         :week,
       ].each do |type|
         define_method("#{type}_field") do |method, options = {}|
@@ -61,6 +62,10 @@ module LycanUi
         @template.render("ui/input", args: [ @object_name, method, options ])
       end
 
+      def label(method, text = nil, options = {}, &block)
+        @template.render("ui/label", args: [ @object_name, method, text, objectify_options(options) ], &block)
+      end
+
       def radio_button(method, tag_value, options = {})
         @template.render("ui/radio", args: [ @object_name, method, tag_value, objectify_options(options) ])
       end
@@ -77,6 +82,10 @@ module LycanUi
           "ui/switch",
           args: [ @object_name, method, objectify_options(options), checked_value, unchecked_value ],
         )
+      end
+
+      def textarea(method, options = {})
+        @template.render("ui/textarea", args: [ @object_name, method, objectify_options(options) ])
       end
     end
 

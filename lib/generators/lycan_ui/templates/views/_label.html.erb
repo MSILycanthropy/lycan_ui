@@ -1,0 +1,13 @@
+<% default_classes = "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" %>
+<% args[2], args[3] = nil, args[2] if args[2].is_a?(Hash) %>
+<% options = args.fourth || local_assigns.except(:args) %>
+<% options[:class] = class_names(default_classes, options[:class]) %>
+<% args[3] = options %>
+
+<% if args.third.nil? %>
+  <%= label *args do |translation| %>
+    <%= yield translation %>
+  <% end %>
+<% else %>
+  <%= label *args %>
+<% end %>
