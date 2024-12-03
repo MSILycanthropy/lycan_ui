@@ -13,6 +13,8 @@ const lycanUi = plugin(({ addUtilities, addVariant }) => {
 
   addVariant("starting", "@starting-style")
   addVariant("hidden", "&[hidden]")
+  addVariant("details", "&::details-content")
+  addVariant("details-open", "&[open]::details-content")
 })
 
 module.exports = {

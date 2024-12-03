@@ -1,9 +1,11 @@
 <% @current_item_trigger_id = use_id %>
 <% @current_item_content_id = use_id %>
 <% @current_item_open = local_assigns[:open] || false %>
-
-<%= tag.div(class: class_names('border-b', local_assigns[:class]),
-            data: data_attributes({ data: { controller: "ui--accordion--item", ui__accordion__item_opened_value: local_assigns[:open] } }, local_assigns),
-            **local_assigns.except(:class, :data)) do %>
+<% details_classes = "interpolate-keywords details:h-0 details-open:h-auto " \
+                     "details:overflow-hidden details:text-sm details:motion-safe:transition-all " \
+                     "details:duration-200 details:ease-out details:transition-discrete" %>
+<%= tag.details(class: class_names('border-b', details_classes, local_assigns.delete(:class)),
+                name: @current_name,
+                **local_assigns) do %>
   <%= yield @current_item_trigger_id, @current_item_content_id %>
 <% end %>

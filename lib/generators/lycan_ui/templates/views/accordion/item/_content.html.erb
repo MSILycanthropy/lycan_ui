@@ -1,14 +1,5 @@
-<% default_classes = "h-auto interpolate-keywords overflow-hidden text-sm motion-safe:transition-all " \
-                     "duration-200 ease-out hidden:invisible hidden:block hidden:h-0" %>
+<% default_classes = "" %>
 
-<%= tag.div(hidden: !@current_item_open,
-            class: class_names(default_classes, local_assigns[:class]),
-            role: :region,
-            id: @current_item_content_id,
-            aria: aria_attributes({ aria: { labelledby: @current_item_trigger_id } }, local_assigns),
-            data: data_attributes({ data: { ui__accordion__item_target: :content } }, local_assigns),
-            **local_assigns.except(:classes, :data)) do %>
-  <div class="pb-4">
-    <%= yield %>
-  </div>
-<% end %>
+<div class="pb-4">
+  <%= yield %>
+</div>

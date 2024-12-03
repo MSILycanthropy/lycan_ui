@@ -1,13 +1,7 @@
-<%= tag.div(class: local_assigns[:class], **local_assigns.except(:class)) do %>
-  <h3 class="flex">
-    <button type="button"
-            class="flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline"
-            aria-expanded="false"
-            aria-controls="<%= @current_item_content_id %>"
-            data-ui--accordion--item-target="trigger"
-            data-action="ui--accordion--item#toggle"
-            id="<%= @current_item_trigger_id %>">
-      <%= yield %>
-    </button>
-  </h3>
+<% default_classes = "cursor-pointer flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline" %>
+
+<% data = data_attributes({ data: { ui__accordion_target: :item } }, local_assigns) %>
+
+<%= tag.summary(class: class_names(default_classes, local_assigns.delete(:class)), data:, **local_assigns.except(:data)) do %>
+  <%= yield %>
 <% end %>
