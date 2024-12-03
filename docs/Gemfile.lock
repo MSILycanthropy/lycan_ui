@@ -227,6 +227,9 @@ GEM
     stringio (3.1.2)
     tailwind_merge (0.13.3)
       lru_redux (~> 1.1)
+    tailwindcss-rails (3.0.0)
+      railties (>= 7.0.0)
+      tailwindcss-ruby
     tailwindcss-ruby (3.4.15)
     tailwindcss-ruby (3.4.15-aarch64-linux)
     tailwindcss-ruby (3.4.15-arm-linux)
@@ -273,7 +276,7 @@ DEPENDENCIES
   slim-rails
   stimulus-rails (~> 1.3)
   tailwind_merge (~> 0.13.3)
-  tailwindcss-ruby
+  tailwindcss-rails
   turbo-rails (~> 2.0)
   webrick
 

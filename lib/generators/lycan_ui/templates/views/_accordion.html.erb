@@ -1,9 +1,9 @@
 <% @current_name = local_assigns.delete(:name) || use_id if local_assigns.delete(:multiple).blank?  %>
 <% data = data_attributes({
   data: {
-    controller: "ui--accordion",
-    action:  "keydown.up->ui--accordion#focusPrevious keydown.down->ui--accordion#focusNext " \
-              "keydown.home->ui--accordion#focusFirst keydown.end->ui--accordion#focusLast",
+    controller: "accordion",
+    action:  "keydown.up->accordion#focusPrevious keydown.down->accordion#focusNext " \
+              "keydown.home->accordion#focusFirst keydown.end->accordion#focusLast",
     }
   }, local_assigns) %>
 

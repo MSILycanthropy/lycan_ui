@@ -4,10 +4,12 @@
     <meta charset='utf-8'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= current_page.data.fetch("title", "Sitepress") %></title>
+
+    <%= stylesheet_link_tag "inter-font" %>
     <%= stylesheet_link_tag "tailwind" %>
     <%= javascript_importmap_tags %>
   </head>
-  <body>
+  <body class="mx-auto container border-x font-sans">
     <header>
       Stuff
     </header>

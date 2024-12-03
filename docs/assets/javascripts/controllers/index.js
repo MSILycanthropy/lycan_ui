@@ -19,12 +19,6 @@ function registerControllerFromPath(path, application) {
     .replace(/\//g, "--")
     .replace(/_/g, "-")
 
-  if (!path.match(/^controllers\//)) {
-    name = `ui--${name}`
-  }
-
-  console.log(name)
-
   if (canRegisterController(name, application)) {
     import(path)
       .then(module => registerController(name, module, application))
