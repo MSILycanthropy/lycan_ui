@@ -1,0 +1,18 @@
+---
+title: My Website
+posts: 10
+primary_page:
+  title: Home
+  order: 1
+---
+
+<%= ui.accordion do |accordion| %>
+  <%= accordion.item do |item| %>
+    <%= item.trigger do %>
+      HELLO GAMERS
+    <% end %>
+    <%= item.content do %>
+      HELLO GAMERS
+    <% end %>
+  <% end %>
+<% end %>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= current_page.data.fetch("title", "Sitepress") %></title>
+    <%= stylesheet_link_tag "tailwind" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body>
+    <header>
+      Stuff
+    </header>
+    <main class="pl-8">
+      <%= yield %>
+    </main>
+    <footer>
+      Things
+    </footer>
+  </body>
+</html>
