@@ -1,0 +1,53 @@
+<div class="xl:grid xl:grid-cols-[1fr_240px] gap-12">
+  <div>
+    <div class="text-2xl">
+      <%= current_page.data["title"] %>
+    </div>
+
+    <hr class="my-1">
+
+    <div>
+      <%= yield :description %>
+    </div>
+
+    <% if content_for?(:installation) %>
+      <div id="installation">
+        <%= yield :installation %>
+      </div>
+    <% end %>
+
+    <% if content_for?(:features) %>
+      <div id="features">
+        <%= yield :features %>
+      </div>
+    <% end %>
+
+    <% if content_for?(:usage) %>
+      <div id="usage">
+        <%= yield :usage %>
+      </div>
+    <% end %>
+
+    <% if content_for?(:accessibility) %>
+      <div id="accessibility">
+        <%= yield :accessibility %>
+      </div>
+    <% end %>
+  </div>
+
+  <nav>
+    <div class="pb-3">
+      On This Page
+    </div>
+
+    <ul>
+      <% [:installation, :features, :usage, :accessibility].each do |item| %>
+        <% if content_for?(item) %>
+          <li>
+            <a href="#<%= item %>"><%= item.to_s.titleize %></a>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </nav>
+</div>

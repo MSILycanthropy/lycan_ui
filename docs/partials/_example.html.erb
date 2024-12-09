@@ -1,0 +1,25 @@
+<div data-controller="example">
+  <div role="tablist" class="w-full border-b mb-4 pb-2">
+    <button role="tab" data-action="example#showPreview">
+      Preview
+    </button>
+    <button role="tab" data-action="example#showErb">
+      Code
+    </button>
+  </div>
+
+
+  <div class="flex items-center justify-center rounded-lg border h-96" role="tabpanel">
+    <div class="max-w-96 w-full" data-example-target="preview">
+      <%= render path %>
+    </div>
+
+    <div data-example-target="erb" hidden>
+      <%= read_erb(path) %>
+    </div>
+
+    <div data-example-target="javascript" hidden>
+      <%= read_js(current_page.data['component']) %>
+    </div>
+  </div>
+</div>

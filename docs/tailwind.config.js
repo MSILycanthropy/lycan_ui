@@ -23,6 +23,7 @@ module.exports = {
     "./models/**/*.*",
     "./helpers/**/*.*",
     "./layouts/**/*.*",
+    "./partials/**/*.*",
     "../lib/generators/lycan_ui/templates/**/*.{js,erb}",
   ],
   theme: {
