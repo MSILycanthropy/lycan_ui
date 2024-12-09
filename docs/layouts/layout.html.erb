@@ -7,9 +7,14 @@
 
     <%= stylesheet_link_tag "inter-font" %>
     <%= stylesheet_link_tag "tailwind" %>
+
+    <style>
+      <%= Rouge::Themes::Github.render %>
+    </style>
+
     <%= javascript_importmap_tags %>
   </head>
-  <body class="mx-auto container border-x font-sans">
+  <body class="mx-auto container border-x font-sans" data-controller="helper">
     <header class="sticky top-0 p-2 flex justify-between items-center border-b shadow-sm backdrop-blur supports-[backdrop-filter]:bg-white/75">
       <%= link_to '/' do %>
         <div class="flex items-center gap-2">
@@ -31,6 +36,13 @@
           <% page = node.resources.format(:html) %>
           <%= link_to node.name.titleize, page.request_path, class: 'text-black underline-offset-4 hover:underline' %>
         <% end %>
+
+        <div class="absolute bottom-3 border shadow-sm p-2 rounded-lg">
+          <label class="flex items-center gap-4 cursor-pointer">
+            <div>Helpers</div>
+            <%= ui.switch nil, nil, checked: true, data: { action: 'helper#toggle' } %>
+          </label>
+        </div>
       </aside>
       <div class="pl-10 py-6 flex-1">
         <%= yield %>

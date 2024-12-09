@@ -14,11 +14,11 @@ module PageHelper
   end
 
   def read_erb(path)
-    File.new("#{path.gsub("/helper/", "/helper/_")}.html.erb").read
-  end
+    content = File.read("#{path.gsub("helper/", "helper/_")}.html.erb").strip
+    formatter = Rouge::Formatters::HTML.new
+    lexer = Rouge::Lexers::ERB.new
 
-  def read_js(component)
-    File.new("../lib/generators/lycan_ui/templates/javascript/#{component}_controller.js").read
+    formatter.format(lexer.lex("\n#{content}")).html_safe
   end
 
   def my_avatar(**kwargs)

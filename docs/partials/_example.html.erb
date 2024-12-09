@@ -1,25 +1,26 @@
-<div data-controller="example">
-  <div role="tablist" class="w-full border-b mb-4 pb-2">
-    <button role="tab" data-action="example#showPreview">
-      Preview
-    </button>
-    <button role="tab" data-action="example#showErb">
-      Code
-    </button>
-  </div>
+<div data-controller="example" data-action="helper-change@document->example#showErb">
+  <label class="flex items-center justify-end gap-2 mb-2 cursor-pointer">
+    <div>View Code</div>
+    <%= ui.switch nil, nil, data: { action: 'example#toggle', example_target: :toggle } %>
+  </label>
 
-
-  <div class="flex items-center justify-center rounded-lg border h-96" role="tabpanel">
-    <div class="max-w-96 w-full" data-example-target="preview">
-      <%= render path %>
+  <div class="rounded-lg border highlight overflow-auto" role="tabpanel">
+    <div class="h-96 flex justify-center items-center hidden:hidden" data-example-target="preview">
+      <div class="max-w-96 w-full">
+        <%= render "examples/helper/#{current_page.data['component']}" %>
+      </div>
     </div>
 
-    <div data-example-target="erb" hidden>
-      <%= read_erb(path) %>
-    </div>
+    <pre class="flex items-center justify-center hidden:hidden pb-2 px-2 mt-[-1em]" data-example-target="helper" hidden>
+      <code>
+        <%= read_erb("examples/helper/#{current_page.data['component']}") %>
+      </code>
+    </pre>
 
-    <div data-example-target="javascript" hidden>
-      <%= read_js(current_page.data['component']) %>
-    </div>
+    <pre class="flex items-center justify-center hidden:hidden pb-2 px-2 mt-[-1em]" data-example-target="normal" hidden>
+      <code>
+        <%= read_erb("examples/no_helper/#{current_page.data['component']}") %>
+      </code>
+    </pre>
   </div>
 </div>
