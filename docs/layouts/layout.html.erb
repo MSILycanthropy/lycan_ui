@@ -30,14 +30,14 @@
         <% end %>
       <% end %>
     </header>
-    <main class="flex px-10">
-      <aside class="no-scrollbar h-full flex flex-col gap-2 py-6 pr-10 w-fit border-r">
+    <main class="flex px-10 min-h-screen">
+      <aside class="relative min-h-screen no-scrollbar flex flex-col gap-2 py-6 pr-10 w-fit border-r">
         <% site.dig('docs').children.each do |node| %>
           <% page = node.resources.format(:html) %>
           <%= link_to node.name.titleize, page.request_path, class: 'text-black underline-offset-4 hover:underline' %>
         <% end %>
 
-        <div class="absolute bottom-3 border shadow-sm p-2 rounded-lg">
+        <div class="sticky bottom-3 border shadow-sm p-2 rounded-lg">
           <label class="flex items-center gap-4 cursor-pointer">
             <div>Helpers</div>
             <%= ui.switch nil, nil, checked: true, data: { action: 'helper#toggle' } %>

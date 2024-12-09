@@ -11,4 +11,16 @@ component: accordion
   </div>
 <% end %>
 
+<% content_for :features do %>
+  features
+<% end %>
+
+<% content_for :usage do %>
+  usage
+<% end %>
+
+<% content_for :accessibility do %>
+  accessibility
+<% end %>
+
 <%= render 'partials/doc', title: 'Accordion' %>

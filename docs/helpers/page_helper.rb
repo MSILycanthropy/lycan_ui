@@ -18,7 +18,7 @@ module PageHelper
     formatter = Rouge::Formatters::HTML.new
     lexer = Rouge::Lexers::ERB.new
 
-    formatter.format(lexer.lex("\n#{content}")).html_safe
+    formatter.format(lexer.lex("#{content}")).html_safe
   end
 
   def my_avatar(**kwargs)
