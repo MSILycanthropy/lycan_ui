@@ -1,0 +1,14 @@
+<div class="space-y-2">
+  <div class="flex items-center gap-2">
+    <%= render 'ui/radio', args: [:object, :field, :red] %>
+    <%= render 'ui/label', args: [:object, :field, 'Red', value: :red] %>
+  </div>
+  <div class="flex items-center gap-2">
+    <%= render 'ui/radio', args: [:object, :field, :green] %>
+    <%= render 'ui/label', args: [:object, :field, 'Green', value: :green] %>
+  </div>
+  <div class="flex items-center gap-2">
+    <%= render 'ui/radio', args: [:object, :field, :blue] %>
+    <%= render 'ui/label', args: [:object, :field, 'Blue', value: :blue] %>
+  </div>
+</div>

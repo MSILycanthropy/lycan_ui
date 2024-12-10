@@ -62,6 +62,10 @@ module FormHelper
     end
 
     def label(method, text = nil, options = {}, &block)
+      puts '*' * 100
+      puts @object_name.nil?
+      puts '*' * 100
+
       @template.render("views/label", args: [ @object_name, method, text, objectify_options(options) ], &block)
     end
 
