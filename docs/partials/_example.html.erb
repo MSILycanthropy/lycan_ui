@@ -4,14 +4,14 @@
     <%= ui.switch nil, nil, data: { action: 'example#toggle', example_target: :toggle } %>
   </label>
 
-  <div class="rounded-lg border highlight overflow-auto" role="tabpanel">
+  <div class="rounded-lg border bg-white overflow-auto" role="tabpanel">
     <div class="h-96 flex justify-center items-center hidden:hidden" data-example-target="preview">
       <div class="<%= local_assigns[:wrapper_classes] %>">
         <%= render "examples/helper/#{local_assigns[:path] || current_page.data['component']}" %>
       </div>
     </div>
 
-    <div data-example-target="erb" hidden>
+    <div class="highlight" data-example-target="erb" hidden>
       <pre class="uses-helper:flex items-center no-helper:hidden p-6">
         <code><%= read_erb("examples/helper/#{local_assigns[:path] || current_page.data['component']}") %></code>
       </pre>
