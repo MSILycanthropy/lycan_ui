@@ -2,6 +2,6 @@
                      "[&>svg]:absolute [&>svg]:left-4 [&>svg]:top-3.5" %>
 <% variant_classes = select_variant({ primary: nil, danger: "border-red-600 text-red-600 [&>svg]:text-red-600" }, local_assigns[:variant]) %>
 
-<%= tag.div(class: class_names(default_classes, variant_classes, local_assigns[:class]), **local_assigns.except(:class)) do %>
+<%= tag.div(role: :alert, class: class_names(default_classes, variant_classes, local_assigns[:class]), **local_assigns.except(:class)) do %>
   <%= yield %>
 <% end %>

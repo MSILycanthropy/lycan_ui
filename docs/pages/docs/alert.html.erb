@@ -29,4 +29,17 @@ component: alert
   </li>
 <% end %>
 
+<% content_for :accessibility do %>
+  <p>
+    Adheres to the
+    <%= link_to 'https://www.w3.org/WAI/ARIA/apg/patterns/alert/',
+          target: :_blank,
+          class: 'inline-flex gap-1 items-center text-black hover:underline hover:text-black/90 transition-all' do %>
+      <span>Alert WAI-ARIA design pattern</span>
+
+      <%= lucide_icon('external-link', class: 'size-4') %>
+    <% end %>
+  </p>
+<% end %>
+
 <%= render 'partials/doc' %>

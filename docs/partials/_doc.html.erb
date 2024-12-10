@@ -65,8 +65,8 @@
     </div>
 
     <ul>
-      <% [:features, :usage, :accessibility].each do |item| %>
-        <% if content_for?(item) %>
+      <% [:installation, :features, :usage, :accessibility].each do |item| %>
+        <% if item == :installation || content_for?(item) %>
           <li>
             <a class="text-sm text-black/90 hover:underline hover:text-black transition-all" href="#<%= item %>"><%= item.to_s.titleize %></a>
 

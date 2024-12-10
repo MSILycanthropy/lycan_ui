@@ -1,0 +1,41 @@
+---
+title: Breadcrumb
+component: breadcrumb
+---
+
+<% content_for :description do %>
+  <p>
+    A trail of links in heirarchical order.
+  </p>
+
+  <p class="pt-2">
+    Uses the Rails
+    <%= link_to "https://apidock.com/rails/ActionView/Helpers/UrlHelper/current_page%3F",
+            target: :_blank,
+            class: 'inline-flex gap-1 items-center text-black hover:underline hover:text-black/90 transition-all' do %>
+      <%= code('current_page?') %>
+      <%= lucide_icon('external-link', class: 'size-4') %>
+    <% end %>
+
+    helper to determine the active page.
+  </p>
+
+  <div class="pt-6">
+    <%= render 'partials/example', wrapper_classes: 'flex justify-center' %>
+  </div>
+<% end %>
+
+<% content_for :accessibility do %>
+  <p>
+    Adheres to the
+    <%= link_to 'https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/',
+          target: :_blank,
+          class: 'inline-flex gap-1 items-center text-black hover:underline hover:text-black/90 transition-all' do %>
+      <span>Breadcrumb WAI-ARIA design pattern</span>
+
+      <%= lucide_icon('external-link', class: 'size-4') %>
+    <% end %>
+  </p>
+<% end %>
+
+<%= render 'partials/doc' %>
