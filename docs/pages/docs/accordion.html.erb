@@ -51,12 +51,9 @@ component: accordion
 <% content_for :accessibility do %>
   <p>
     Adheres to the
-    <%= link_to 'https://www.w3.org/WAI/ARIA/apg/patterns/accordion/',
-          target: :_blank,
-          class: 'inline-flex gap-1 items-center text-black hover:underline hover:text-black/90 transition-all' do %>
-      <span>Accordion WAI-ARIA design pattern</span>
 
-      <%= lucide_icon('external-link', class: 'size-4') %>
+    <%= external_link_to 'https://www.w3.org/WAI/ARIA/apg/patterns/accordion/' do %>
+      <span>Accordion WAI-ARIA design pattern</span>
     <% end %>
   </p>
 <% end %>

@@ -10,11 +10,8 @@ component: breadcrumb
 
   <p class="pt-2">
     Uses the Rails
-    <%= link_to "https://apidock.com/rails/ActionView/Helpers/UrlHelper/current_page%3F",
-            target: :_blank,
-            class: 'inline-flex gap-1 items-center text-black hover:underline hover:text-black/90 transition-all' do %>
+    <%= external_link_to "https://apidock.com/rails/ActionView/Helpers/UrlHelper/current_page%3F" do %>
       <%= code('current_page?') %>
-      <%= lucide_icon('external-link', class: 'size-4') %>
     <% end %>
 
     helper to determine the active page.
@@ -28,12 +25,9 @@ component: breadcrumb
 <% content_for :accessibility do %>
   <p>
     Adheres to the
-    <%= link_to 'https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/',
-          target: :_blank,
-          class: 'inline-flex gap-1 items-center text-black hover:underline hover:text-black/90 transition-all' do %>
-      <span>Breadcrumb WAI-ARIA design pattern</span>
 
-      <%= lucide_icon('external-link', class: 'size-4') %>
+    <%= external_link_to 'https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/' do %>
+      <span>Breadcrumb WAI-ARIA design pattern</span>
     <% end %>
   </p>
 <% end %>

@@ -13,6 +13,19 @@ module PageHelper
     end
   end
 
+  def external_link_to(link, &block)
+    link_to(
+      link,
+      target: :_blank,
+      class: 'inline-flex gap-1 items-center text-black hover:underline hover:text-black/90 transition-all',
+    ) do
+      safe_join([
+        capture(&block),
+        lucide_icon('external-link', class: 'size-4'),
+      ])
+    end
+  end
+
   def code(stuff)
     tag.code(class: 'highlight px-1 rounded-sm shadow') { stuff }
   end
