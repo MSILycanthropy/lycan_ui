@@ -1,0 +1,32 @@
+---
+title: Alert
+component: alert
+---
+
+<% content_for :description do %>
+  <p>A callout to draw a user's attention.</p>
+
+  <div class="pt-6">
+    <%= render 'partials/example', wrapper_classes: 'w-3/4' %>
+  </div>
+<% end %>
+
+<% content_for :usage do %>
+  <h4 id="danger" class="text-lg pb-2">
+    Danger
+  </h4>
+
+  <p class="text-sm">
+    Pass in <%= code('variant') %> to <%= helper_code('ui.alert', 'render "ui/alert"') %> with a value of <%= code(':danger') %>.
+  </p>
+
+  <%= render 'partials/example', path: 'alert/danger', wrapper_classes: 'w-3/4' %>
+<% end %>
+
+<% content_for :usage_links do %>
+  <li>
+    <a class="text-sm text-black hover:underline hover:text-black/90 transition-all" href="#danger">Danger</a>
+  </li>
+<% end %>
+
+<%= render 'partials/doc' %>

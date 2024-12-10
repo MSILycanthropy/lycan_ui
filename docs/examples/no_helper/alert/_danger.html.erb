@@ -1,0 +1,11 @@
+<%= render 'ui/alert', variant: :danger do |alert| %>
+  <%= lucide_icon('terminal', class: 'size-4') %>
+
+  <%= render 'ui/alert/title' do %>
+    Heads up!
+  <% end %>
+
+  <%= render 'ui/alert/description' do %>
+    You can add components with Rails generators.
+  <% end %>
+<% end %>
