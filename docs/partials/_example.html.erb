@@ -6,7 +6,7 @@
 
   <div class="rounded-lg border highlight overflow-auto" role="tabpanel">
     <div class="h-96 flex justify-center items-center hidden:hidden" data-example-target="preview">
-      <div class="max-w-96 w-full">
+      <div class="<%= local_assigns[:wrapper_classes] %>">
         <%= render "examples/helper/#{local_assigns[:path] || current_page.data['component']}" %>
       </div>
     </div>
