@@ -1,7 +1,7 @@
 import { Controller } from '@hotwired/stimulus'
 
 export default class extends Controller {
-  static targets = ['preview', 'helper', 'normal', 'toggle']
+  static targets = ['preview', 'erb', 'toggle']
 
   toggle({ target }) {
     if (target.checked) {
@@ -15,19 +15,13 @@ export default class extends Controller {
 
   showPreview() {
     this.previewTarget.hidden = false
-    this.helperTarget.hidden = true
-    this.normalTarget.hidden = true
+    this.erbTarget.hidden = true
     this.toggleTarget.checked = false
   }
 
   showErb() {
     this.previewTarget.hidden = true
-    this.helperTarget.hidden = this.#useHelper
-    this.normalTarget.hidden = !this.#useHelper
+    this.erbTarget.hidden = false
     this.toggleTarget.checked = true
-  }
-
-  get #useHelper() {
-    return document.body.dataset.useHelper === 'true'
   }
 }

@@ -6,9 +6,9 @@
 
     <hr class="mt-1 mb-2">
 
-    <div>
+    <p>
       <%= yield :description %>
-    </div>
+    </p>
 
     <div class="mt-6" id="installation">
       <div class="text-xl">
@@ -69,6 +69,12 @@
         <% if content_for?(item) %>
           <li>
             <a class="text-sm text-black/90 hover:underline hover:text-black transition-all" href="#<%= item %>"><%= item.to_s.titleize %></a>
+
+            <% if item == :usage && content_for?(:usage_links) %>
+              <ul class="m-0 list-none pl-4">
+                <%= yield :usage_links %>
+              </ul>
+            <% end %>
           </li>
         <% end %>
       <% end %>

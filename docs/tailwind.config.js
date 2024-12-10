@@ -17,6 +17,11 @@ const lycanUi = plugin(({ addUtilities, addVariant }) => {
   addVariant("details-open", "&[open]::details-content")
 })
 
+const docs = plugin(({ addVariant }) => {
+  addVariant("uses-helper", "body[data-use-helper=\"true\"] &")
+  addVariant("no-helper", "body[data-use-helper=\"false\"] &")
+})
+
 module.exports = {
   content: [
     "./pages/**/*.*",
@@ -36,6 +41,7 @@ module.exports = {
   plugins: [
     require('@tailwindcss/typography'),
     require('@tailwindcss/container-queries'),
-    lycanUi
+    lycanUi,
+    docs
   ]
 }

@@ -13,8 +13,19 @@ module PageHelper
     end
   end
 
+  def code(stuff)
+    tag.code(class: 'highlight px-1 rounded-sm shadow') { stuff }
+  end
+
+  def helper_code(helper, no_helper)
+    safe_join([
+      tag.code(class: 'highlight px-1 rounded-sm shadow uses-helper:inline', hidden: '') { helper },
+      tag.code(class: 'highlight px-1 rounded-sm shadow no-helper:inline', hidden: '') { no_helper },
+    ])
+  end
+
   def read_erb(path)
-    content = File.read("#{path.gsub("helper/", "helper/_")}.html.erb").strip
+    content = File.read("#{path.sub(%r{/(?!.*/)}, "/_")}.html.erb").strip
     formatter = Rouge::Formatters::HTML.new
     lexer = Rouge::Lexers::ERB.new
 

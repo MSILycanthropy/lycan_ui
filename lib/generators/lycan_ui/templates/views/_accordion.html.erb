@@ -1,4 +1,4 @@
-<% @current_name = local_assigns.delete(:name) || use_id if local_assigns.delete(:multiple).blank?  %>
+<% @current_name = local_assigns.delete(:multiple) ? nil : (local_assigns.delete(:name) || use_id)  %>
 <% data = data_attributes({
   data: {
     controller: "accordion",
@@ -7,6 +7,6 @@
     }
   }, local_assigns) %>
 
-<%= tag.div(class: local_assigns.delete(:class), data:, **local_assigns.except(:data)) do %>
+<%= tag.div(class: local_assigns.delete(:class), data:, **local_assigns.except(:data, :args)) do %>
   <%= yield %>
 <% end %>

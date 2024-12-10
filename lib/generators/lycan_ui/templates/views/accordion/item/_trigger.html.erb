@@ -2,6 +2,6 @@
 
 <% data = data_attributes({ data: { accordion_target: :item } }, local_assigns) %>
 
-<%= tag.summary(class: class_names(default_classes, local_assigns.delete(:class)), data:, **local_assigns.except(:data)) do %>
+<%= tag.summary(class: class_names(default_classes, local_assigns.delete(:class)), data:, **local_assigns.except(:data, :args)) do %>
   <%= yield %>
 <% end %>

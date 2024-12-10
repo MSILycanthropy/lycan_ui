@@ -7,7 +7,5 @@ export default class extends Controller {
     } else {
       document.body.dataset.useHelper = true
     }
-
-    document.dispatchEvent(new CustomEvent('helper-change'))
   }
 }

@@ -14,8 +14,8 @@
 
     <%= javascript_importmap_tags %>
   </head>
-  <body class="mx-auto container border-x font-sans" data-controller="helper">
-    <header class="sticky top-0 p-2 flex justify-between items-center border-b shadow-sm backdrop-blur supports-[backdrop-filter]:bg-white/75">
+  <body class="mx-auto container border-x font-sans" data-controller="helper" data-use-helper="true">
+    <header class="z-10 sticky top-0 p-2 flex justify-between items-center border-b shadow-sm backdrop-blur supports-[backdrop-filter]:bg-white/75">
       <%= link_to '/' do %>
         <div class="flex items-center gap-2">
           <%= my_avatar class: 'size-8' %>
@@ -31,7 +31,7 @@
       <% end %>
     </header>
     <main class="flex px-10 min-h-screen">
-      <aside class="relative min-h-screen no-scrollbar flex flex-col gap-2 py-6 pr-10 w-fit border-r">
+      <aside class="sticky no-scrollbar flex flex-col gap-2 py-6 pr-10 w-fit border-r">
         <% site.dig('docs').children.each do |node| %>
           <% page = node.resources.format(:html) %>
           <%= link_to node.name.titleize, page.request_path, class: 'text-black underline-offset-4 hover:underline' %>

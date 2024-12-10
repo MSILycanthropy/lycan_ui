@@ -4,7 +4,7 @@ component: accordion
 ---
 
 <% content_for :description do %>
-  It's an accordion.
+  <p>Vertically stacked set of interactive headings that allow a user to expand and collapse sections.</p>
 
   <div class="pt-6">
     <%= render 'partials/example' %>
@@ -12,15 +12,53 @@ component: accordion
 <% end %>
 
 <% content_for :features do %>
-  features
+  <ul class="space-y-1">
+    <li class="flex gap-3 items-center">
+      <%= lucide_icon('check-check', class: 'text-green-600') %>
+
+      <p>
+        Full keyboard navigation
+      </p>
+    </li>
+    <li class="flex gap-3 items-center">
+      <%= lucide_icon('check-check', class: 'text-green-600') %>
+
+      <p>
+        Can expand one or multiple items
+      </p>
+    </li>
+  </ul>
 <% end %>
 
 <% content_for :usage do %>
-  usage
+  <h4 id="multiple" class="text-lg pb-2">
+    Opening multiple items at once
+  </h4>
+
+  <p class="text-sm">
+    Pass in <%= code('multiple') %> to <%= helper_code('ui.accordion', 'render "ui/accordion"') %> with a value of <%= code('true') %>
+  </p>
+
+  <%= render 'partials/example', path: 'accordion/multiple' %>
+<% end %>
+
+<% content_for :usage_links do %>
+  <li>
+    <a class="text-sm text-black hover:underline hover:text-black/90 transition-all" href="#multiple">Opening multiple items at once</a>
+  </li>
 <% end %>
 
 <% content_for :accessibility do %>
-  accessibility
+  <p>
+    Adheres to the
+    <%= link_to 'https://www.w3.org/WAI/ARIA/apg/patterns/accordion/',
+          target: :_blank,
+          class: 'inline-flex gap-1 items-center text-black hover:underline hover:text-black/90 transition-all' do %>
+      <span>Accordion WAI-ARIA design pattern</span>
+
+      <%= lucide_icon('external-link', class: 'size-4') %>
+    <% end %>
+  </p>
 <% end %>
 
 <%= render 'partials/doc', title: 'Accordion' %>
