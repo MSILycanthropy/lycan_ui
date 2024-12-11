@@ -14,7 +14,7 @@ component: button
 <% content_for :usage do %>
   <div class="space-y-3">
     <div>
-      <h4 id="forms" class="text-lg pb-2">
+      <h4 id="forms" class="text-lg scroll-m-20 pb-2">
         Usage in forms
       </h4>
 
@@ -31,7 +31,7 @@ component: button
 
     <% [:secondary, :danger, :outline, :ghost, :link, :none].each do |variant| %>
       <div>
-        <h4 id="<%= variant %>" class="text-lg pb-2">
+        <h4 id="<%= variant %>" class="text-lg scroll-m-20 pb-2">
           <%= variant.to_s.titleize %>
         </h4>
 
