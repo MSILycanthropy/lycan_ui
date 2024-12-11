@@ -32,7 +32,7 @@
     </header>
     <main class="grid grid-cols-[auto_1fr] px-10 min-h-screen">
       <aside class="sticky top-16 h-[calc(100vh-4rem)] no-scrollbar space-y-2 py-6 pr-10 w-fit border-r">
-        <% site.dig('docs').children.each do |node| %>
+        <% site.dig('docs').children.sort_by(&:name).each do |node| %>
           <% page = node.resources.format(:html) %>
           <%= link_to node.name.titleize, page.request_path, class: 'block text-black underline-offset-4 hover:underline' %>
         <% end %>
