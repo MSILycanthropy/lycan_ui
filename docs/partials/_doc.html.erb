@@ -1,0 +1,83 @@
+<div class="xl:grid xl:grid-cols-[1fr_240px] gap-12">
+  <div>
+    <h1 class="text-2xl">
+      <%= current_page.data["title"] %>
+    </h1>
+
+    <hr class="mt-1 mb-2">
+
+    <p>
+      <%= yield :description %>
+    </p>
+
+    <div class="mt-6">
+      <h2 class="text-xl scroll-m-20" id="installation">
+        Installation
+      </h2>
+
+      <hr class="mt-1 mb-4">
+
+      <pre class="highlight rounded-lg flex border p-6">
+        <code>rails g lycan_ui:add <%= current_page.data["component"] %></code>
+      </pre>
+    </div>
+
+    <% if content_for?(:features) %>
+      <div class="mt-6">
+        <h2 class="text-xl scroll-m-20" id="features">
+          Features
+        </h2>
+
+        <hr class="mt-1 mb-4">
+
+        <%= yield :features %>
+      </div>
+    <% end %>
+
+    <% if content_for?(:usage) %>
+      <div class="mt-6">
+        <h2 class="text-xl scroll-m-20" id="usage">
+          Usage
+        </h2>
+
+        <hr class="mt-1 mb-4">
+
+        <%= yield :usage %>
+      </div>
+    <% end %>
+
+    <% if content_for?(:accessibility) %>
+      <div class="mt-6">
+        <h2 class="text-xl scroll-m-20" id="accessibility">
+          Accessibility
+        </h2>
+
+        <hr class="mt-1 mb-4">
+
+        <%= yield :accessibility %>
+      </div>
+    <% end %>
+  </div>
+
+  <nav class="sticky top-24 h-fit">
+    <div class="pb-3">
+      On This Page
+    </div>
+
+    <ul>
+      <% [:installation, :features, :usage, :accessibility].each do |item| %>
+        <% if item == :installation || content_for?(item) %>
+          <li>
+            <a class="text-sm text-black/90 hover:underline hover:text-black transition-all" href="#<%= item %>"><%= item.to_s.titleize %></a>
+
+            <% if item == :usage && content_for?(:usage_links) %>
+              <ul class="m-0 list-none pl-4">
+                <%= yield :usage_links %>
+              </ul>
+            <% end %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </nav>
+</div>

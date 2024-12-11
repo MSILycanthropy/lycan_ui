@@ -1,0 +1,59 @@
+---
+title: Badge
+component: badge
+---
+
+<% content_for :description do %>
+  <p>A badge</p>
+
+  <div class="pt-6">
+    <%= render 'partials/example', wrapper_classes: 'flex justify-center' %>
+  </div>
+<% end %>
+
+<% content_for :features do %>
+  <ul class="space-y-1">
+    <li class="flex gap-3 items-center">
+      <%= lucide_icon('check-check', class: 'text-green-600') %>
+
+      <p>
+        Lazy loading of avatars with specified fallback
+      </p>
+    </li>
+    <li class="flex gap-3 items-center">
+      <%= lucide_icon('check-check', class: 'text-green-600') %>
+
+      <p>
+        Gracefully falls back if image loading fails
+      </p>
+    </li>
+  </ul>
+<% end %>
+
+<% content_for :usage do %>
+  <div class="space-y-3">
+    <% [:secondary, :outline, :danger].each do |variant| %>
+      <div>
+        <h4 id="<%= variant %>" class="text-lg scroll-m-20 pb-2">
+          <%= variant.to_s.titleize %>
+        </h4>
+
+        <p class="text-sm">
+          Pass in <%= code('variant') %> to <%= helper_code('ui.badge', 'render "ui/badge"') %> with a value of <%= code(variant.to_s) %>.
+        </p>
+
+        <%= render 'partials/example', path: "badge/#{variant}", wrapper_classes: 'flex justify-center' %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<% content_for :usage_links do %>
+  <% [:secondary, :outline, :danger].each do |variant| %>
+    <li>
+      <a class="text-sm text-black hover:underline hover:text-black/90 transition-all" href="#<%= variant %>"><%= variant.to_s.titleize %></a>
+    </li>
+  <% end %>
+<% end %>
+
+<%= render 'partials/doc' %>

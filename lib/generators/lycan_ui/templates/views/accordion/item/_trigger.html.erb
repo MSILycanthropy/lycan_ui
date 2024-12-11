@@ -1,0 +1,7 @@
+<% default_classes = "cursor-pointer flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline" %>
+
+<% data = data_attributes({ data: { accordion_target: :item } }, local_assigns) %>
+
+<%= tag.summary(class: class_names(default_classes, local_assigns.delete(:class)), data:, **local_assigns.except(:data, :args)) do %>
+  <%= yield %>
+<% end %>

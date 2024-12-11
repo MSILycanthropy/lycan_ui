@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "tailwindcss/ruby"
+
+begin
+  command = [ Tailwindcss::Ruby.executable, *ARGV ]
+
+  exec(*command)
+rescue Tailwindcss::Ruby::UnsupportedPlatformException, Tailwindcss::Ruby::ExecutableNotFoundException => e
+  warn("ERROR: " + e.message)
+  exit(1)
+end

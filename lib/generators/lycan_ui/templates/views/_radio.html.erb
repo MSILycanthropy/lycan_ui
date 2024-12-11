@@ -1,0 +1,10 @@
+<% default_classes = "flex size-4 cursor-pointer appearance-none items-center justify-center " \
+                     "rounded-full border-2 border-gray-400 transition-all " \
+                     "before:size-0 before:rounded-full before:bg-red-600 " \
+                     "checked:border-red-600 checked:before:size-2 " \
+                     "motion-safe:before:transition-all motion-safe:before:duration-300" %>
+<% options = args.fourth || local_assigns.except(:args) %>
+<% options[:class] = class_names(default_classes, options[:class]) %>
+<% args[3] = options %>
+
+<%= radio_button *args %>

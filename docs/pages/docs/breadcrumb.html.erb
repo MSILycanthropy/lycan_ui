@@ -1,0 +1,35 @@
+---
+title: Breadcrumb
+component: breadcrumb
+---
+
+<% content_for :description do %>
+  <p>
+    A trail of links in heirarchical order.
+  </p>
+
+  <p class="pt-2">
+    Uses the Rails
+    <%= external_link_to "https://apidock.com/rails/ActionView/Helpers/UrlHelper/current_page%3F" do %>
+      <%= code('current_page?') %>
+    <% end %>
+
+    helper to determine the active page.
+  </p>
+
+  <div class="pt-6">
+    <%= render 'partials/example', wrapper_classes: 'flex justify-center' %>
+  </div>
+<% end %>
+
+<% content_for :accessibility do %>
+  <p>
+    Adheres to the
+
+    <%= external_link_to 'https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/' do %>
+      <span>Breadcrumb WAI-ARIA design pattern</span>
+    <% end %>
+  </p>
+<% end %>
+
+<%= render 'partials/doc' %>

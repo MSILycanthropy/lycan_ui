@@ -1,0 +1,34 @@
+<div data-controller="example">
+  <label class="flex items-center justify-end gap-2 mb-2 cursor-pointer">
+    <div>View Code</div>
+    <%= ui.switch nil, nil, data: { action: 'example#toggle', example_target: :toggle } %>
+  </label>
+
+  <div class="rounded-lg border bg-white overflow-auto" role="tabpanel">
+    <div class="h-96 flex justify-center items-center hidden:hidden" data-example-target="preview">
+      <div class="<%= local_assigns[:wrapper_classes] %>">
+        <% if local_assigns[:one] %>
+          <%= render "examples/#{local_assigns[:path] || current_page.data['component']}" %>
+        <% else %>
+          <%= render "examples/helper/#{local_assigns[:path] || current_page.data['component']}" %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="highlight" data-example-target="erb" hidden>
+      <% if local_assigns[:one] %>
+        <pre class="uses-helper:flex items-center no-helper:hidden p-6">
+          <code><%= read_erb("examples/#{local_assigns[:path] || current_page.data['component']}") %></code>
+        </pre>
+      <% else %>
+        <pre class="uses-helper:flex items-center no-helper:hidden p-6">
+          <code><%= read_erb("examples/helper/#{local_assigns[:path] || current_page.data['component']}") %></code>
+        </pre>
+
+        <pre class="no-helper:flex items-center uses-helper:hidden p-6">
+          <code><%= read_erb("examples/no_helper/#{local_assigns[:path] || current_page.data['component']}") %></code>
+        </pre>
+      <% end %>
+    </div>
+  </div>
+</div>

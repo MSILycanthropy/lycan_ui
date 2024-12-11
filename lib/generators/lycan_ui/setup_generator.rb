@@ -1,88 +1,83 @@
 # frozen_string_literal: true
 
+require "tty-prompt"
+
 module LycanUi
   module Generators
     class SetupGenerator < Rails::Generators::Base
-      source_root File.expand_path("templates", __dir__)
+      source_root File.expand_path("templates/setup", __dir__)
 
-      class InvalidInstallationTypeError < StandardError; end
+      def install_tailwind_merge
+        return unless tailwind?
+        return if tailwind_merge_installed?
 
-      def detect_installation_type
-        @use_importmap = File.exist?("config/importmap.rb")
-        @use_node =  File.exist?("tailwind.config.js")
-        @use_sprockets = Object.const_defined?("Sprockets")
-      end
-
-      def install_for_type
-        install_importmap if @use_importmap
-
-        install_sprockets if @use_sprockets
-      end
-
-      def install_assets_path
-        return if @use_node
-
-        insert_into_file(
-          "config/initializers/assets.rb",
-          "Rails.application.config.assets.paths << Rails.root.join(\"app\", \"components\")\n")
-        insert_into_file(
-          "config/initializers/assets.rb",
-          "Rails.application.config.importmap.cache_sweepers << Rails.root.join(\"app\", \"components\")")
+        run("bundle add tailwind_merge")
       end
 
       def install_tailwind_config
-        if @use_node
-          %x(yarn add tailwindcss-animate)
+        return unless tailwind?
 
-          template("config/node/tailwind.config.js", "tailwind.config.js", force: true)
+        if importmaps?
+          copy_file("tailwind.config.js", "config/tailwind.config.js", force: true)
         else
-          template("config/nobuild/tailwind.config.js", "config/tailwind.config.js", force: true)
+          copy_file("tailwind.config.js", "tailwind.config.js", force: true)
         end
       end
 
-      def install_gem
-        installed_already = File.read("Gemfile").match?("view_component")
+      def copy_helpers
+        copy_file("attributes_helper.rb", "app/lib/lycan_ui/attributes_helper.rb")
+        template("classes_helper.rb.tt", "app/lib/lycan_ui/classes_helper.rb")
 
-        return if installed_already
+        enhanced = yes?("Would you like the `ui` helper method for ease of use? (y/n)")
 
-        %x(bundle add view_component)
+        if enhanced
+          copy_file("lycan_ui_helper_enhanced.rb", "app/lib/lycan_ui/helpers.rb")
+        else
+          copy_file("lycan_ui_helper.rb", "app/lib/lycan_ui/helpers.rb")
+        end
+
+        insert_into_file(
+          "app/helpers/application_helper.rb",
+          "  include LycanUi::Helpers\n",
+          after: "module ApplicationHelper\n",
+        )
       end
 
-      def install_application_component
-        empty_directory("app/components")
-        copy_file("components/component.rb", "app/components/application_component.rb", force: true)
+      def install_components
+        prompt = TTY::Prompt.new
+        path = source_paths.first.sub("/setup", "/views")
+        choices = Dir.glob("#{path}/*.html.erb").map do |c|
+          c.sub(path, "").sub(".html.erb", "").gsub("_", " ").slice(1..).strip
+        end.push("form").sort.unshift("all").index_by { |comp| comp.titleize }
 
-        copy_file("lib/attributes_helper.rb", "lib/lycan_ui/attributes_helper.rb")
-        copy_file("lib/classes_helper.rb", "lib/lycan_ui/classes_helper.rb")
-        copy_file("lib/validations_helper.rb", "lib/lycan_ui/validations_helper.rb")
+        selected = prompt.multi_select("Select your options:", choices, filter: true) do |menu|
+          menu.default(1)
+        end
+
+        if selected.include?("all")
+          puts "Installing all components..."
+          %x(rails g lycan_ui:add all --force)
+          exit
+        end
+
+        selected.each do |component|
+          puts "Installing #{component.titleize}..."
+          %x(rails g lycan_ui:add #{component} --force)
+        end
       end
 
       private
 
-      def install_importmap
-        if @use_sprockets
-          insert_into_file("config/importmap.rb", <<~RB
-              components_path = Rails.root.join('app/components')
-              components_path.glob('**/*_controller.js').each do |controller|
-                name = controller.relative_path_from(components_path).to_s.remove(/\\.js$/)
-                pin "controllers/\#{name}", to: name, preload: false
-              end
-            RB
-          )
-        else
-          insert_into_file("config/importmap.rb", <<~RB
-            components_path = Rails.root.join("app/components")
-            components_path.glob("**/*_controller.js").each do |controller|
-              name = controller.relative_path_from(components_path).to_s.remove(/\.js$/)
-              pin "controllers/\#{name}", to: "\#{name}.js", preload: false
-            end
-            RB
-          )
-        end
+      def tailwind_merge_installed?
+        Gem.loaded_specs.key?("tailwind_merge")
       end
 
-      def install_sprockets
-        insert_into_file("app/assets/config/manifest.js", "//= link_tree ../../components .js")
+      def tailwind?
+        true
+      end
+
+      def importmaps?
+        File.exist?("#{Rails.root}/config/importmap.rb")
       end
     end
   end

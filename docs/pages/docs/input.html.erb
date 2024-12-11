@@ -1,0 +1,66 @@
+---
+title: Input
+component: input
+---
+
+<% content_for :description do %>
+  <p>
+    An input field compatible with all the Rails
+
+    <%= external_link_to 'https://api.rubyonrails.org/v7.1.1/classes/ActionView/Helpers/Tags.html' do %>
+      <%= code('field') %> helpers
+    <% end %>.
+  </p>
+
+  <div class="pt-6">
+    <%= render 'partials/example', wrapper_classes: 'flex justify-center' %>
+  </div>
+<% end %>
+
+<% content_for :usage do %>
+  <div class="space-y-3">
+    <div>
+      <h4 id="forms" class="text-lg scroll-m-20 pb-2">
+        Usage in forms
+      </h4>
+
+      <p class="text-sm">
+        To use directly with the typical Rails form helpers,
+
+        <%= external_link_to '/' do %>
+          Installing form helpers
+        <% end %>
+      </p>
+
+      <%= render 'partials/example', path: "input", one: true,  wrapper_classes: 'flex justify-center' %>
+    </div>
+
+    <% [:date, :datetime, :email, :month, :number, :password, :search, :phone, :url, :week].each do |field_type| %>
+      <div>
+        <h4 id="<%= field_type %>" class="text-lg scroll-m-20 pb-2">
+          <%= field_type.to_s.titleize %>
+        </h4>
+
+        <p class="text-sm">
+          Pass in <%= code('type') %> to <%= helper_code('ui.input', 'render "ui/input"') %> with a value of <%= code(field_type.to_s) %>.
+        </p>
+
+        <%= render 'partials/example', path: "input/#{field_type}",  wrapper_classes: 'flex justify-center' %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<% content_for :usage_links do %>
+  <li>
+    <a class="text-sm text-black hover:underline hover:text-black/90 transition-all" href="#form">Usage in forms</a>
+  </li>
+
+  <% [:date, :datetime, :email, :month, :number, :password, :search, :phone, :url, :week].each do |field_type| %>
+    <li>
+      <a class="text-sm text-black hover:underline hover:text-black/90 transition-all" href="#<%= field_type %>"><%= field_type.to_s.titleize %></a>
+    </li>
+  <% end %>
+<% end %>
+
+<%= render 'partials/doc' %>

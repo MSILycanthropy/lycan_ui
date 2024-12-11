@@ -1,0 +1,11 @@
+<%= ui.alert variant: :danger do |alert| %>
+  <%= lucide_icon('octagon-alert', class: 'size-4') %>
+
+  <%= alert.title do %>
+    Error
+  <% end %>
+
+  <%= alert.description do %>
+    Something went terribly wrong. Please try again later.
+  <% end %>
+<% end %>

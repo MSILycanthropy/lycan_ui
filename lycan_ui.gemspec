@@ -25,5 +25,5 @@ Gem::Specification.new do |spec|
   end
 
   spec.add_dependency("rails", ">= 7.1.3")
-  spec.add_dependency("view_component", ">= 2.33.0")
+  spec.add_dependency("tty-prompt", ">= 0.23.1")
 end
