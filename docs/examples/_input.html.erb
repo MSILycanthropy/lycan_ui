@@ -1,6 +1,6 @@
 <%= lycan_ui_form_with do |form| %>
   <div class="flex flex-col gap-1">
-    <%= form.label :field, 'Name' %>
-    <%= form.text_field :field, placeholder: 'Type here' %>
+    <%= form.label :field, 'Name', for: :field %>
+    <%= form.text_field :field, placeholder: 'Type here', id: :field %>
   </div>
 <% end %>
