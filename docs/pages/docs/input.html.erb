@@ -4,7 +4,13 @@ component: input
 ---
 
 <% content_for :description do %>
-  <p>A control that allows the user to toggle between checked and not checked.</p>
+  <p>
+    An input field compatible with all the Rails
+
+    <%= external_link_to 'https://api.rubyonrails.org/v7.1.1/classes/ActionView/Helpers/Tags.html' do %>
+      <%= code('field') %> helpers
+    <% end %>.
+  </p>
 
   <div class="pt-6">
     <%= render 'partials/example', wrapper_classes: 'flex justify-center' %>

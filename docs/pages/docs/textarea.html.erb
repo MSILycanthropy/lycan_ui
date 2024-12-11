@@ -1,0 +1,40 @@
+---
+title: Textarea
+component: textarea
+---
+
+<% content_for :description do %>
+  <p>A control that allows the user to toggle between checked and not checked.</p>
+
+  <div class="pt-6">
+    <%= render 'partials/example', wrapper_classes: 'w-1/2' %>
+  </div>
+<% end %>
+
+<% content_for :usage do %>
+  <div class="space-y-3">
+    <div>
+      <h4 id="forms" class="text-lg scroll-m-20 pb-2">
+        Usage in forms
+      </h4>
+
+      <p class="text-sm">
+        To use directly with Rails forms, please see
+
+        <%= external_link_to '/' do %>
+          Installing form helpers
+        <% end %>
+      </p>
+
+      <%= render 'partials/example', path: "textarea", one: true, wrapper_classes: 'w-1/2' %>
+    </div>
+  </div>
+<% end %>
+
+<% content_for :usage_links do %>
+  <li>
+    <a class="text-sm text-black hover:underline hover:text-black/90 transition-all" href="#form">Usage in forms</a>
+  </li>
+<% end %>
+
+<%= render 'partials/doc' %>
