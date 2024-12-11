@@ -29,6 +29,7 @@ module.exports = {
     "./helpers/**/*.*",
     "./layouts/**/*.*",
     "./partials/**/*.*",
+    "./examples/**/*.*",
     "../lib/generators/lycan_ui/templates/**/*.{js,erb}",
   ],
   theme: {
