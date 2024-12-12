@@ -4,7 +4,7 @@
       <%= current_page.data["title"] %>
     </h1>
 
-    <hr class="mt-1 mb-2">
+    <hr class="mt-1 mb-2 border-on-surface/25">
 
     <p>
       <%= yield :description %>
@@ -15,9 +15,9 @@
         Installation
       </h2>
 
-      <hr class="mt-1 mb-4">
+      <hr class="mt-1 mb-4 border-on-surface/25">
 
-      <pre class="highlight rounded-lg flex border p-6">
+      <pre class="bg-surface-100 rounded-lg flex border border-on-surface/25 p-6">
         <code>rails g lycan_ui:add <%= current_page.data["component"] %></code>
       </pre>
     </div>
@@ -28,7 +28,7 @@
           Features
         </h2>
 
-        <hr class="mt-1 mb-4">
+        <hr class="mt-1 mb-4 border-on-surface/25">
 
         <%= yield :features %>
       </div>
@@ -40,7 +40,7 @@
           Usage
         </h2>
 
-        <hr class="mt-1 mb-4">
+        <hr class="mt-1 mb-4 border-on-surface/25">
 
         <%= yield :usage %>
       </div>
@@ -52,7 +52,7 @@
           Accessibility
         </h2>
 
-        <hr class="mt-1 mb-4">
+        <hr class="mt-1 mb-4 border-on-surface/25">
 
         <%= yield :accessibility %>
       </div>

@@ -27,13 +27,13 @@ module PageHelper
   end
 
   def code(stuff)
-    tag.code(class: 'highlight px-1 rounded-sm shadow') { stuff }
+    tag.code(class: 'bg-surface-100 border border-on-surface/15 px-1 rounded shadow-lg') { stuff }
   end
 
   def helper_code(helper, no_helper)
     safe_join([
-      tag.code(class: 'highlight px-1 rounded-sm shadow uses-helper:inline', hidden: '') { helper },
-      tag.code(class: 'highlight px-1 rounded-sm shadow no-helper:inline', hidden: '') { no_helper },
+      tag.code(class: 'bg-surface-100 border border-on-surface/15 px-1 rounded shadow-lg uses-helper:inline', hidden: '') { helper },
+      tag.code(class: 'bg-surface-100 border border-on-surface/15 px-1 rounded shadow-lg no-helper:inline', hidden: '') { no_helper },
     ])
   end
 

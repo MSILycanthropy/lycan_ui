@@ -14,8 +14,8 @@
 
     <%= javascript_importmap_tags %>
   </head>
-  <body class="mx-auto container border-x font-sans" data-controller="helper" data-use-helper="true">
-    <header class="h-16 z-10 sticky top-0 p-2 flex justify-between items-center border-b shadow-sm backdrop-blur supports-[backdrop-filter]:bg-white/75">
+  <body class="mx-auto container border-x border-on-surface/25" data-controller="helper" data-use-helper="true">
+    <header class="h-16 z-10 sticky top-0 p-2 flex justify-between items-center border-b border-on-surface/25 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-surface/75">
       <%= link_to '/' do %>
         <div class="flex items-center gap-2">
           <%= my_avatar class: 'size-8' %>
@@ -31,13 +31,13 @@
       <% end %>
     </header>
     <main class="grid grid-cols-[auto_1fr] px-10 min-h-screen">
-      <aside class="sticky top-16 h-[calc(100vh-4rem)] no-scrollbar space-y-2 py-6 pr-10 w-fit border-r">
+      <aside class="sticky top-16 h-[calc(100vh-4rem)] no-scrollbar space-y-2 py-6 pr-10 w-fit border-r border-on-surface/25">
         <% site.dig('docs').children.sort_by(&:name).each do |node| %>
           <% page = node.resources.format(:html) %>
           <%= link_to node.name.titleize, page.request_path, class: 'block text-black underline-offset-4 hover:underline' %>
         <% end %>
 
-        <div class="fixed bottom-3 border shadow-sm p-2 rounded-lg -ml-5">
+        <div class="fixed bottom-3 border border-on-surface/25 shadow-sm p-2 rounded-lg -ml-5">
           <label class="flex items-center gap-4 cursor-pointer">
             <div>Helpers</div>
             <%= ui.switch nil, nil, checked: true, data: { action: 'helper#toggle' } %>
