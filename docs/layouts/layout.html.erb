@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="dark">
   <head>
     <meta charset='utf-8'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,7 +34,7 @@
       <aside class="sticky top-16 h-[calc(100vh-4rem)] no-scrollbar space-y-2 py-6 pr-10 w-fit border-r border-on-surface/25">
         <% site.dig('docs').children.sort_by(&:name).each do |node| %>
           <% page = node.resources.format(:html) %>
-          <%= link_to node.name.titleize, page.request_path, class: 'block text-black underline-offset-4 hover:underline' %>
+          <%= link_to node.name.titleize, page.request_path, class: 'block underline-offset-4 hover:underline' %>
         <% end %>
 
         <div class="fixed bottom-3 border border-on-surface/25 shadow-sm p-2 rounded-lg -ml-5">

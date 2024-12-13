@@ -23,6 +23,7 @@ const docs = plugin(({ addVariant }) => {
 })
 
 module.exports = {
+  darkMode: ['selector', '.dark'],
   content: [
     "./pages/**/*.*",
     "./models/**/*.*",

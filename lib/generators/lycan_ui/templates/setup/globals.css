@@ -61,3 +61,17 @@ body {
     --color-on-accent: 240 45% 2%;
   }
 }
+
+.dark {
+  --color-surface: var(--color-surface-950);
+  --color-on-surface: 243 76% 95%;
+
+  --color-primary: var(--color-primary-400);
+  --color-on-primary: 223 68% 94%;
+
+  --color-secondary: var(--color-secondary-500);
+  --color-on-secondary: 223 68% 94%;
+
+  --color-accent: var(--color-accent-300);
+  --color-on-accent: 243 76% 95%;
+}
