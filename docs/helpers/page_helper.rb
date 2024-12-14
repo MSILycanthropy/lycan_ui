@@ -17,7 +17,7 @@ module PageHelper
     link_to(
       link,
       target: :_blank,
-      class: 'inline-flex gap-1 items-center text-black hover:underline hover:text-black/90 transition-all',
+      class: 'inline-flex gap-1 items-center hover:underline decoration-accent transition-all',
     ) do
       safe_join([
         capture(&block),
@@ -27,13 +27,15 @@ module PageHelper
   end
 
   def code(stuff)
-    tag.code(class: 'bg-surface-100 border border-on-surface/15 px-1 rounded shadow-lg') { stuff }
+    tag.code(class: 'bg-surface-100 dark:bg-surface-700 border border-on-surface/15 px-1 rounded shadow-lg') { stuff }
   end
 
   def helper_code(helper, no_helper)
+    classes = 'bg-surface-100 dark:bg-surface-700 border border-on-surface/15 px-1 rounded shadow-lg'
+
     safe_join([
-      tag.code(class: 'bg-surface-100 border border-on-surface/15 px-1 rounded shadow-lg uses-helper:inline', hidden: '') { helper },
-      tag.code(class: 'bg-surface-100 border border-on-surface/15 px-1 rounded shadow-lg no-helper:inline', hidden: '') { no_helper },
+      tag.code(class: classes + ' uses-helper:inline', hidden: '') { helper },
+      tag.code(class: classes + ' no-helper:inline', hidden: '') { no_helper },
     ])
   end
 

@@ -19,7 +19,7 @@ body {
     --color-surface-800: 240 36% 41%;
     --color-surface-900: 239 31% 34%;
     --color-surface-950: 240 31% 20%; /* dark */
-    --color-surface: var(--color-surface-200);
+    --color-surface: var(--color-surface-300);
     --color-on-surface: 243 76% 5%;
 
     --color-primary-50: 246 83% 98%;
@@ -71,10 +71,10 @@ body {
   --color-on-surface: 243 76% 95%;
 
   --color-primary: var(--color-primary-400);
-  --color-on-primary: 223 68% 94%;
+  --color-on-primary: 240 31% 20%;
 
   --color-secondary: var(--color-secondary-500);
-  --color-on-secondary: 223 68% 94%;
+  --color-on-secondary: 240 31% 20%;
 
   --color-accent: var(--color-accent-300);
   --color-on-accent: 243 76% 95%;

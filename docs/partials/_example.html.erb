@@ -4,7 +4,7 @@
     <%= ui.switch nil, nil, data: { action: 'example#toggle', example_target: :toggle } %>
   </label>
 
-  <div class="rounded-lg border border-on-surface/25 bg-surface-100 overflow-auto" role="tabpanel">
+  <div class="rounded-lg border border-on-surface/25 bg-surface-200 dark:bg-surface-900 overflow-auto" role="tabpanel">
     <div class="h-96 flex justify-center items-center hidden:hidden" data-example-target="preview">
       <div class="<%= local_assigns[:wrapper_classes] %>">
         <% if local_assigns[:one] %>
