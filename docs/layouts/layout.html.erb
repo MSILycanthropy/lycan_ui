@@ -50,7 +50,7 @@
           <%= link_to node.name.titleize, page.request_path, class: 'block underline-offset-4 hover:underline decoration-accent' %>
         <% end %>
 
-        <div class="fixed bottom-3 border border-on-surface/25 shadow-sm p-2 rounded-lg -ml-5">
+        <div class="fixed bottom-3 border border-secondary shadow-lg p-2 rounded-lg -ml-5">
           <label class="flex items-center gap-4 cursor-pointer">
             <div>Helpers</div>
             <%= ui.switch nil, nil, checked: true, data: { action: 'helper#toggle' } %>
