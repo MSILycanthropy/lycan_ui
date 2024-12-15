@@ -10,7 +10,7 @@
     <%= stylesheet_link_tag "tailwind" %>
 
     <style>
-      <%= Rouge::Themes::Github.render %>
+      <%= Rouge::Themes::ThankfulEyes.render %>
     </style>
 
     <%= javascript_importmap_tags %>
@@ -32,10 +32,10 @@
           <% end %>
         <% end %>
         <%= ui.button variant: :ghost, class: 'px-2 py-0 size-8 relative', data: { controller: :theme, action: 'theme#toggle' } do %>
-          <div class="absolute size-4 transition-discrete transition-all duration-300 ease-in-out hidden:opacity-0 opacity-100 hidden:rotate-180 rotate-0" data-theme-target="light" hidden>
+          <div class="absolute size-4 transition-discrete transition-all hidden:opacity-0 opacity-100 hidden:rotate-180 rotate-0" data-theme-target="light" hidden>
             <%= lucide_icon('sun', class: 'size-4') %>
           </div>
-          <div class="absolute size-4 transition-discrete transition-all duration-300 ease-in-out hidden:opacity-0 opacity-100 hidden:rotate-180 rotate-0" data-theme-target="dark">
+          <div class="absolute size-4 transition-discrete transition-all hidden:opacity-0 opacity-100 hidden:rotate-180 rotate-0" data-theme-target="dark">
             <%= lucide_icon('moon', class: 'size-4') %>
           </div>
 

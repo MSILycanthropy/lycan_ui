@@ -2,7 +2,7 @@
                      "rounded-full border-2 border-secondary transition-all " \
                      "before:size-0 before:rounded-full before:bg-accent " \
                      "checked:border-accent checked:before:size-2 " \
-                     "motion-safe:before:transition-all motion-safe:before:duration-300" %>
+                     "motion-safe:before:transition-all" %>
 <% options = args.fourth || local_assigns.except(:args) %>
 <% options[:class] = class_names(default_classes, options[:class]) %>
 <% args[3] = options %>
