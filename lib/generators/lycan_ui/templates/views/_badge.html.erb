@@ -2,10 +2,10 @@
                      "focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2" %>
 
 <% variant_classes = select_variant({
-  primary: "border-transparent bg-zinc-100 text-black hover:bg-zinc-100/80",
-  secondary: "border-transparent bg-gray-600 text-white hover:bg-gray-600/80",
-  outline: "text-black",
-  danger: "border-transparent bg-red-600 text-white hover:bg-red-600/80"
+  primary: "border-transparent bg-primary text-on-primary hover:bg-primary/80",
+  secondary: "border-transparent bg-secondary text-on-secondary hover:bg-secondary/80",
+  outline: "border-primary",
+  danger: "border-transparent bg-danger text-on-danger hover:bg-danger/80"
 }, local_assigns[:variant]) %>
 
 <%= tag.div(class: class_names(default_classes, variant_classes, local_assigns[:class]), **local_assigns.except(:class)) do %>

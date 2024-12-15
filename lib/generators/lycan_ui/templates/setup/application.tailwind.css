@@ -8,6 +8,8 @@ body {
 
 @layer base {
   :root {
+    color-scheme: light;
+
     --color-surface-50: 218 65% 97%;
     --color-surface-100: 223 68% 94%;
     --color-surface-200: 225 61% 89%; /* light */
@@ -63,10 +65,26 @@ body {
     --color-accent-950: 124 53% 10%;
     --color-accent: var(--color-accent-400);
     --color-on-accent: 240 45% 2%;
+
+    --color-danger-50: 0 71% 97%;
+    --color-danger-100: 358 80% 94%;
+    --color-danger-200: 357 85% 89%;
+    --color-danger-300: 358 83% 82%;
+    --color-danger-400: 358 80% 71%;
+    --color-danger-500: 358 74% 60%;
+    --color-danger-600: 358 63% 51%;
+    --color-danger-700: 358 65% 46%;
+    --color-danger-800: 358 62% 35%;
+    --color-danger-900: 358 55% 31%;
+    --color-danger-950: 358 65% 15%;
+    --color-danger: var(--color-danger-700);
+    --color-on-danger: 255 100% 100%;
   }
 }
 
 .dark {
+  color-scheme: dark;
+
   --color-surface: var(--color-surface-950);
   --color-on-surface: 243 76% 95%;
 
@@ -78,4 +96,7 @@ body {
 
   --color-accent: var(--color-accent-300);
   --color-on-accent: 243 76% 95%;
+
+  --color-danger: var(--color-danger-600);
+  --color-on-danger: 243 76% 95%;
 }

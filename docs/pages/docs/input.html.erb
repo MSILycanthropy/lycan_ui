@@ -53,12 +53,12 @@ component: input
 
 <% content_for :usage_links do %>
   <li>
-    <a class="text-sm hover:underline decoration-accent transition-all" href="#form">Usage in forms</a>
+    <a class="text-sm underline-offset-4 hover:underline decoration-accent transition-all" href="#form">Usage in forms</a>
   </li>
 
   <% [:date, :datetime, :email, :month, :number, :password, :search, :phone, :url, :week].each do |field_type| %>
     <li>
-      <a class="text-sm hover:underline decoration-accent transition-all" href="#<%= field_type %>"><%= field_type.to_s.titleize %></a>
+      <a class="text-sm underline-offset-4 hover:underline decoration-accent transition-all" href="#<%= field_type %>"><%= field_type.to_s.titleize %></a>
     </li>
   <% end %>
 <% end %>

@@ -3,11 +3,13 @@
 
 <li class="inline-flex items-center gap-1.5">
   <% if active %>
-    <%= tag.div class: class_names("text-black", local_assigns[:class]), **local_assigns.except(:class, :active) do %>
+    <%= tag.div **local_assigns.except(:class, :active) do %>
       <%= yield %>
     <% end %>
   <% else %>
-    <%= link_to *args, class: class_names("transition-colors hover:text-black", local_assigns[:class]), **local_assigns.except(:class, :active) do %>
+    <%= link_to *args,
+                class: class_names("transition-colors underline-offset-4 hover:underline decoration-accent", local_assigns[:class]),
+                **local_assigns.except(:class, :active) do %>
       <%= yield %>
     <% end %>
   <% end %>
