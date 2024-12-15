@@ -1,7 +1,6 @@
 <% default_classes = "appearance-none cursor-pointer rounded-full disabled:opacity-50 disabled:cursor-not-allowed " \
                      "w-8 h-4 bg-white dark:bg-surface-950 " \
-                     "shadow-[-1rem_0_0_2px_hsl(var(--color-secondary))_inset,0_0_0_2px_hsl(var(--color-secondary))_inset] " \
-                     "checked:shadow-[1rem_0_0_2px_hsl(var(--color-accent))_inset,0_0_0_2px_hsl(var(--color-accent))_inset] " \
+                     "shadow-switch checked:shadow-switch-checked " \
                      "motion-safe:transition-all motion-safe:duration-500 motion-safe:ease-in-out" %>
 <% options = args.third || local_assigns.except(:args) %>
 <% options[:class] = class_names(default_classes, options[:class]) %>
