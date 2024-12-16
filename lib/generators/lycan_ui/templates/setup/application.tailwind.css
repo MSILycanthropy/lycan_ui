@@ -8,6 +8,10 @@
   scrollbar-color: hsl(var(--color-secondary)) hsl(var(--color-surface));
 }
 
+* {
+  scrollbar-width: thin;
+}
+
 body {
   @apply bg-surface text-on-surface font-sans;
 }

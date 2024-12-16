@@ -6,21 +6,21 @@
 
     <hr class="mt-1 mb-2 border-on-surface/25">
 
-    <p>
-      <%= yield :description %>
-    </p>
+    <%= yield :description %>
 
-    <div class="mt-6">
-      <h2 class="text-xl scroll-m-20" id="installation">
-        Installation
-      </h2>
+    <% if current_page.data["component"].present? %>
+      <div class="mt-6">
+        <h2 class="text-xl scroll-m-20" id="installation">
+          Installation
+        </h2>
 
-      <hr class="mt-1 mb-4 border-on-surface/25">
+        <hr class="mt-1 mb-4 border-on-surface/25">
 
-      <pre class="bg-surface-200 dark:bg-surface-900 rounded-lg flex shadow-lg p-6">
-        <code>rails g lycan_ui:add <%= current_page.data["component"] %></code>
-      </pre>
-    </div>
+        <pre class="bg-surface-200 dark:bg-surface-900 rounded-lg flex shadow-lg p-6">
+          <code>rails g lycan_ui:add <%= current_page.data["component"] %></code>
+        </pre>
+      </div>
+    <% end %>
 
     <% if content_for?(:features) %>
       <div class="mt-6">
@@ -57,6 +57,30 @@
         <%= yield :accessibility %>
       </div>
     <% end %>
+
+    <% if content_for?(:faq) %>
+      <div class="mt-6">
+        <h2 class="text-xl scroll-m-20" id="faq">
+          FAQ
+        </h2>
+
+        <hr class="mt-1 mb-4 border-on-surface/25">
+
+        <%= yield :faq %>
+      </div>
+    <% end %>
+
+    <nav class="flex items-center justify-between">
+      <% index = current_page.siblings.index(current_page) || 0 %>
+
+      <% if current_page.siblings[index - 1].present? && !index.zero? %>
+        <%= link_to current_page.siblings[index - 1].data["title"], current_page.siblings[index - 1].request_path %>
+      <% end %>
+
+      <% if current_page.siblings[index + 1].present? && index < current_page.siblings.size %>
+        <%= link_to current_page.siblings[index + 1].data["title"], current_page.siblings[index - 1].request_path %>
+      <% end %>
+    </nav>
   </div>
 
   <nav class="sticky top-24 h-fit">
@@ -65,10 +89,12 @@
     </div>
 
     <ul>
-      <% [:installation, :features, :usage, :accessibility].each do |item| %>
-        <% if item == :installation || content_for?(item) %>
+      <% [:installation, :features, :usage, :accessibility, :faq].each do |item| %>
+        <% if (item == :installation && current_page.data["component"].present?) || content_for?(item) %>
           <li>
-            <a class="text-sm underline-offset-4 hover:underline decoration-accent transition-all" href="#<%= item %>"><%= item.to_s.titleize %></a>
+            <a class="text-sm underline-offset-4 hover:underline decoration-accent transition-all" href="#<%= item %>">
+              <%= item == :faq ? item.to_s.upcase : item.to_s.titleize %>
+            </a>
 
             <% if item == :usage && content_for?(:usage_links) %>
               <ul class="m-0 list-none pl-4">

@@ -3,7 +3,7 @@
   <head>
     <meta charset='utf-8'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= current_page.data.fetch("title", "Sitepress") %></title>
+    <title><%= current_page.data.fetch("title", "Sitepress") %> - LycanUI </title>
 
     <%= stylesheet_link_tag "inter-font", rel: :preload, as: :style  %>
     <%= stylesheet_link_tag "site" %>
@@ -44,11 +44,25 @@
         </nav>
     </header>
     <main class="grid grid-cols-[auto_1fr] pr-10 min-h-screen">
-      <aside class="bg-surface-200 dark:bg-surface-900 sticky top-16 h-[calc(100vh-4rem)] overflow-auto space-y-2 py-6 px-10 w-fit shadow-lg">
-        <% site.dig('docs').children.sort_by(&:name).each do |node| %>
-          <% page = node.resources.format(:html) %>
-          <%= link_to node.name.titleize, page.request_path, class: 'block underline-offset-4 hover:underline decoration-accent' %>
-        <% end %>
+      <aside class="bg-surface-200 dark:bg-surface-900 sticky top-16 h-[calc(100vh-4rem)] overflow-auto space-y-6 py-6 px-10 w-fit shadow-lg">
+        <div class="space-y-2">
+          <h4 class="font-medium">
+            Getting Started
+          </h4>
+
+          <%= link_to 'Introduction', '/', class: "block underline-offset-4 hover:underline decoration-accent #{'underline' if current_page?('/') }" %>
+        </div>
+
+        <div class="space-y-2">
+          <h4 class="font-medium">
+            Components
+          </h4>
+
+          <% site.dig('docs').children.each do |node| %>
+            <% page = node.resources.format(:html) %>
+            <%= link_to node.name.titleize, page.request_path, class: "block underline-offset-4 hover:underline decoration-accent #{'underline' if current_page?(page.request_path) }" %>
+          <% end %>
+        </div>
 
         <div class="fixed bottom-3 border border-secondary shadow-lg p-2 rounded-lg -ml-5">
           <label class="flex items-center gap-4 cursor-pointer">
