@@ -4,8 +4,6 @@ export default class extends Controller {
   static targets = ['light', 'dark']
 
   initialize() {
-    console.log(this.darkTarget)
-
     this.#showCorrectElement()
   }
 
