@@ -8,8 +8,8 @@
       <%= fallback %>
     </div>
 
-    <%= image_tag *local_assigns.delete(:args), class: 'absolute w-full h-full object-cover', data: { action: "error->avatar#showInitials load->avatar#hideInitials", avatar_target: :image } %>
+    <%= image_tag *local_assigns.delete(:args), class: 'absolute w-full h-full object-cover shadow-lg', data: { action: "error->avatar#showInitials load->avatar#hideFallback", avatar_target: :image } %>
   <% end %>
 <% else %>
-  <%= image_tag *local_assigns.delete(:args), class: class_names('rounded-full h-10 w-10 object-cover', local_assigns[:class]), **local_assigns.except(:class) %>
+  <%= image_tag *local_assigns.delete(:args), class: class_names('rounded-full h-10 w-10 object-cover shadow-lg', local_assigns[:class]), **local_assigns.except(:class) %>
 <% end %>

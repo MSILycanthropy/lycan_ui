@@ -1,9 +1,10 @@
 <% options = args.third || local_assigns.except(:args) %>
 <% type = options.delete(:type) || :text %>
-<% default_classes = "flex min-h-20 w-full rounded-md border border " \
-    "px-3 py-2 text-base placeholder:text-black/50 " \
-    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black " \
-    "focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm" %>
+<% default_classes = "flex min-h-20 w-full rounded-md " \
+    "bg-surface-50 dark:bg-surface-950 text-on-surface " \
+    "px-3 py-2 text-base placeholder:text-on-surface/50 " \
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent " \
+    "disabled:cursor-not-allowed disabled:opacity-50 md:text-sm" %>
 <% options[:class] = class_names(default_classes, options[:class]) %>
 <% args[2] = options %>
 

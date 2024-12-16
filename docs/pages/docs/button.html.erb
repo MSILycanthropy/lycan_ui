@@ -47,12 +47,12 @@ component: button
 
 <% content_for :usage_links do %>
   <li>
-    <a class="text-sm text-black hover:underline hover:text-black/90 transition-all" href="#form">Usage in forms</a>
+    <a class="text-sm underline-offset-4 hover:underline decoration-accent transition-all" href="#form">Usage in forms</a>
   </li>
 
   <% [:secondary, :danger, :outline, :ghost, :link, :none].each do |variant| %>
     <li>
-      <a class="text-sm text-black hover:underline hover:text-black/90 transition-all" href="#<%= variant %>"><%= variant.to_s.titleize %></a>
+      <a class="text-sm underline-offset-4 hover:underline decoration-accent transition-all" href="#<%= variant %>"><%= variant.to_s.titleize %></a>
     </li>
   <% end %>
 <% end %>

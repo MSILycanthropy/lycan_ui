@@ -5,7 +5,7 @@
                      "details:overflow-hidden details:text-sm details:motion-safe:transition-all " \
                      "details:duration-200 details:ease-out details:transition-discrete " \
                      "disabled:opacity-50 disabled:pointer-events-none" %>
-<%= tag.details(class: class_names('border-b', details_classes, local_assigns.delete(:class)),
+<%= tag.details(class: class_names('border-b border-secondary', details_classes, local_assigns.delete(:class)),
                 name: @current_name,
                 **local_assigns.except(:args)) do %>
   <%= yield @current_item_trigger_id, @current_item_content_id %>

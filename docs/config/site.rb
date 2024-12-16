@@ -12,7 +12,18 @@ end
 Sitepress.configure do |config|
   ## Change the root_path of the Sitepress site, or set to a different
   ## Sitepress instance.
-  # config.site = Sitepress::Site.new root_path: "."
+  config.site = Sitepress::Site.new(root_path: ".")
+
+  config.site.manipulate do |root|
+    docs = root.dig('docs')
+
+    sorted = docs.children.sort_by(&:name)
+
+    sorted.each do |thing|
+      thing.remove
+      thing.parent = docs
+    end
+  end
 
   ActionController::Base.prepend_view_path(Pathname.new(Dir.pwd).join('../lib/generators/lycan_ui/templates'))
   Rails.application.config.assets.paths << (Pathname.new(Dir.pwd).join('../lib/generators/lycan_ui/templates/javascript'))

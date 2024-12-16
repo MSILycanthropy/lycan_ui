@@ -1,8 +1,206 @@
 ---
-title: My Website
-posts: 10
-primary_page:
-  title: Home
-  order: 1
+title: Introduction
 ---
+
+<% content_for :description do %>
+  <p class="text-xl font-medium text-on-surface/80">
+    An open-source collection of accessible and customizable components added to your Rails project using
+
+    <%= external_link_to "https://guides.rubyonrails.org/generators.html" do %>
+      generators
+    <% end %> and
+
+    <%= external_link_to "https://tailwindcss.com/" do %>
+      Tailwind CSS
+    <% end %>.
+  </p>
+
+  <p class="mt-6 leading-7">
+    LycanUI empowers developers to design and build beautiful UIs without having to
+    reinvent the wheel at every turn.
+  </p>
+
+  <p class="mt-6">
+    We provide fully implemented and accessible components
+    that are ready to use out of the box.
+  </p>
+
+  <p class="mt-6">
+    Everything is built with generators, so there are no extra dependencies in production.
+    Giving you <i>complete</i> control.
+  </p>
+
+  <p class="mt-6">
+    If you notice any problems or bugs, you are encouraged to open an issue
+
+    <%= external_link_to repo_url do %>
+      Github
+    <% end %>, so that you or a community member can fix them.
+  </p>
+
+  <%= ui.alert(variant: :danger, class: 'mt-6 [&>svg]:left-3 [&>svg]:top-3') do |alert| %>
+    <%= lucide_icon('construction', class: 'inline mr-2') %>
+
+    <%= alert.title do %>
+      LycanUI is still heavily under development.
+    <% end %>
+
+    <%= alert.description do %>
+      <div class="flex items-center gap-1">
+        Many components may be WIP, broken or completely unimplemented.
+        Expect there to be breaking changes. And lots of new things.
+
+        <%= lucide_icon('rocket', class: 'inline size-4') %>
+      </div>
+    <% end %>
+  <% end %>
+
+  <div class="mt-6">
+    <h2 class="text-xl scroll-m-20" id="installation">
+      Installation
+    </h2>
+
+    <hr class="mt-1 mb-4 border-on-surface/25">
+
+    <div class="space-y-4">
+      <p>Installation is super straightforward.</p>
+
+      <p>Add the following to your Gemfile </p>
+
+      <pre class="bg-surface-200 dark:bg-surface-900 rounded-lg flex shadow-lg p-6">
+        <code>group :development do <br />  gem 'lycan_ui'<br />end</code>
+      </pre>
+
+      <p>And then run the following command,</p>
+
+      <pre class="bg-surface-200 dark:bg-surface-900 rounded-lg flex shadow-lg p-6">
+        <code>bundle install</code>
+      </pre>
+
+      <p>Followed by,</p>
+
+      <pre class="bg-surface-200 dark:bg-surface-900 rounded-lg flex shadow-lg p-6">
+        <code>rails g lycan_ui:setup</code>
+      </pre>
+
+      <p>Now, just follow the prompts in your terminal and.. you're done!</p>
+    </div>
+  </div>
+<% end %>
+
+<% content_for :links do %>
+  <li>
+    <a class="text-sm underline-offset-4 hover:underline decoration-accent transition-all" href="#installation">
+      Installation
+    </a>
+  </li>
+<% end %>
+
+<% content_for :faq do %>
+  <%= ui.accordion(multiple: true) do |accordion| %>
+    <%= accordion.item(class: '[&[open]>_summary_>_svg]:rotate-180') do |item| %>
+      <%= item.trigger do %>
+        Why generators and not a gem or npm package?
+
+        <%= lucide_icon('chevron-down', class: 'transition-all rotate-0') %>
+      <% end %>
+
+      <%= item.content do %>
+        <div class="space-y-4">
+          <p>
+            To put it shortly, to give you <i>full</i> control over your UI. So that you can decide
+            exactly how each component should look and function.
+          </p>
+
+          <p>
+            We start you off with some sensible defaults, but then hand you the reigns.
+          </p>
+
+          <p>
+            The big issue with UI components from a gem or an npm package is that the implementation and
+            design are tightly coupled. Customizing design or functionality can have tons of unintended
+            consequences, which the package may or may not support. Which is frankly, a huge pain in the ass.
+          </p>
+
+          <p>
+            With LycanUI, you have full control over both. So, whenever the need for intense customization
+            arises, all you have to do is.. do it.
+          </p>
+        </div>
+      <% end %>
+    <% end %>
+
+    <%= accordion.item(class: '[&[open]>_summary_>_svg]:rotate-180') do |item| %>
+      <%= item.trigger do %>
+        Why Tailwind when Rails defaults to No Build?
+
+        <%= lucide_icon('chevron-down', class: 'transition-all rotate-0') %>
+      <% end %>
+
+      <%= item.content do %>
+        <div class="space-y-4">
+          <p>
+            <%= external_link_to "https://world.hey.com/dhh/you-can-t-get-faster-than-no-build-7a44131c" do %>
+              No Build
+            <% end %>
+            is a wonderful way to build apps, and currently Import maps is all we currently support out of the box.
+          </p>
+
+          <p>
+            But, that being said, I'm a big fan of tailwind. It's personally what I prefer. So this project
+            defaults to using Tailwind.
+          </p>
+
+          <p>
+            If there's enough push, I'll add full support for No Build. LycanUI is fully usable with
+            no build, if you bring your own styles.
+          </p>
+
+          <p>
+            For an alternative that is built with no build in mind, checkout
+
+            <%= external_link_to "https://github.com/lazaronixon/css-zero" do %>
+              CSS Zero
+            <% end %>.
+          </p>
+        </div>
+      <% end %>
+    <% end %>
+
+    <%= accordion.item(class: '[&[open]>_summary_>_svg]:rotate-180') do |item| %>
+      <%= item.trigger do %>
+        Will there be a version that uses Phlex or View Component?
+
+        <%= lucide_icon('chevron-down', class: 'transition-all rotate-0') %>
+      <% end %>
+
+      <%= item.content do %>
+        <p>At this time there are not plans for Phlex or View Component compatibility.</p>
+
+        <p class="mt-4">
+          Both are super nice, but partials fits better with the minimalist philosophy of LycanUI.
+        </p>
+      <% end %>
+    <% end %>
+
+    <%= accordion.item(class: '[&[open]>_summary_>_svg]:rotate-180') do |item| %>
+      <%= item.trigger do %>
+        Can I use this in my project?
+
+        <%= lucide_icon('chevron-down', class: 'transition-all rotate-0') %>
+      <% end %>
+
+      <%= item.content do %>
+        <p>Yep. Feel free to use it however you see fit. No attribution required.</p>
+
+        <p class="mt-4">
+          If you build something with it, feel free to let me know. Maybe I'll add a
+          page here with the stuff built.
+        </p>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= render 'partials/doc' %>
 

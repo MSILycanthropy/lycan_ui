@@ -4,23 +4,23 @@
       <%= current_page.data["title"] %>
     </h1>
 
-    <hr class="mt-1 mb-2">
+    <hr class="mt-1 mb-2 border-on-surface/25">
 
-    <p>
-      <%= yield :description %>
-    </p>
+    <%= yield :description %>
 
-    <div class="mt-6">
-      <h2 class="text-xl scroll-m-20" id="installation">
-        Installation
-      </h2>
+    <% if current_page.data["component"].present? %>
+      <div class="mt-6">
+        <h2 class="text-xl scroll-m-20" id="installation">
+          Installation
+        </h2>
 
-      <hr class="mt-1 mb-4">
+        <hr class="mt-1 mb-4 border-on-surface/25">
 
-      <pre class="highlight rounded-lg flex border p-6">
-        <code>rails g lycan_ui:add <%= current_page.data["component"] %></code>
-      </pre>
-    </div>
+        <pre class="bg-surface-200 dark:bg-surface-900 rounded-lg flex shadow-lg p-6">
+          <code>rails g lycan_ui:add <%= current_page.data["component"] %></code>
+        </pre>
+      </div>
+    <% end %>
 
     <% if content_for?(:features) %>
       <div class="mt-6">
@@ -28,7 +28,7 @@
           Features
         </h2>
 
-        <hr class="mt-1 mb-4">
+        <hr class="mt-1 mb-4 border-on-surface/25">
 
         <%= yield :features %>
       </div>
@@ -40,7 +40,7 @@
           Usage
         </h2>
 
-        <hr class="mt-1 mb-4">
+        <hr class="mt-1 mb-4 border-on-surface/25">
 
         <%= yield :usage %>
       </div>
@@ -52,9 +52,21 @@
           Accessibility
         </h2>
 
-        <hr class="mt-1 mb-4">
+        <hr class="mt-1 mb-4 border-on-surface/25">
 
         <%= yield :accessibility %>
+      </div>
+    <% end %>
+
+    <% if content_for?(:faq) %>
+      <div class="mt-6">
+        <h2 class="text-xl scroll-m-20" id="faq">
+          FAQ
+        </h2>
+
+        <hr class="mt-1 mb-4 border-on-surface/25">
+
+        <%= yield :faq %>
       </div>
     <% end %>
   </div>
@@ -65,10 +77,14 @@
     </div>
 
     <ul>
-      <% [:installation, :features, :usage, :accessibility].each do |item| %>
-        <% if item == :installation || content_for?(item) %>
+      <%= yield :links %>
+
+      <% [:installation, :features, :usage, :accessibility, :faq].each do |item| %>
+        <% if (item == :installation && current_page.data["component"].present?) || content_for?(item) %>
           <li>
-            <a class="text-sm text-black/90 hover:underline hover:text-black transition-all" href="#<%= item %>"><%= item.to_s.titleize %></a>
+            <a class="text-sm underline-offset-4 hover:underline decoration-accent transition-all" href="#<%= item %>">
+              <%= item == :faq ? item.to_s.upcase : item.to_s.titleize %>
+            </a>
 
             <% if item == :usage && content_for?(:usage_links) %>
               <ul class="m-0 list-none pl-4">

@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  scrollbar-width: thin;
+
+  scrollbar-color: hsl(var(--color-secondary)) hsl(var(--color-surface));
+}
+
+* {
+  scrollbar-width: thin;
+}
+
+body {
+  @apply bg-surface text-on-surface font-sans;
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+
+    --color-surface-50: 218 65% 97%;
+    --color-surface-100: 223 68% 94%;
+    --color-surface-200: 225 61% 89%; /* light */
+    --color-surface-300: 225 61% 82%;
+    --color-surface-400: 231 58% 74%;
+    --color-surface-500: 235 54% 67%;
+    --color-surface-600: 240 49% 59%;
+    --color-surface-700: 241 38% 51%;
+    --color-surface-800: 240 36% 41%;
+    --color-surface-900: 239 31% 34%;
+    --color-surface-950: 240 31% 20%; /* dark */
+    --color-surface: var(--color-surface-300);
+    --color-on-surface: 243 76% 5%;
+
+    --color-primary-50: 246 83% 98%;
+    --color-primary-100: 249 83% 95%;
+    --color-primary-200: 248 86% 92%;
+    --color-primary-300: 250 87% 85%;
+    --color-primary-400: 253 84% 78%; /* dark */
+    --color-primary-500: 256 81% 66%;
+    --color-primary-600: 260 76% 58%;
+    --color-primary-700: 261 64% 50%; /* light */
+    --color-primary-800: 261 64% 42%;
+    --color-primary-900: 261 62% 35%;
+    --color-primary-950: 259 66% 23%;
+    --color-primary: var(--color-primary-700);
+    --color-on-primary: 223 68% 94%;
+
+    --color-secondary-50: 218 65% 97%;
+    --color-secondary-100: 218 61% 94%;
+    --color-secondary-200: 220 58% 89%;
+    --color-secondary-300: 222 57% 82%;
+    --color-secondary-400: 226 53% 74%;
+    --color-secondary-500: 231 50% 70%; /* dark */
+    --color-secondary-600: 235 45% 59%;
+    --color-secondary-700: 237 35% 51%; /* light */
+    --color-secondary-800: 236 33% 41%;
+    --color-secondary-900: 234 29% 34%;
+    --color-secondary-950: 234 27% 20%;
+    --color-secondary: var(--color-secondary-700);
+    --color-on-secondary: 223 68% 94%;
+
+    --color-accent-50: 120 53% 97%;
+    --color-accent-100: 123 58% 93%;
+    --color-accent-200: 122 53% 85%;
+    --color-accent-300: 122 50% 70%; /* dark */
+    --color-accent-400: 122 46% 58%;
+    --color-accent-500: 122 46% 45%; /* light */
+    --color-accent-600: 123 50% 36%;
+    --color-accent-700: 123 48% 29%;
+    --color-accent-800: 124 41% 24%;
+    --color-accent-900: 124 40% 20%;
+    --color-accent-950: 124 53% 10%;
+    --color-accent: var(--color-accent-500);
+    --color-on-accent: 240 45% 2%;
+
+    --color-danger-50: 0 71% 97%;
+    --color-danger-100: 354 78% 95%;
+    --color-danger-200: 352 73% 90%;
+    --color-danger-300: 353 72% 82%;
+    --color-danger-400: 351 71% 71%;
+    --color-danger-500: 349 67% 60%;
+    --color-danger-600: 347 58% 46%; /* dark */
+    --color-danger-700: 345 63% 41%; /* light */
+    --color-danger-800: 343 60% 35%;
+    --color-danger-900: 341 57% 30%;
+    --color-danger-950: 343 65% 16%;
+    --color-danger: var(--color-danger-700);
+    --color-on-danger: 255 100% 100%;
+  }
+}
+
+.dark {
+  color-scheme: dark;
+
+  --color-surface: var(--color-surface-950);
+  --color-on-surface: 243 76% 95%;
+
+  --color-primary: var(--color-primary-400);
+  --color-on-primary: 240 31% 20%;
+
+  --color-secondary: var(--color-secondary-500);
+  --color-on-secondary: 240 31% 20%;
+
+  --color-accent: var(--color-accent-300);
+  --color-on-accent: 243 76% 95%;
+
+  --color-danger: var(--color-danger-600);
+  --color-on-danger: 243 76% 95%;
+}

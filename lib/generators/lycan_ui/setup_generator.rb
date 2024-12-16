@@ -22,6 +22,8 @@ module LycanUi
         else
           copy_file("tailwind.config.js", "tailwind.config.js", force: true)
         end
+
+        template("application.tailwind.css", "app/assets/stylesheets/application.tailwind.css", force: true)
       end
 
       def copy_helpers
