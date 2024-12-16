@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  scrollbar-width: thin;
+
+  scrollbar-color: hsl(var(--color-secondary)) hsl(var(--color-surface));
+}
+
 body {
   @apply bg-surface text-on-surface font-sans;
 }
@@ -56,27 +62,27 @@ body {
     --color-accent-100: 123 58% 93%;
     --color-accent-200: 122 53% 85%;
     --color-accent-300: 122 50% 70%; /* dark */
-    --color-accent-400: 122 46% 58%; /* light */
-    --color-accent-500: 122 46% 45%;
+    --color-accent-400: 122 46% 58%;
+    --color-accent-500: 122 46% 45%; /* light */
     --color-accent-600: 123 50% 36%;
     --color-accent-700: 123 48% 29%;
     --color-accent-800: 124 41% 24%;
     --color-accent-900: 124 40% 20%;
     --color-accent-950: 124 53% 10%;
-    --color-accent: var(--color-accent-400);
+    --color-accent: var(--color-accent-500);
     --color-on-accent: 240 45% 2%;
 
     --color-danger-50: 0 71% 97%;
-    --color-danger-100: 358 80% 94%;
-    --color-danger-200: 357 85% 89%;
-    --color-danger-300: 358 83% 82%;
-    --color-danger-400: 358 80% 71%;
-    --color-danger-500: 358 74% 60%;
-    --color-danger-600: 358 63% 51%;
-    --color-danger-700: 358 65% 46%;
-    --color-danger-800: 358 62% 35%;
-    --color-danger-900: 358 55% 31%;
-    --color-danger-950: 358 65% 15%;
+    --color-danger-100: 354 78% 95%;
+    --color-danger-200: 352 73% 90%;
+    --color-danger-300: 353 72% 82%;
+    --color-danger-400: 351 71% 71%;
+    --color-danger-500: 349 67% 60%;
+    --color-danger-600: 347 58% 46%; /* dark */
+    --color-danger-700: 345 63% 41%; /* light */
+    --color-danger-800: 343 60% 35%;
+    --color-danger-900: 341 57% 30%;
+    --color-danger-950: 343 65% 16%;
     --color-danger: var(--color-danger-700);
     --color-on-danger: 255 100% 100%;
   }
