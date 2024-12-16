@@ -69,18 +69,6 @@
         <%= yield :faq %>
       </div>
     <% end %>
-
-    <nav class="flex items-center justify-between">
-      <% index = current_page.siblings.index(current_page) || 0 %>
-
-      <% if current_page.siblings[index - 1].present? && !index.zero? %>
-        <%= link_to current_page.siblings[index - 1].data["title"], current_page.siblings[index - 1].request_path %>
-      <% end %>
-
-      <% if current_page.siblings[index + 1].present? && index < current_page.siblings.size %>
-        <%= link_to current_page.siblings[index + 1].data["title"], current_page.siblings[index - 1].request_path %>
-      <% end %>
-    </nav>
   </div>
 
   <nav class="sticky top-24 h-fit">
@@ -89,6 +77,8 @@
     </div>
 
     <ul>
+      <%= yield :links %>
+
       <% [:installation, :features, :usage, :accessibility, :faq].each do |item| %>
         <% if (item == :installation && current_page.data["component"].present?) || content_for?(item) %>
           <li>

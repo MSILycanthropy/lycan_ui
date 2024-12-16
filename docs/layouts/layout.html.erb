@@ -51,6 +51,14 @@
           </h4>
 
           <%= link_to 'Introduction', '/', class: "block underline-offset-4 hover:underline decoration-accent #{'underline' if current_page?('/') }" %>
+
+          <% site.root.children.each do |node| %>
+            <% page = node.resources.format(:html) %>
+
+            <%= next if page.nil? %>
+
+            <%= link_to page.data["title"], page.request_path, class: "block underline-offset-4 hover:underline decoration-accent #{'underline' if current_page?(page.request_path) }" %>
+          <% end %>
         </div>
 
         <div class="space-y-2">
