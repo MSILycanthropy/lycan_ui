@@ -1,4 +1,4 @@
-<div class="xl:grid xl:grid-cols-[1fr_240px] gap-12">
+<div class="xl:grid xl:grid-cols-[1fr_240px] gap-12 pb-20 sm:pb-0">
   <div>
     <h1 class="text-2xl">
       <%= current_page.data["title"] %>
@@ -72,7 +72,7 @@
   </div>
 
   <% if content_for?(:links) || current_page.data["component"].present? || [:features, :usage, :accessibility, :faq, :usage_links].any? { |c| content_for?(c) } %>
-    <nav class="sticky top-28 h-fit">
+    <nav class="sticky top-28 h-fit max-sm:hidden">
       <div class="pb-3">
         On This Page
       </div>
