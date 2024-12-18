@@ -7,7 +7,7 @@ component: accordion
   <p>Vertically stacked set of interactive headings that allow a user to expand and collapse sections.</p>
 
   <div class="pt-6">
-    <%= render 'partials/example', wrapper_classes: 'max-w-96 w-full' %>
+    <%= render 'partials/example', wrapper_classes: 'max-w-64 sm:max-w-96 w-full' %>
   </div>
 <% end %>
 
@@ -39,7 +39,7 @@ component: accordion
     Pass in <%= code('multiple') %> to <%= helper_code('ui.accordion', 'render "ui/accordion"') %> with a value of <%= code('true') %>
   </p>
 
-  <%= render 'partials/example', path: 'accordion/multiple', wrapper_classes: 'max-w-96 w-full' %>
+  <%= render 'partials/example', path: 'accordion/multiple', wrapper_classes: 'max-w-64 sm:max-w-96 w-full' %>
 <% end %>
 
 <% content_for :usage_links do %>

@@ -4,8 +4,8 @@
 
 :root {
   scrollbar-width: thin;
-
   scrollbar-color: hsl(var(--color-secondary)) hsl(var(--color-surface));
+  scrollbar-gutter: stable;
 }
 
 * {
