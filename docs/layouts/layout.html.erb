@@ -55,10 +55,10 @@
       <aside class="sticky top-20 h-[calc(100dvh-5rem)] overflow-auto space-y-6 py-6 px-10 w-fit border-r-2 border-surface-200 dark:border-surface-900 max-sm:hidden">
         <%= render "partials/nav" %>
 
-        <div class="fixed bottom-3 border border-secondary shadow-lg p-2 rounded-lg">
+        <div class="fixed bottom-3 border border-secondary shadow-lg p-2 rounded-lg" data-turbo-permanent>
           <label class="flex items-center gap-4 cursor-pointer">
             <%= link_to 'Helpers', '/helpers', class: 'underline decoration-accent underline-offset-4 hover:decoration-2 -mt-1' %>
-            <%= ui.switch nil, nil, checked: true, data: { action: 'helper#toggle' } %>
+            <%= ui.switch nil, nil, checked: true, data: { action: 'helper#toggle', helper_target: :toggle } %>
           </label>
         </div>
       </aside>
@@ -79,10 +79,10 @@
               <% end %>
             </div>
 
-            <div class="shadow-lg p-2 rounded-lg bg-surface-200 dark:bg-surface-900 flex">
+            <div class="shadow-lg p-2 rounded-lg bg-surface-200 dark:bg-surface-900 flex" data-turbo-permanent>
               <label class="flex w-full items-center justify-center gap-3 cursor-pointer">
                 <%= link_to 'Helpers', '/helpers', class: 'underline decoration-accent underline-offset-4 hover:decoration-2 -mt-1' %>
-                <%= ui.switch nil, nil, checked: true, data: { action: 'helper#toggle' } %>
+                <%= ui.switch nil, nil, checked: true, data: { action: 'helper#toggle', helper_target: :toggle } %>
               </label>
             </div>
 
