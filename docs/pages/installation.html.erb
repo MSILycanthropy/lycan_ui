@@ -1,0 +1,33 @@
+---
+title: Installation
+---
+
+<% content_for :description do %>
+  <div class="space-y-6">
+    <div class="space-y-4">
+      <p>Installation is super straightforward.</p>
+
+      <p>Add the following to your Gemfile </p>
+
+      <pre class="bg-surface-200 dark:bg-surface-900 rounded-lg flex shadow-lg p-6">
+        <code>group :development do <br />  gem 'lycan_ui'<br />end</code>
+      </pre>
+
+      <p>And then run the following command,</p>
+
+      <pre class="bg-surface-200 dark:bg-surface-900 rounded-lg flex shadow-lg p-6">
+        <code>bundle install</code>
+      </pre>
+
+      <p>Followed by,</p>
+
+      <pre class="bg-surface-200 dark:bg-surface-900 rounded-lg flex shadow-lg p-6">
+        <code>rails generate lycan_ui:setup</code>
+      </pre>
+
+      <p>Now, just follow the prompts in your terminal and.. you're done!</p>
+    </div>
+  </div>
+<% end %>
+
+<%= render 'partials/doc' %>

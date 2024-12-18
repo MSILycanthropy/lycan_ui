@@ -4,7 +4,7 @@
   <%= tag.div(class: class_names("relative flex items-center justify-center h-10 w-10 shrink-0 overflow-hidden rounded-full bg-gray-300", local_assigns[:class]),
               data: data_attributes({ data: { controller: :avatar } }, **local_assigns),
               **local_assigns.except(:args, :class)) do %>
-    <div class="text-black font-medium" data-avatar-target="initials">
+    <div class="text-black font-medium" data-avatar-target="fallback">
       <%= fallback %>
     </div>
 

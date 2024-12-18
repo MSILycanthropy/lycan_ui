@@ -71,29 +71,31 @@
     <% end %>
   </div>
 
-  <nav class="sticky top-24 h-fit">
-    <div class="pb-3">
-      On This Page
-    </div>
+  <% if content_for?(:links) || current_page.data["component"].present? || [:features, :usage, :accessibility, :faq, :usage_links].any? { |c| content_for?(c) } %>
+    <nav class="sticky top-24 h-fit">
+      <div class="pb-3">
+        On This Page
+      </div>
 
-    <ul>
-      <%= yield :links %>
+      <ul>
+        <%= yield :links %>
 
-      <% [:installation, :features, :usage, :accessibility, :faq].each do |item| %>
-        <% if (item == :installation && current_page.data["component"].present?) || content_for?(item) %>
-          <li>
-            <a class="text-sm underline-offset-4 hover:underline decoration-accent transition-all" href="#<%= item %>">
-              <%= item == :faq ? item.to_s.upcase : item.to_s.titleize %>
-            </a>
+        <% [:installation, :features, :usage, :accessibility, :faq].each do |item| %>
+          <% if (item == :installation && current_page.data["component"].present?) || content_for?(item) %>
+            <li>
+              <a class="text-sm underline-offset-4 hover:underline decoration-accent transition-all" href="#<%= item %>">
+                <%= item == :faq ? item.to_s.upcase : item.to_s.titleize %>
+              </a>
 
-            <% if item == :usage && content_for?(:usage_links) %>
-              <ul class="m-0 list-none pl-4">
-                <%= yield :usage_links %>
-              </ul>
-            <% end %>
-          </li>
+              <% if item == :usage && content_for?(:usage_links) %>
+                <ul class="m-0 list-none pl-4">
+                  <%= yield :usage_links %>
+                </ul>
+              <% end %>
+            </li>
+          <% end %>
         <% end %>
-      <% end %>
-    </ul>
-  </nav>
+      </ul>
+    </nav>
+  <% end %>
 </div>

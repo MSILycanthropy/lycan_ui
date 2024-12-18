@@ -52,13 +52,10 @@
 
           <%= link_to 'Introduction', '/', class: "block underline-offset-4 hover:underline decoration-accent #{'underline' if current_page?('/') }" %>
 
-          <% site.root.children.each do |node| %>
-            <% page = node.resources.format(:html) %>
-
-            <%= next if page.nil? %>
-
-            <%= link_to page.data["title"], page.request_path, class: "block underline-offset-4 hover:underline decoration-accent #{'underline' if current_page?(page.request_path) }" %>
+          <% ['installation', 'helpers', 'forms'].each do |path| %>
+            <%= link_to path.titleize, "/#{path}", class: "block underline-offset-4 hover:underline decoration-accent #{'underline' if current_page?("/#{path}") }" %>
           <% end %>
+
         </div>
 
         <div class="space-y-2">
@@ -72,7 +69,7 @@
           <% end %>
         </div>
 
-        <div class="fixed bottom-3 border border-secondary shadow-lg p-2 rounded-lg -ml-5">
+        <div class="fixed bottom-3 border border-secondary shadow-lg p-2 rounded-lg">
           <label class="flex items-center gap-4 cursor-pointer">
             <div>Helpers</div>
             <%= ui.switch nil, nil, checked: true, data: { action: 'helper#toggle' } %>
