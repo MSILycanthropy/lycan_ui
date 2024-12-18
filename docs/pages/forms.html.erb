@@ -1,0 +1,33 @@
+---
+title: Forms
+---
+
+<% content_for :description do %>
+  <div class="space-y-4">
+    <p>
+      It would be really nice to have the form components accessible from Rails <%= code('form_with') %>.
+    </p>
+
+    <p>
+      Luckily, LycanUI supports this out of the box.
+    </p>
+
+    <p>
+      If you didn't add it when setting up, all you need to do to get this functionality is run,
+    </p>
+
+    <pre class="bg-surface-200 dark:bg-surface-900 rounded-lg flex shadow-lg p-6">
+      <code>rails generate lycan_ui:add form</code>
+    </pre>
+
+    <p>
+      You'll now have access to <%= code('lycan_ui_form_with') %> in any view context.
+    </p>
+
+    <p>
+      It functions identically to <%= code('form_with') %>, other than the fact that it renders the styled versions of each form element.
+    </p>
+  </div>
+<% end %>
+
+<%= render 'partials/doc' %>
