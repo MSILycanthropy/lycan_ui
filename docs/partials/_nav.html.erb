@@ -1,0 +1,24 @@
+<div class="space-y-2">
+  <h4 class="font-medium">
+    Getting Started
+  </h4>
+
+  <%= link_to 'Introduction', '/', class: "w-full block underline-offset-4 hover:underline decoration-accent #{'underline' if current_page?('/') }" %>
+
+  <% ['installation', 'helpers', 'forms'].each do |path| %>
+    <%= link_to path.titleize, "/#{path}", class: "w-full block underline-offset-4 hover:underline decoration-accent #{'underline' if current_page?("/#{path}") }" %>
+  <% end %>
+
+</div>
+
+<div class="space-y-2">
+  <h4 class="font-medium">
+    Components
+  </h4>
+
+  <% site.dig('docs').children.each do |node| %>
+    <% page = node.resources.format(:html) %>
+    <%= link_to node.name.titleize, page.request_path, class: "w-full block underline-offset-4 hover:underline decoration-accent #{'underline' if current_page?(page.request_path) }" %>
+  <% end %>
+</div>
+
