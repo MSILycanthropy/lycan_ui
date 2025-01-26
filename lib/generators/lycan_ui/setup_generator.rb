@@ -21,6 +21,7 @@ module LycanUi
           copy_file("tailwind.config.js", "config/tailwind.config.js", force: true)
         else
           copy_file("tailwind.config.js", "tailwind.config.js", force: true)
+          install_tailwind_extras
         end
 
         template("application.tailwind.css", "app/assets/stylesheets/application.tailwind.css", force: true)
@@ -50,17 +51,9 @@ module LycanUi
         path = source_paths.first.sub("/setup", "/views")
         choices = Dir.glob("#{path}/*.html.erb").map do |c|
           c.sub(path, "").sub(".html.erb", "").gsub("_", " ").slice(1..).strip
-        end.push("form").sort.unshift("all").index_by { |comp| comp.titleize }
+        end.push("form").sort.index_by { |comp| comp.titleize }
 
-        selected = prompt.multi_select("Select your options:", choices, filter: true) do |menu|
-          menu.default(1)
-        end
-
-        if selected.include?("all")
-          puts "Installing all components..."
-          %x(rails g lycan_ui:add all --force)
-          exit
-        end
+        selected = prompt.multi_select("Select your options:", choices, filter: true)
 
         selected.each do |component|
           puts "Installing #{component.titleize}..."
@@ -69,6 +62,14 @@ module LycanUi
       end
 
       private
+
+      def install_tailwind_extras
+        if File.exist?("bun.lock")
+          run("bun add @tailwindcss/typography @tailwindcss/container-queries")
+        else
+          run("yarn add @tailwindcss/typography @tailwindcss/container-queries")
+        end
+      end
 
       def tailwind_merge_installed?
         Gem.loaded_specs.key?("tailwind_merge")
