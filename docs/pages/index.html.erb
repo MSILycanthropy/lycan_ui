@@ -86,13 +86,13 @@ title: Introduction
             With LycanUI, you have full control over both. So, whenever the need for intense customization
             arises, all you have to do is.. do it.
           </p>
-        </div>
+        </div>  
       <% end %>
     <% end %>
 
     <%= accordion.item(class: '[&[open]>_summary_>_svg]:rotate-180') do |item| %>
       <%= item.trigger do %>
-        Why Tailwind when Rails defaults to No Build?
+        Why Tailwind?
 
         <%= lucide_icon('chevron-down', class: 'transition-all rotate-0') %>
       <% end %>
@@ -100,24 +100,12 @@ title: Introduction
       <%= item.content do %>
         <div class="space-y-4">
           <p>
-            <%= external_link_to "https://world.hey.com/dhh/you-can-t-get-faster-than-no-build-7a44131c" do %>
-              No Build
-            <% end %>
-            is a wonderful way to build apps, and currently Import maps is all we currently support out of the box.
-          </p>
-
-          <p>
-            But, that being said, I'm a big fan of tailwind. It's personally what I prefer. So this project
+            I'm a big fan of Tailwind. It's personally what I prefer. So this project
             defaults to using Tailwind.
           </p>
 
           <p>
-            If there's enough push, I'll add full support for No Build. LycanUI is fully usable with
-            no build, if you bring your own styles.
-          </p>
-
-          <p>
-            For an alternative that is built with no build in mind, checkout
+            For an alternative that is built with no build in mind, check out
 
             <%= external_link_to "https://github.com/lazaronixon/css-zero" do %>
               CSS Zero

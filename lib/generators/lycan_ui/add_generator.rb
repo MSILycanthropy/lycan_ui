@@ -7,13 +7,6 @@ module LycanUi
 
       alias_method :component, :file_name
 
-      def install_all
-        return unless file_name == "all"
-
-        directory("views", "app/views/ui")
-        exit
-      end
-
       def install_form
         return unless file_name == "form"
 
@@ -45,6 +38,15 @@ module LycanUi
         if dir_exists?("javascript/#{component}")
           directory("javascript/#{component}", "app/javascript/controllers/#{component}")
         end
+
+        unless importmaps?
+          content = <<~JS
+
+            import #{component.titleize}Controller from "./#{component}_controller"
+            application.register("#{component}", #{component.titleize}Controller)
+          JS
+          append_to_file("app/javascript/controllers/index.js", content)
+        end
       end
 
       private
@@ -59,6 +61,10 @@ module LycanUi
         root = source_paths.first
 
         File.exist?("#{root}/#{name}")
+      end
+
+      def importmaps?
+        File.exist?("#{Rails.root}/config/importmap.rb")
       end
     end
   end
