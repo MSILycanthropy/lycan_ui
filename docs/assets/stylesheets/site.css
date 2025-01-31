@@ -1,4 +1,4 @@
-@import '../../../lib/generators/lycan_ui/templates/setup/application.tailwind.css' source("../..");
+@import '../../../lib/generators/lycan_ui/templates/setup/application.tailwind.css' source('../..');
 
 @source '../../../lib/generators/lycan_ui';
 

@@ -7,8 +7,7 @@ end
 
 desc "Compile the sitepress site"
 task :compile do
-  sh 'bin/tailwindcss -i ../lib/generators/lycan_ui/templates/setup/application.tailwind.css -o ' \
-     './assets/stylesheets/tailwind.css -m'
+  sh 'bin/tailwindcss -i ./assets/stylesheets/site.css -o ./assets/stylesheets/tailwind.css -o'
   sh 'bundle exec sitepress compile'
 end
 
