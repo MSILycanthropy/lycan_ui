@@ -1,10 +1,37 @@
+@import '../../../lib/generators/lycan_ui/templates/setup/application.tailwind.css' source("../..");
+
+@source '../../../lib/generators/lycan_ui';
+
+body[data-use-helper='true'] .uses-helper\:flex {
+  display: flex;
+}
+
+body[data-use-helper='true'] .uses-helper\:hidden {
+  display: none;
+}
+
+body[data-use-helper='true'] .uses-helper\:inline {
+  display: inline;
+}
+
+body[data-use-helper='false'] .no-helper\:flex {
+  display: flex;
+}
+
+body[data-use-helper='false'] .no-helper\:hidden {
+  display: none;
+}
+
+body[data-use-helper='false'] .no-helper\:inline {
+  display: inline;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 pre, code {
   margin: 0;
-  padding: 0;
   text-indent: 0;
   white-space: pre-wrap;
 }

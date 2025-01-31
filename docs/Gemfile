@@ -13,7 +13,7 @@ gem "webrick"
 gem "haml-rails"
 gem "slim-rails"
 gem "markdown-rails"
-gem "tailwindcss-rails"
+gem "tailwindcss-rails", '> 3.9'
 gem "importmap-rails"
 gem "stimulus-rails"
 gem "turbo-rails"

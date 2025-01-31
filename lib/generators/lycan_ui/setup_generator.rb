@@ -17,13 +17,6 @@ module LycanUi
       def install_tailwind_config
         return unless tailwind?
 
-        if importmaps?
-          copy_file("tailwind.config.js", "config/tailwind.config.js", force: true)
-        else
-          copy_file("tailwind.config.js", "tailwind.config.js", force: true)
-          install_tailwind_extras
-        end
-
         template("application.tailwind.css", "app/assets/stylesheets/application.tailwind.css", force: true)
       end
 
@@ -62,14 +55,6 @@ module LycanUi
       end
 
       private
-
-      def install_tailwind_extras
-        if File.exist?("bun.lock")
-          run("bun add @tailwindcss/typography @tailwindcss/container-queries")
-        else
-          run("yarn add @tailwindcss/typography @tailwindcss/container-queries")
-        end
-      end
 
       def tailwind_merge_installed?
         Gem.loaded_specs.key?("tailwind_merge")
