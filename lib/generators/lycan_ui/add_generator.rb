@@ -1,11 +1,17 @@
 # frozen_string_literal: true
 
+require "lycan_ui/configuration"
+
 module LycanUi
   module Generators
     class AddGenerator < Rails::Generators::NamedBase
       source_root File.expand_path("templates", __dir__)
 
       alias_method :component, :file_name
+
+      def load_configuration
+        Configuration.setup
+      end
 
       def install_form
         return unless file_name == "form"
@@ -32,11 +38,11 @@ module LycanUi
 
       def copy_js
         if file_exists?("javascript/#{component}_controller.js")
-          copy_file("javascript/#{component}_controller.js", "app/javascript/controllers/#{component}_controller.js")
+          copy_file("javascript/#{component}_controller.js", "#{Configuration.javascript_dir}/#{component}_controller.js")
         end
 
         if dir_exists?("javascript/#{component}")
-          directory("javascript/#{component}", "app/javascript/controllers/#{component}")
+          directory("javascript/#{component}", "#{Configuration.javascript_dir}/#{component}")
         end
 
         unless importmaps?
@@ -45,7 +51,7 @@ module LycanUi
             import #{component.titleize}Controller from "./#{component}_controller"
             application.register("#{component}", #{component.titleize}Controller)
           JS
-          append_to_file("app/javascript/controllers/index.js", content)
+          append_to_file("#{Configuration.javascript_dir}/index.js", content)
         end
       end
 

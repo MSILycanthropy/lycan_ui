@@ -1,11 +1,17 @@
 # frozen_string_literal: true
 
 require "tty-prompt"
+require "lycan_ui/configuration"
+
 
 module LycanUi
   module Generators
     class SetupGenerator < Rails::Generators::Base
       source_root File.expand_path("templates/setup", __dir__)
+
+      def load_configuration
+        Configuration.setup
+      end
 
       def install_tailwind_merge
         return unless tailwind?
@@ -17,7 +23,7 @@ module LycanUi
       def install_tailwind_config
         return unless tailwind?
 
-        template("application.tailwind.css", "app/assets/stylesheets/application.tailwind.css", force: true)
+        template("application.tailwind.css", Configuration.stylesheet, force: true)
       end
 
       def copy_helpers
