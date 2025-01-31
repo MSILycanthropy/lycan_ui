@@ -83,7 +83,7 @@
 
 @layer utilities {
   .interpolate-keywords {
-    interpolate-size: "allow-keywords";
+    interpolate-size: allow-keywords;
   }
 }
 
