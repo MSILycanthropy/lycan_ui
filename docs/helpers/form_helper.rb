@@ -19,7 +19,7 @@ module FormHelper
         options = objectify_options(options)
         options[:type] = type
 
-        @template.render("views/input", args: [ @object_name, method, options ])
+        @template.render("views/input", args: [ @object_name, method ], **options)
       end
     end
 
@@ -58,15 +58,15 @@ module FormHelper
       options = objectify_options(options)
       options[:type] = :file
 
-      @template.render("views/input", args: [ @object_name, method, options ])
+      @template.render("views/input", args: [ @object_name, method ], **options)
     end
 
     def label(method, text = nil, options = {}, &block)
-      @template.render("views/label", args: [ @object_name, method, text, objectify_options(options) ], &block)
+      @template.render("views/label", args: [ @object_name, method, text ], **objectify_options(options), &block)
     end
 
     def radio_button(method, tag_value, options = {})
-      @template.render("views/radio", args: [ @object_name, method, tag_value, objectify_options(options) ])
+      @template.render("views/radio", args: [ @object_name, method, tag_value ], **objectify_options(options))
     end
 
     def submit(value = nil, options = {})
@@ -84,7 +84,7 @@ module FormHelper
     end
 
     def textarea(method, options = {})
-      @template.render("views/textarea", args: [ @object_name, method, objectify_options(options) ])
+      @template.render("views/textarea", args: [ @object_name, method ], **objectify_options(options))
     end
   end
 

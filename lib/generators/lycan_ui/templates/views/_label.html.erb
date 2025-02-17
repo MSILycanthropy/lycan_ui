@@ -1,12 +1,16 @@
 <% default_classes = "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" %>
-<% html_options = args.third.is_a?(Hash) ? args.third : args.fourth %>
-<% html_options[:class] = class_names(default_classes, html_options[:class]) %>
-<% block = yield "" %>
+<% local_assigns[:class] = class_names(default_classes, local_assigns[:class]) %>
 
-<% if args.third.nil? && !block.blank? %>
-  <%= label *args do |translation| %>
-    <%= yield translation %>
+<%= label *args, **local_assigns.except(:args) do |builder| %>
+  <% if args.third.is_a?(String) %>
+    <%= args.third %>
+  <% else %>
+    <% content = yield builder %>
+
+    <% if content.blank? %>
+      <%= builder.translation %>
+    <% else %>
+      <%= content %>
+    <% end %>
   <% end %>
-<% else %>
-  <%= label *args %>
 <% end %>
