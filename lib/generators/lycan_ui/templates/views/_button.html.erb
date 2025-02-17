@@ -14,7 +14,7 @@
   none: nil
 }, local_assigns[:variant]) %>
 <% animation_classes = "motion-safe:transition-transform motion-safe:active:scale-95 ease-in-out" unless local_assigns[:variant]&.to_sym == :link %>
-<% default_classes = "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium " \
+<% default_classes = "cursor-pointer inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium " \
   "transition-colors disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2" %>
 
 <%= tag.button(class: class_names(default_classes, variant_classes, animation_classes, local_assigns[:class]), **local_assigns.except(:class)) do %>
