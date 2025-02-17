@@ -20,7 +20,7 @@ module LycanUi
           options = objectify_options(options)
           options[:type] = type
 
-          @template.render("ui/input", args: [ @object_name, method, options ])
+          @template.render("views/input", args: [ @object_name, method ], **options)
         end
       end
 
@@ -44,12 +44,12 @@ module LycanUi
 
         options[:type] ||= :submit
 
-        @template.render("ui/button", **options) { value }
+        @template.render("views/button", **options) { value }
       end
 
       def checkbox(method, options = {}, checked_value = "1", unchecked_value = "0")
         @template.render(
-          "ui/checkbox",
+          "views/checkbox",
           args: [ @object_name, method, objectify_options(options), checked_value, unchecked_value ],
         )
       end
@@ -59,15 +59,15 @@ module LycanUi
         options = objectify_options(options)
         options[:type] = :file
 
-        @template.render("ui/input", args: [ @object_name, method, options ])
+        @template.render("views/input", args: [ @object_name, method ], **options)
       end
 
       def label(method, text = nil, options = {}, &block)
-        @template.render("ui/label", args: [ @object_name, method, text, objectify_options(options) ], &block)
+        @template.render("views/label", args: [ @object_name, method, text ], **objectify_options(options), &block)
       end
 
       def radio_button(method, tag_value, options = {})
-        @template.render("ui/radio", args: [ @object_name, method, tag_value, objectify_options(options) ])
+        @template.render("views/radio", args: [ @object_name, method, tag_value ], **objectify_options(options))
       end
 
       def submit(value = nil, options = {})
@@ -79,13 +79,13 @@ module LycanUi
 
       def switch(method, options = {}, checked_value = "1", unchecked_value = "0")
         @template.render(
-          "ui/switch",
+          "views/switch",
           args: [ @object_name, method, objectify_options(options), checked_value, unchecked_value ],
         )
       end
 
       def textarea(method, options = {})
-        @template.render("ui/textarea", args: [ @object_name, method, objectify_options(options) ])
+        @template.render("views/textarea", args: [ @object_name, method ], **objectify_options(options))
       end
     end
 
