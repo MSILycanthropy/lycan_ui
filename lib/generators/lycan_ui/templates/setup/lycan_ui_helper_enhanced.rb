@@ -28,7 +28,7 @@ module LycanUi
 
         content = if block_given?
           @context.render("ui/#{@current_partial}", args:, **) do |*args|
-            block.call(self, *args)
+            previous_partial.nil? ? yield(self, *args) : yield(*args)
           end
         else
           @context.render("ui/#{@current_partial}", args:, **)

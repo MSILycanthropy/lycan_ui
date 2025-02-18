@@ -1,25 +1,25 @@
 <%= ui.accordion multiple: true do |accordion| %>
-  <%= accordion.item do |item| %>
-    <%= item.trigger do %>
+  <%= accordion.item do %>
+    <%= accordion.trigger do %>
       What is it?
     <% end %>
-    <%= item.content do %>
+    <%= accordion.content do %>
       A collection of accessible and prestyled component partials for Ruby on Rails applications.
     <% end %>
   <% end %>
-  <%= accordion.item do |item| %>
-    <%= item.trigger do %>
+  <%= accordion.item do %>
+    <%= accordion.trigger do %>
       Can I customize it?
     <% end %>
-    <%= item.content do %>
+    <%= accordion.content do %>
       For sure. All the partials and JavaScript are generated directly in your app for for you to customize.
     <% end %>
   <% end %>
-  <%= accordion.item do |item| %>
-    <%= item.trigger do %>
+  <%= accordion.item do %>
+    <%= accordion.trigger do %>
       Is it accessible?
     <% end %>
-    <%= item.content do %>
+    <%= accordion.content do %>
       Yep. It adheres to the WAI-ARIA design patterns.
     <% end %>
   <% end %>
