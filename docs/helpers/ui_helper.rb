@@ -23,11 +23,11 @@ module UiHelper
       end
 
       content = if block_given?
-        @context.render("views/#{@current_partial}", args:, **) do |*args|
+        @context.render("ui/#{@current_partial}", args:, **) do |*args|
           previous_partial.nil? ? yield(self, *args) : yield(*args)
         end
       else
-        @context.render("views/#{@current_partial}", args:, **)
+        @context.render("ui/#{@current_partial}", args:, **)
       end
 
       @current_partial = previous_partial
@@ -47,5 +47,11 @@ module UiHelper
     @counter += 1
 
     "_l#{@counter}_"
+  end
+
+  def render(view, ...)
+    view = view.sub('ui/', 'views/')
+
+    super(view, ...)
   end
 end
