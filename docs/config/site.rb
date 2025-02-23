@@ -27,6 +27,7 @@ Sitepress.configure do |config|
 
   ActionController::Base.prepend_view_path(Pathname.new(Dir.pwd).join('../lib/generators/lycan_ui/templates'))
   Rails.application.config.assets.paths << (Pathname.new(Dir.pwd).join('../lib/generators/lycan_ui/templates/javascript'))
+  Rails.application.config.assets.paths << (Pathname.new(Dir.pwd).join('vendor/javascript'))
   Rails.application.config.importmap.paths << Pathname.new(Dir.pwd).join('config', 'importmap.rb')
   Rails.application.config.importmap.cache_sweepers << Pathname.new(Dir.pwd).join('javascripts')
 end

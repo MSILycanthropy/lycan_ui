@@ -1,0 +1,11 @@
+<%= ui.dropdown do |dropdown| %>
+  <%= dropdown.trigger 'Trigger' %>
+
+  <%= dropdown.content do %>
+    <%= dropdown.title 'Fortnite' %>
+    <%= dropdown.link_item 'gaming', '/' %>
+    <%= dropdown.button_item '/' do %>
+      asdfasdf
+    <% end %>
+  <% end %>
+<% end %>

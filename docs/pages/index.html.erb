@@ -58,14 +58,14 @@ title: Introduction
 
 <% content_for :faq do %>
   <%= ui.accordion(multiple: true) do |accordion| %>
-    <%= accordion.item(class: '[&[open]>_summary_>_svg]:rotate-180') do |item| %>
-      <%= item.trigger do %>
+    <%= accordion.item(class: '[&[open]>_summary_>_svg]:rotate-180') do %>
+      <%= accordion.trigger do %>
         Why generators and not a gem or npm package?
 
         <%= lucide_icon('chevron-down', class: 'transition-all rotate-0') %>
       <% end %>
 
-      <%= item.content do %>
+      <%= accordion.content do %>
         <div class="space-y-4">
           <p>
             To put it shortly, to give you <i>full</i> control over your UI. So that you can decide
@@ -90,14 +90,14 @@ title: Introduction
       <% end %>
     <% end %>
 
-    <%= accordion.item(class: '[&[open]>_summary_>_svg]:rotate-180') do |item| %>
-      <%= item.trigger do %>
+    <%= accordion.item(class: '[&[open]>_summary_>_svg]:rotate-180') do %>
+      <%= accordion.trigger do %>
         Why Tailwind?
 
         <%= lucide_icon('chevron-down', class: 'transition-all rotate-0') %>
       <% end %>
 
-      <%= item.content do %>
+      <%= accordion.content do %>
         <div class="space-y-4">
           <p>
             I'm a big fan of Tailwind. It's personally what I prefer. So this project
@@ -115,14 +115,14 @@ title: Introduction
       <% end %>
     <% end %>
 
-    <%= accordion.item(class: '[&[open]>_summary_>_svg]:rotate-180') do |item| %>
-      <%= item.trigger do %>
+    <%= accordion.item(class: '[&[open]>_summary_>_svg]:rotate-180') do %>
+      <%= accordion.trigger do %>
         Will there be a version that uses Phlex or View Component?
 
         <%= lucide_icon('chevron-down', class: 'transition-all rotate-0') %>
       <% end %>
 
-      <%= item.content do %>
+      <%= accordion.content do %>
         <p>At this time there are not plans for Phlex or View Component compatibility.</p>
 
         <p class="mt-4">
@@ -131,14 +131,14 @@ title: Introduction
       <% end %>
     <% end %>
 
-    <%= accordion.item(class: '[&[open]>_summary_>_svg]:rotate-180') do |item| %>
-      <%= item.trigger do %>
+    <%= accordion.item(class: '[&[open]>_summary_>_svg]:rotate-180') do %>
+      <%= accordion.trigger do %>
         Can I use this in my project?
 
         <%= lucide_icon('chevron-down', class: 'transition-all rotate-0') %>
       <% end %>
 
-      <%= item.content do %>
+      <%= accordion.content do %>
         <p>Yep. Feel free to use it however you see fit. No attribution required.</p>
 
         <p class="mt-4">

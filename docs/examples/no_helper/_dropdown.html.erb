@@ -1,0 +1,14 @@
+<%= render 'ui/dropdown' do %>
+  <%= render 'ui/dropdown/trigger' do %>
+    Trigger
+  <% end %>
+
+  <%= render 'ui/dropdown/content' do %>
+    <%= render 'ui/dropdown/content/title' do %>
+      Fortnite
+    <% end %>
+
+    <%= render 'ui/dropdown/content/link_item', args: ['gaming', '/'] %>
+    <%= render 'ui/dropdown/content/button_item', args: ['gaming', '/'] %>
+  <% end %>
+<% end %>
