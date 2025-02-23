@@ -7,6 +7,8 @@ module LycanUi
     class AddGenerator < Rails::Generators::NamedBase
       source_root File.expand_path("templates", __dir__)
 
+      REQUIRES_FLOATING = [ "dropdown" ].freeze
+
       alias_method :component, :file_name
 
       def load_configuration
@@ -14,7 +16,7 @@ module LycanUi
       end
 
       def install_form
-        return unless file_name == "form"
+        return unless component == "form"
 
         copy_file("extras/form_builder.rb", "app/lib/lycan_ui/form_helper.rb")
         insert_into_file(
@@ -55,7 +57,23 @@ module LycanUi
         end
       end
 
+      def install_floating
+        return unless floating?
+
+        js_command = if importmaps?
+          "bin/importmaps pin @floating-ui/dom"
+        else
+          "yarn add @floating-ui/dom"
+        end
+
+        run(js_command)
+      end
+
       private
+
+      def floating?
+        REQUIRES_FLOATING.include?(component)
+      end
 
       def dir_exists?(name)
         root = source_paths.first

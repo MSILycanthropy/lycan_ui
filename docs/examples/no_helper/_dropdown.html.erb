@@ -8,8 +8,7 @@
       Fortnite
     <% end %>
 
-    <%= render 'ui/dropdown/content/item' do %>
-      Gaming
-    <% end %>
+    <%= render 'ui/dropdown/content/link_item', args: ['gaming', '/'] %>
+    <%= render 'ui/dropdown/content/button_item', args: ['gaming', '/'] %>
   <% end %>
 <% end %>
