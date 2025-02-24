@@ -11,3 +11,5 @@
 inherit_gem:
   rubocop-rails-omakase: rubocop.yml
   rubocop-shopify: rubocop.yml
+Lint/ItWithoutArgumentsInBlock:
+  Enabled: false

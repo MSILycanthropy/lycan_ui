@@ -7,7 +7,7 @@ require "lycan_ui/configuration"
 module LycanUi
   module Generators
     class SetupGenerator < Rails::Generators::Base
-      source_root File.expand_path("templates/setup", __dir__)
+      source_root File.expand_path("templates", __dir__)
 
       def load_configuration
         Configuration.setup
@@ -23,34 +23,22 @@ module LycanUi
       def install_tailwind_config
         return unless tailwind?
 
-        template("application.tailwind.css", Configuration.stylesheet, force: true)
+        template("setup/application.tailwind.css", Configuration.stylesheet, force: true)
       end
 
       def copy_helpers
-        copy_file("attributes_helper.rb", "app/lib/lycan_ui/attributes_helper.rb")
-        template("classes_helper.rb.tt", "app/lib/lycan_ui/classes_helper.rb")
-
-        enhanced = yes?("Would you like the `ui` helper method for ease of use? (y/n)")
-
-        if enhanced
-          copy_file("lycan_ui_helper_enhanced.rb", "app/lib/lycan_ui/helpers.rb")
-        else
-          copy_file("lycan_ui_helper.rb", "app/lib/lycan_ui/helpers.rb")
-        end
-
-        insert_into_file(
-          "app/helpers/application_helper.rb",
-          "  include LycanUi::Helpers\n",
-          after: "module ApplicationHelper\n",
-        )
+        copy_file("setup/lycan_ui_helper.rb", "app/helpers/lycan_ui_helper.rb")
       end
 
+      # TODO: add `all`
       def install_components
+        copy_file("components/component.rb", "app/components/lycan_ui/component.rb")
+
         prompt = TTY::Prompt.new
-        path = source_paths.first.sub("/setup", "/views")
-        choices = Dir.glob("#{path}/*.html.erb").map do |c|
-          c.sub(path, "").sub(".html.erb", "").gsub("_", " ").slice(1..).strip
-        end.push("form").sort.index_by { |comp| comp.titleize }
+        path = source_paths.first + "/components"
+        choices = Dir.glob("#{path}/*.rb").map do |c|
+          c.sub(path, "").sub(".rb", "").gsub("_", " ").slice(1..).strip
+        end.reject { it == "component" }.push("form").sort.index_by { |comp| comp.titleize }
 
         selected = prompt.multi_select("Select your options:", choices, filter: true)
 
