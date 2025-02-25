@@ -39,12 +39,12 @@ module LycanUi
       tag.div
     end
 
-    def navigation_item(*args, **item_attributes, &)
-      link_to(*args, **item_attributes, &)
+    def navigation_item(name = nil, options = nil, html_options = nil, &)
+      link_to(name, options, html_options, &)
     end
 
-    def action_item(*args, **item_attributes, &)
-      button_to(*args, **item_attributes, &)
+    def action_item(name = nil, options = nil, html_options = nil, &)
+      button_to(name, options, html_options, &)
     end
   end
 end
