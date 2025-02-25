@@ -10,7 +10,7 @@ module LycanUi
     VARIANT_CLASSES = {
       primary: "border-on-surface",
       danger: "border-danger bg-danger-500 text-on-danger [&>svg]:text-on-danger",
-    }
+    }.freeze
 
     def initialize(variant: :primary, **attributes)
       super(attributes, class: [ DEFAULT_CLASSES, VARIANT_CLASSES[variant] ])
