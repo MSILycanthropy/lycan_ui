@@ -1,9 +1,0 @@
-<% type = local_assigns.delete(:type) || :text %>
-<% default_classes = "flex min-h-20 w-full rounded-md " \
-    "bg-surface-50 dark:bg-surface-950 text-on-surface " \
-    "px-3 py-2 text-base placeholder:text-on-surface/50 " \
-    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent " \
-    "disabled:cursor-not-allowed disabled:opacity-50 md:text-sm" %>
-<% local_assigns[:class] = class_names(default_classes, local_assigns[:class]) %>
-
-<%= textarea *args, **local_assigns.except(:args) %>

@@ -1,6 +1,4 @@
-<%= lycan_ui_form_with do |form| %>
-  <div class="flex items-center gap-2">
-    <%= form.checkbox :field, id: :field %>
-    <%= form.label :field, 'Accept terms and conditions', for: :field %>
-  </div>
-<% end %>
+<div class="flex items-center gap-2">
+  <%= ui.checkbox :object, :field %>
+  <%= ui.label :object, :field, 'Accept terms and conditions' %>
+</div>

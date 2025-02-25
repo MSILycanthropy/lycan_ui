@@ -8,6 +8,11 @@ class Importmap::Map
   end
 end
 
+require_relative('../../lib/generators/lycan_ui/templates/components/component')
+Dir.glob("../lib/generators/lycan_ui/templates/components/*.rb").each do |file|
+  require_relative("../#{file.sub(".rb", "")}")
+end
+
 # Default layout for Sitepress pages
 Sitepress.configure do |config|
   ## Change the root_path of the Sitepress site, or set to a different

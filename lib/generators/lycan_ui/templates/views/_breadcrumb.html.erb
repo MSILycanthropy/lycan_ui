@@ -1,5 +1,0 @@
-<%= tag.nav(aria: aria_attributes({ aria: { label: :breadcrumb } }, local_assigns), class: local_assigns[:class], **local_assigns.except(:class)) do %>
-  <ol class="flex flex-wrap items-center gap-1.5 break-words text-sm sm:gap-2.5">
-    <%= yield %>
-  </ol>
-<% end %>

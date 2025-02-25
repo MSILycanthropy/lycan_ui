@@ -1,9 +1,0 @@
-<% default_classes = "appearance-none cursor-pointer rounded-full disabled:opacity-50 disabled:cursor-not-allowed " \
-                     "w-8 h-4 bg-white dark:bg-surface-950 " \
-                     "shadow-switch checked:shadow-switch-checked " \
-                     "motion-safe:transition-all motion-safe:duration-500 motion-safe:ease-in-out" %>
-<% options = args.third || local_assigns.except(:args) %>
-<% options[:class] = class_names(default_classes, options[:class]) %>
-<% args[2] = options %>
-
-<%= check_box *args %>

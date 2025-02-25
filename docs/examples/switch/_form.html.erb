@@ -1,0 +1,6 @@
+<%= lycan_ui_form_with do |form| %>
+  <div class="flex items-center gap-2">
+    <%= form.switch :field, id: :field %>
+    <%= form.label :field, 'Enable Notifications', for: :field %>
+  </div>
+<% end %>
