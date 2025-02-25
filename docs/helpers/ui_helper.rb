@@ -4,7 +4,7 @@ module UiHelper
   COMPONENTS = Dir.glob("../lib/generators/lycan_ui/templates/components/*.rb")
     .map { |c| c.split("/").last.sub(".rb", "") }
     .index_by(&:itself)
-    .transform_values { "LycanUi::#{it.classify}".constantize }
+    .transform_values { |c| "LycanUi::#{c.classify}".constantize }
     .symbolize_keys
     .freeze
 

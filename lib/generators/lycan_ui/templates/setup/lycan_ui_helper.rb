@@ -4,7 +4,7 @@ module LycanUiHelper
   COMPONENTS = Dir.glob(Rails.root.join("app/components/lycan_ui/*.rb"))
     .map { |c| c.split("/").last.sub(".rb", "") }
     .index_by(&:itself)
-    .transform_values { "LycanUi::#{it.classify}".constantize }
+    .transform_values { |c| "LycanUi::#{c.classify}".constantize }
     .symbolize_keys
     .freeze
 

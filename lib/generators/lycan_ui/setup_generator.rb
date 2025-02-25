@@ -38,7 +38,7 @@ module LycanUi
         path = source_paths.first + "/components"
         choices = Dir.glob("#{path}/*.rb").map do |c|
           c.sub(path, "").sub(".rb", "").gsub("_", " ").slice(1..).strip
-        end.reject { it == "component" }.push("form").sort.index_by { |comp| comp.titleize }
+        end.reject { |c| c == "component" }.push("form").sort.index_by { |comp| comp.titleize }
 
         selected = prompt.multi_select("Select your options:", choices, filter: true)
 
