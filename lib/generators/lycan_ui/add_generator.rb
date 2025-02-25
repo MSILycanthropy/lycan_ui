@@ -22,7 +22,7 @@ module LycanUi
 
         [ "label", "input", "textarea", "checkbox", "button", "radio", "switch" ].each do |comp|
           puts "Installing #{comp.titleize}..."
-          %x(rails g lycan_ui:add #{comp})
+          %x(rails g lycan_ui:add #{comp} --force)
         end
 
         exit

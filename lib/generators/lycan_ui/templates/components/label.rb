@@ -23,7 +23,7 @@ module LycanUi
       super(attributes, class: DEFAULT_CLASSES)
     end
 
-    def render_in(view_contexd, &)
+    def render_in(view_context, &)
       view_context.label(object_name, method, content, **attributes, &)
     end
   end
