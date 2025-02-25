@@ -35,9 +35,7 @@ module LycanUi
     def template(&block)
       return yield attributes if as_child
 
-      tag.button(**attributes) do
-        determine_content(content, &block)
-      end
+      tag.button(**attributes) { determine_content(content, &block) }
     end
   end
 end

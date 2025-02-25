@@ -29,4 +29,11 @@ module LycanUiHelper
   def ui
     @ui ||= Builder.new(self)
   end
+
+  def lycan_ui_id
+    @lycan_ui_id ||= 0
+    @lycan_ui_id += 1
+
+    "_l#{@lycan_ui_id}_"
+  end
 end

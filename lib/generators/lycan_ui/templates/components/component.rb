@@ -3,7 +3,7 @@
 module LycanUi
   class Component
     attr_accessor :attributes
-    delegate :tag, :render, to: :@view_context
+    delegate_missing_to :@view_context
 
     def initialize(attributes = {}, **default_attributes)
       @attributes = merge_attributes(attributes, **default_attributes)
@@ -12,7 +12,7 @@ module LycanUi
     def render_in(view_context, &)
       @view_context = view_context
 
-      template(&)
+      template { yield self }
     ensure
       @view_context = nil
     end

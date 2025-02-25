@@ -7,9 +7,7 @@ module LycanUi
     end
 
     def template(&block)
-      tag.div(**attributes) do
-        yield self
-      end
+      tag.div(**attributes, &block)
     end
 
     def trigger(content = nil, **trigger_attributes, &block)
