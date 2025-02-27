@@ -8,6 +8,11 @@ class Importmap::Map
   end
 end
 
+require_relative('../../lib/generators/lycan_ui/templates/components/component')
+Dir.glob("../lib/generators/lycan_ui/templates/components/*.rb").each do |file|
+  require_relative("../#{file.sub(".rb", "")}")
+end
+
 # Default layout for Sitepress pages
 Sitepress.configure do |config|
   ## Change the root_path of the Sitepress site, or set to a different
@@ -26,7 +31,8 @@ Sitepress.configure do |config|
   end
 
   ActionController::Base.prepend_view_path(Pathname.new(Dir.pwd).join('../lib/generators/lycan_ui/templates'))
-  Rails.application.config.assets.paths << (Pathname.new(Dir.pwd).join('../lib/generators/lycan_ui/templates/javascript'))
+  Rails.application.config.assets.paths <<
+    (Pathname.new(Dir.pwd).join('../lib/generators/lycan_ui/templates/javascript'))
   Rails.application.config.assets.paths << (Pathname.new(Dir.pwd).join('vendor/javascript'))
   Rails.application.config.importmap.paths << Pathname.new(Dir.pwd).join('config', 'importmap.rb')
   Rails.application.config.importmap.cache_sweepers << Pathname.new(Dir.pwd).join('javascripts')

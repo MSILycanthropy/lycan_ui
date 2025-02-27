@@ -1,57 +1,42 @@
 # frozen_string_literal: true
 
 module UiHelper
-  class Builder
-    def initialize(context)
-      @context = context
-    end
+  COMPONENTS = Dir.glob("../lib/generators/lycan_ui/templates/components/*.rb")
+    .map { |c| c.split("/").last.sub(".rb", "") }
+    .index_by(&:itself)
+    .transform_values { |c| "LycanUi::#{c.classify}".constantize }
+    .symbolize_keys
+    .freeze
 
-    def reset_partial
-      @current_partial = nil
+  class Builder
+    def initialize(view_context)
+      @view_context = view_context
     end
 
     def respond_to_missing?(...)
       true
     end
 
-    def method_missing(method, *args, **, &block)
-      previous_partial = @current_partial
-      @current_partial = if previous_partial.nil?
-        method.to_s
-      else
-        "#{previous_partial}/#{method}"
-      end
+    def method_missing(method, *args, **kwargs, &block)
+      component = COMPONENTS[method]
 
-      content = if block_given?
-        @context.render("ui/#{@current_partial}", args:, **) do |*args|
-          previous_partial.nil? ? yield(self, *args) : yield(*args)
-        end
-      else
-        @context.render("ui/#{@current_partial}", args:, **)
-      end
+      p("*" * 100)
+      p(Dir.glob("../lib/generators/lycan_ui/templates/components/*.rb"))
 
-      @current_partial = previous_partial
+      raise "Component LycanUi::#{method.to_s.classify} not found" if component.nil?
 
-      content
+      @view_context.render(component.new(*args, **kwargs), &block)
     end
   end
 
   def ui
     @ui ||= Builder.new(self)
-    @ui.reset_partial
-    @ui
   end
 
-  def use_id
-    @counter ||= 0
-    @counter += 1
+  def lycan_ui_id
+    @lycan_ui_id ||= 0
+    @lycan_ui_id += 1
 
-    "_l#{@counter}_"
-  end
-
-  def render(view, ...)
-    view = view.sub('ui/', 'views/')
-
-    super(view, ...)
+    "_l#{@lycan_ui_id}_"
   end
 end

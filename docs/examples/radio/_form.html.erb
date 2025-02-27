@@ -1,0 +1,16 @@
+<%= lycan_ui_form_with do |form| %>
+  <div class="space-y-2">
+    <div class="flex items-center gap-2">
+      <%= form.radio_button :field, :red, id: :field_red %>
+      <%= form.label :field, 'Red', value: :red, for: :field_red %>
+    </div>
+    <div class="flex items-center gap-2">
+      <%= form.radio_button :field, :green, id: :field_green %>
+      <%= form.label :field, 'Green', value: :green, for: :field_green %>
+    </div>
+    <div class="flex items-center gap-2">
+      <%= form.radio_button :field, :blue, id: :field_blue %>
+      <%= form.label :field, 'Blue', value: :blue, for: :field_blue %>
+    </div>
+  </div>
+<% end %>

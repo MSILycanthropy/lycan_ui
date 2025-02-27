@@ -18,29 +18,26 @@ module LycanUi
       def install_form
         return unless component == "form"
 
-        copy_file("extras/form_builder.rb", "app/lib/lycan_ui/form_helper.rb")
-        insert_into_file(
-          "app/lib/lycan_ui/helpers.rb",
-          "    include LycanUi::FormHelper\n",
-          after: "    include LycanUi::ClassesHelper\n",
-        )
+        copy_file("extras/form_builder.rb", "app/helpers/lycan_ui/form_helper.rb")
 
         [ "label", "input", "textarea", "checkbox", "button", "radio", "switch" ].each do |comp|
           puts "Installing #{comp.titleize}..."
-          %x(rails g lycan_ui:add #{comp})
+          %x(rails g lycan_ui:add #{comp} --force)
         end
 
         exit
       end
 
       def copy_views
-        copy_file("views/_#{component}.html.erb", "app/views/ui/_#{component}.html.erb")
-        directory("views/#{component}", "app/views/ui/#{component}") if dir_exists?("views/#{component}")
+        copy_file("components/#{component}.rb", "app/components/lycan_ui/#{component}.rb")
       end
 
       def copy_js
         if file_exists?("javascript/#{component}_controller.js")
-          copy_file("javascript/#{component}_controller.js", "#{Configuration.javascript_dir}/#{component}_controller.js")
+          copy_file(
+            "javascript/#{component}_controller.js",
+            "#{Configuration.javascript_dir}/#{component}_controller.js",
+          )
         end
 
         if dir_exists?("javascript/#{component}")

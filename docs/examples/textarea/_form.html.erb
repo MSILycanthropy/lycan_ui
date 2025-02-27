@@ -1,0 +1,6 @@
+<%= lycan_ui_form_with do |form| %>
+  <div class="flex flex-col gap-1">
+    <%= form.label :field, 'Why do you love Rails?', for: :field %>
+    <%= form.textarea :field, placeholder: 'Type here', id: :field %>
+  </div>
+<% end %>

@@ -1,7 +1,0 @@
-<% default_classes = "relative w-full rounded-lg border p-4 [&>svg~*]:pl-7 [&>svg+div]:translate-y-[-3px] " \
-                     "[&>svg]:absolute [&>svg]:left-4 [&>svg]:top-3.5" %>
-<% variant_classes = select_variant({ primary: 'border-on-surface', danger: "border border-danger bg-danger-500 text-on-danger [&>svg]:text-on-danger" }, local_assigns[:variant]) %>
-
-<%= tag.div(role: :alert, class: class_names(default_classes, variant_classes, local_assigns[:class]), **local_assigns.except(:class)) do %>
-  <%= yield %>
-<% end %>

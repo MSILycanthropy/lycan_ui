@@ -2,7 +2,6 @@
 
 module LycanUi
   class Configuration
-    DEFAULT_STYLESHEET = "app/assets/stylesheets/application.tailwind.css"
     DEFAULT_JAVASCRIPT_DIR = "app/javascript/controllers"
 
     class << self
@@ -15,8 +14,18 @@ module LycanUi
           json = JSON.parse(File.read("#{Rails.root}/config/lycan_ui.json"))
         end
 
-        self.stylesheet = json["stylesheet"] || DEFAULT_STYLESHEET
+        self.stylesheet = json["stylesheet"] || default_stylesheet
         self.javascript_dir = json["javascript_dir"] || DEFAULT_JAVASCRIPT_DIR
+      end
+
+      private
+
+      def default_stylesheet
+        if File.exist?("#{Rails.root}/app/assets/stylesheets/application.tailwind.css")
+          return "app/assets/stylesheets/application.tailwind.css"
+        end
+
+        "app/assets/tailwind/application.css"
       end
     end
   end
