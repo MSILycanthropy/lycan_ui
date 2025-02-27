@@ -34,7 +34,10 @@ module LycanUi
 
       def copy_js
         if file_exists?("javascript/#{component}_controller.js")
-          copy_file("javascript/#{component}_controller.js", "#{Configuration.javascript_dir}/#{component}_controller.js")
+          copy_file(
+            "javascript/#{component}_controller.js",
+            "#{Configuration.javascript_dir}/#{component}_controller.js",
+          )
         end
 
         if dir_exists?("javascript/#{component}")
