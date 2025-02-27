@@ -20,9 +20,6 @@ module UiHelper
     def method_missing(method, *args, **kwargs, &block)
       component = COMPONENTS[method]
 
-      p("*" * 100)
-      p(Dir.glob("../lib/generators/lycan_ui/templates/components/*.rb"))
-
       raise "Component LycanUi::#{method.to_s.classify} not found" if component.nil?
 
       @view_context.render(component.new(*args, **kwargs), &block)

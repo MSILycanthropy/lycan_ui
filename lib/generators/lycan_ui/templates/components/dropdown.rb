@@ -31,8 +31,8 @@ module LycanUi
       tag.div(**final_attributes, &)
     end
 
-    def title(**title_attributes, &)
-      tag.div(**title_attributes, &)
+    def title(content = nil, **title_attributes, &block)
+      tag.div(**title_attributes) { determine_content(content, &block) }
     end
 
     def separator

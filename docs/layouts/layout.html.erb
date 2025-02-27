@@ -70,13 +70,6 @@
               <% end %>
             </div>
 
-            <div class="shadow-lg p-2 rounded-lg bg-surface-200 dark:bg-surface-900 flex" data-turbo-permanent>
-              <label class="flex w-full items-center justify-center gap-3 cursor-pointer">
-                <%= link_to 'Helpers', '/helpers', class: 'underline decoration-accent underline-offset-4 hover:decoration-2 -mt-1' %>
-                <%= ui.switch nil, nil, checked: true, data: { action: 'helper#toggle', helper_target: :toggle } %>
-              </label>
-            </div>
-
             <div class="space-y-2 pb-3">
               <%= render "partials/nav" %>
             </div>
