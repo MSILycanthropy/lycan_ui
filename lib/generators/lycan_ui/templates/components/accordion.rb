@@ -18,7 +18,7 @@ module LycanUi
     def template(&)
       @name = lycan_ui_id unless multiple
 
-      tag.div(**attributes, &)
+      tag.div(**attributes) { yield self }
     end
 
     ITEM_CLASSES = <<~CLASSES.squish

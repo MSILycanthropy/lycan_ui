@@ -17,7 +17,7 @@ module LycanUi
       @labelledby = lycan_ui_id
       @controls = lycan_ui_id
 
-      tag.div(**attributes, &block)
+      tag.div(**attributes) { yield self }
     end
 
     def trigger(content = nil, **trigger_attributes, &block)
@@ -27,7 +27,7 @@ module LycanUi
         aria: { has_popup: true, expanded: false, controls: @controls },
       )
 
-      render(Button.new(id: @labelledby, **final_attributes)) { determine_content(content, &block) }
+      render(Button.new(content, id: @labelledby, **final_attributes), &block)
     end
 
     def content(**content_attributes, &)
