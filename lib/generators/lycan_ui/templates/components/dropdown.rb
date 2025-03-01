@@ -2,8 +2,15 @@
 
 module LycanUi
   class Dropdown < Component
-    def initialize(**attributes)
-      super(attributes, data: { controller: "dropdown", action: "keydown->dropdown#handleKeydown" })
+    def initialize(typeahead: true, **attributes)
+      super(
+        attributes,
+        data: {
+          controller: "dropdown",
+          action: "keydown->dropdown#handleKeydown",
+          dropdown_typeahead_value: typeahead,
+        }
+      )
     end
 
     def template(&block)
