@@ -58,15 +58,15 @@ module LycanUi
       link_to(name, options, html_options, &)
     end
 
-    def action(name = nil, options = nil, html_options = nil, &)
-      options = merge_attributes(
-        options || {},
+    def action(name = nil, options = nil, html_options = nil, &block)
+      html_options = merge_attributes(
+        html_options || {},
         role: "menuitem",
         tabindex: "-1",
         data: { dropdown_target: "item", action: "mouseenter->dropdown#focusItem mouseleave->dropdown#focusTrigger" },
       )
 
-      button_to(name, options, html_options, &)
+      button_to(options, html_options) { determine_content(name, &block) }
     end
   end
 end
