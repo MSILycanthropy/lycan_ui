@@ -3,9 +3,11 @@
 
   <%= dropdown.content do %>
     <%= dropdown.title 'Fortnite' %>
-    <%= dropdown.navigation_item 'gaming', '/' %>
-    <%= dropdown.action_item '/' do %>
-      asdfasdf
-    <% end %>
+    <%= dropdown.item 'About LycanUI', '/' %>
+    <%= dropdown.item 'Check for Updates...', '/' %>
+    <%= dropdown.item 'Settings Sync is On', '/' %>
+    <%= dropdown.item 'Profiles', '/' %>
+
+    <%= dropdown.action('Hello World', '/', {}) %>
   <% end %>
 <% end %>

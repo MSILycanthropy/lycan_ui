@@ -12,7 +12,7 @@ module LycanUi
     def render_in(view_context, &)
       @view_context = view_context
 
-      template { yield self }
+      template(&)
     ensure
       @view_context = nil
     end
