@@ -1,0 +1,19 @@
+<%= ui.collapsible(class: 'space-y-2') do |collapse| %>
+  <div class="flex items-center justify-between gap-4">
+    <h4 class="text-sm font-semibold">
+      @msi_lycanthropy starred 3 repositories
+    </h4>
+
+    <%= collapse.trigger size: :extra_small, class: 'ml-4 group' do %>
+      <%= lucide_icon('chevrons-up-down', class: 'size-4 group-aria-expanded:hidden') %>
+      <%= lucide_icon('x', class: 'size-4 group-not-aria-expanded:hidden') %>
+    <% end %>
+  </div>
+
+  <div class="rounded-md border px-4 py-3 font-mono text-sm">rails/rails</div>
+
+  <%= collapse.content(class: 'space-y-2') do %>
+    <div class="rounded-md border px-4 py-3 font-mono text-sm">heartcombo/devise</div>
+    <div class="rounded-md border px-4 py-3 font-mono text-sm">excid3/noticed</div>
+  <% end %>
+<% end %>
