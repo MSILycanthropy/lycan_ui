@@ -52,11 +52,15 @@ module LycanUi
     end
 
     def item(name = nil, options = nil, html_options = nil, &)
+      html_options ||= {}
+      disabled = html_options.delete(:disabled)
+
       html_options = merge_attributes(
-        html_options || {},
+        html_options,
         class: "block",
         role: "menuitem",
         tabindex: "-1",
+        aria: { disabled: },
         data: {
           dropdown_target: "item",
           action: "mouseenter->dropdown#focusItem mouseleave->dropdown#focusTrigger",
