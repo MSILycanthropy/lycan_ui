@@ -63,7 +63,7 @@ module LycanUi
         aria: { disabled: },
         data: {
           dropdown_target: "item",
-          action: "mouseenter->dropdown#focusItem mouseleave->dropdown#focusTrigger",
+          action: "dropdown#close mouseenter->dropdown#focusItem mouseleave->dropdown#focusTrigger",
         })
 
       link_to(name, options, html_options, &)
@@ -74,7 +74,9 @@ module LycanUi
         html_options || {},
         role: "menuitem",
         tabindex: "-1",
-        data: { dropdown_target: "item", action: "mouseenter->dropdown#focusItem mouseleave->dropdown#focusTrigger" },
+        data: {
+          dropdown_target: "item",
+          action: "dropdown#close mouseenter->dropdown#focusItem mouseleave->dropdown#focusTrigger", },
       )
 
       button_to(options, html_options) { determine_content(name, &block) }
