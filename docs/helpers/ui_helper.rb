@@ -4,7 +4,7 @@ module UiHelper
   COMPONENTS = Dir.glob("../lib/generators/lycan_ui/templates/components/*.rb")
     .map { |c| c.split("/").last.sub(".rb", "") }
     .index_by(&:itself)
-    .transform_values { |c| "LycanUi::#{c.classify}".constantize }
+    .transform_values { |c| "LycanUi::#{c.camelize}".constantize }
     .symbolize_keys
     .freeze
 
@@ -20,7 +20,7 @@ module UiHelper
     def method_missing(method, *args, **kwargs, &block)
       component = COMPONENTS[method]
 
-      raise "Component LycanUi::#{method.to_s.classify} not found" if component.nil?
+      raise "Component LycanUi::#{method.to_s.camelize} not found" if component.nil?
 
       @view_context.render(component.new(*args, **kwargs), &block)
     end

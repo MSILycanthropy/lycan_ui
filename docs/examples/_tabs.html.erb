@@ -1,0 +1,17 @@
+<%= ui.tabs(default: :coke) do |tabs| %>
+  <%= tabs.list do %>
+    <%= tabs.tab(:coke, 'Coca Cola') %>
+    <%= tabs.tab(:pepsi, 'Pepsi Cola') %>
+    <%= tabs.tab(:mug, 'Mug Root Beer') %>
+  <% end %>
+
+  <%= tabs.panel(:coke) do %>
+    It's Coke son.
+  <% end %>
+  <%= tabs.panel(:pepsi) do %>
+    Pepsi to the max!
+  <% end %>
+  <%= tabs.panel(:mug) do %>
+    Mug Moment. Mug Moment.Mug Moment.Mug Moment.Mug Moment.
+  <% end %>
+<% end %>
