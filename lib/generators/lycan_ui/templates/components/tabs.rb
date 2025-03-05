@@ -55,6 +55,7 @@ module LycanUi
         data: { tabs_target: "panel", name: },
         aria: { labelledby: tab_identifier(name) },
         hidden: !selected,
+        tabindex: 0,
       )
 
       tag.div(**final_attributes, &)
