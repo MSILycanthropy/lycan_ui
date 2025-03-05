@@ -17,7 +17,11 @@ module LycanUi
     end
 
     def list(**list_attributes, &)
-      final_attributes = merge_attributes(list_attributes, role: "tablist")
+      final_attributes = merge_attributes(
+        list_attributes,
+        role: "tablist",
+        data: { action: "keydown.home->tabs#selectFirst keydown.end->tabs#selectLast" },
+      )
 
       tag.div(**final_attributes, &)
     end
