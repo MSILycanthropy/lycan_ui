@@ -17,7 +17,7 @@ module LycanUi
     end
 
     def template(&)
-      tag.div(**attributes, &)
+      tag.div(**attributes) { yield self }
     end
 
     def title(content = nil, **title_attributes, &block)
