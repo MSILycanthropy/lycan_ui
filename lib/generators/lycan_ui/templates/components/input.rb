@@ -5,8 +5,8 @@ module LycanUi
     attr_reader :object_name, :method, :type
 
     DEFAULT_CLASSES = <<~CLASSES
-      flex h-10 w-full rounded-md px-3 py-2 text-sm bg-surface-50 dark:bg-surface-950 text-on-surface
-      file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground
+      flex h-10 w-full rounded-md px-3 py-2 text-sm bg-surface text-on-surface
+      file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-on-surface/50
       focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent
       disabled:cursor-not-allowed disabled:opacity-50
     CLASSES

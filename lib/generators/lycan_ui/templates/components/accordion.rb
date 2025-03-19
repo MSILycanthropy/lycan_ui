@@ -22,7 +22,7 @@ module LycanUi
     end
 
     ITEM_CLASSES = <<~CLASSES.squish
-      border-b border-secondary interpolate-keywords details:h-0 details-open:h-auto
+      border-b border-surface interpolate-keywords details:h-0 details-open:h-auto
       details:overflow-hidden details:text-sm details:motion-safe:transition-all
       details:duration-200 details:ease-out details:transition-discrete
       disabled:opacity-50 disabled:pointer-events-none

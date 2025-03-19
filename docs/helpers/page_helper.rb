@@ -27,13 +27,13 @@ module PageHelper
   end
 
   def code(stuff)
-    tag.code(class: 'text-sm bg-surface-100 dark:bg-surface-700 border border-transparent px-1 rounded shadow-md') do
+    tag.code(class: 'text-sm border border-dashed border-surface px-1 rounded shadow-md') do
       stuff
     end
   end
 
   def helper_code(helper, no_helper)
-    classes = 'text-sm bg-surface-100 dark:bg-surface-700 border border-transparent px-1 rounded shadow-md'
+    classes = 'text-sm border border-dashed border-surface px-1 rounded shadow-md'
 
     safe_join([
       tag.code(class: classes + ' uses-helper:inline', hidden: '') { helper },
