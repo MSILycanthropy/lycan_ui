@@ -5,7 +5,7 @@ module LycanUi
     attr_reader :object_name, :method
 
     DEFAULT_CLASSES = <<~CLASSES.squish
-      flex min-h-20 w-full rounded-md bg-surface-50 dark:bg-surface-950 text-on-surface
+      flex min-h-20 w-full rounded-md bg-surface text-on-surface
       px-3 py-2 text-base placeholder:text-on-surface/50 md:text-sm
       focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent
       disabled:cursor-not-allowed disabled:opacity-50

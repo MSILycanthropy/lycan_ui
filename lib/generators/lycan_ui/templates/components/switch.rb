@@ -6,7 +6,7 @@ module LycanUi
 
     DEFAULT_CLASSES = <<~CLASSES.squish
       appearance-none cursor-pointer rounded-full disabled:opacity-50 disabled:cursor-not-allowed
-      w-8 h-4 bg-white dark:bg-surface-950 shadow-switch checked:shadow-switch-checked
+      w-10 h-5 bg-background shadow-switch checked:shadow-switch-checked
       motion-safe:transition-all motion-safe:duration-500 motion-safe:ease-in-out
     CLASSES
 
