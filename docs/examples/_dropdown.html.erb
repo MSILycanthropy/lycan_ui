@@ -3,11 +3,16 @@
 
   <%= dropdown.content do %>
     <%= dropdown.title 'Fortnite' %>
-    <%= dropdown.item 'About LycanUI', '/' %>
-    <%= dropdown.item 'Check for Updates...', '/', disabled: true %>
-    <%= dropdown.item 'Settings Sync is On', '/' %>
-    <%= dropdown.item 'Profiles', '/' %>
+    <%= dropdown.separator %>
 
-    <%= dropdown.action('Hello World', '/') %>
+    <%= dropdown.group do %>
+      <%= dropdown.item 'About LycanUI', '/' %>
+    <% end %>
+    <%= dropdown.separator %>
+
+    <%= dropdown.group do %>
+      <%= dropdown.item 'Check for Updates...', '/', disabled: true %>
+      <%= dropdown.item 'Settings Sync is On', '/' %>
+    <% end %>
   <% end %>
 <% end %>
