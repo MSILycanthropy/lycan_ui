@@ -17,6 +17,17 @@
           <%= dropdown.item "GAMER JUICE", "/" %>
         <% end %>
       <% end %>
+
+
+      <%= dropdown.submenu do %>
+        <%= dropdown.submenu_trigger 'Submenu' %>
+
+        <%= dropdown.submenu_content do %>
+          <%= dropdown.item "GAMER JUICE", "/" %>
+          <%= dropdown.item "GAMER JUICE", "/" %>
+          <%= dropdown.item "GAMER JUICE", "/" %>
+        <% end %>
+      <% end %>
     <% end %>
 
     <%= dropdown.separator %>

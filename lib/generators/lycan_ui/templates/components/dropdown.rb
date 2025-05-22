@@ -87,6 +87,8 @@ module LycanUi
     ACTIONS
     def submenu_trigger(name = nil, **attributes, &block)
       final_attributes = merge_attributes(
+        attributes,
+        { class: "aria-expanded:bg-accent aria-expanded:text-on-accent"},
         class: ITEM_CLASSES,
         tabindex: "-1",
         role: "menuitem",
