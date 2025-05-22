@@ -7,7 +7,18 @@
 
     <%= dropdown.group do %>
       <%= dropdown.item 'About LycanUI', '/' %>
+
+      <%= dropdown.submenu do %>
+        <%= dropdown.submenu_trigger 'Submenu' %>
+
+        <%= dropdown.submenu_content do %>
+          <%= dropdown.item "GAMER JUICE", "/" %>
+          <%= dropdown.item "GAMER JUICE", "/" %>
+          <%= dropdown.item "GAMER JUICE", "/" %>
+        <% end %>
+      <% end %>
     <% end %>
+
     <%= dropdown.separator %>
 
     <%= dropdown.group do %>
