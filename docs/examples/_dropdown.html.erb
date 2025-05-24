@@ -1,31 +1,15 @@
 <%= ui.dropdown do |dropdown| %>
   <%= dropdown.trigger 'Trigger' %>
 
-  <%= dropdown.content do %>
-    <%= dropdown.title 'Fortnite' %>
+  <%= dropdown.content  class: 'w-48' do %>
+    <%= dropdown.title 'My Account' %>
     <%= dropdown.separator %>
 
     <%= dropdown.group do %>
-      <%= dropdown.item 'About LycanUI', '/' %>
-
-      <%= dropdown.submenu do %>
-        <%= dropdown.submenu_trigger 'Submenu' %>
-
-        <%= dropdown.submenu_content do %>
-          <%= dropdown.item "GAMER JUICE", "/" %>
-          <%= dropdown.item "GAMER JUICE", "/" %>
-          <%= dropdown.item "GAMER JUICE", "/" %>
-        <% end %>
-      <% end %>
-
-
-      <%= dropdown.submenu do %>
-        <%= dropdown.submenu_trigger 'Submenu' %>
-
-        <%= dropdown.submenu_content do %>
-          <%= dropdown.item "GAMER JUICE", "/" %>
-          <%= dropdown.item "GAMER JUICE", "/" %>
-          <%= dropdown.item "GAMER JUICE", "/" %>
+      <% [['user', 'profile'], ['credit-card', 'billing'], ['settings', 'settings'], ['keyboard', 'keyboard shortcuts']].each do |entry| %>
+        <%= dropdown.link '/', class: 'flex items-center gap-2' do %>
+          <%= lucide_icon(entry[0]) %>
+          <span><%= entry[1].titleize %></span>
         <% end %>
       <% end %>
     <% end %>
@@ -33,8 +17,47 @@
     <%= dropdown.separator %>
 
     <%= dropdown.group do %>
-      <%= dropdown.item 'Check for Updates...', '/', disabled: true %>
-      <%= dropdown.item 'Settings Sync is On', '/' %>
+      <%= dropdown.link '/', class: 'flex items-center gap-2' do %>
+        <%= lucide_icon('users') %>
+        <span>Team</span>
+      <% end %>
+
+      <%= dropdown.submenu do %>
+        <%= dropdown.submenu_trigger class: 'flex items-center justify-between' do %>
+          <div class="flex items-center gap-2">
+            <%= lucide_icon('user-plus') %>
+            <span>Invite Users</span>
+          </div>
+
+          <%= lucide_icon('chevron-right') %>
+        <% end %>
+
+        <%= dropdown.submenu_content do %>
+          <%= dropdown.button class: 'flex items-center gap-2', close: false do %>
+            <%= lucide_icon('mail') %>
+            <span>Email</span>
+          <% end %>
+
+          <%= dropdown.button class: 'flex items-center gap-2' do %>
+            <%= lucide_icon('message-square') %>
+            <span>Message</span>
+          <% end %>
+
+          <%= dropdown.separator %>
+
+          <%= dropdown.button class: 'flex items-center gap-2' do %>
+            <%= lucide_icon('circle-plus') %>
+            <span>More...</span>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <%= dropdown.separator %>
+
+    <%= dropdown.link '/', class: 'flex items-center gap-2' do %>
+      <%= lucide_icon('log-out') %>
+      <span>Log Out</span>
     <% end %>
   <% end %>
 <% end %>
