@@ -15,12 +15,12 @@ title: Forms
     <p>
       If you didn't add it when setting up, all you need to do to get this functionality is run,
     </p>
-    
+
     <pre class="bg-zinc-900/25 border border-dashed border-surface rounded-lg flex shadow-lg p-6">
       <code>rails generate lycan_ui:add form</code>
     </pre>
 
-    <p>
+    <p class="mt-4">
       You'll now have access to <%= code('lycan_ui_form_with') %> in any view context.
     </p>
 
@@ -33,9 +33,9 @@ title: Forms
         Compatible Components
       </h4>
 
-      <ul class="pl-2 mt-1">
+      <ul class="pl-2 mt-2 space-y-2">
         <% ['button', 'checkbox', 'input', 'radio', 'switch', 'textarea'].each do |component| %>
-          <li class="flex items-center gap-1 mb-1">
+          <li class="flex items-center gap-1">
             <%= link_to component.titleize, "/docs/#{component}", class: 'underline underline-offset-4 decoration-accent hover:decoration-2' %>
 
             <span>-</span>

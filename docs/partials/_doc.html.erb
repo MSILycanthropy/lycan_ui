@@ -69,6 +69,18 @@
         <%= yield :faq %>
       </div>
     <% end %>
+
+    <% if content_for?(:inspiration) %>
+      <div class="mt-6">
+        <h2 class="text-xl scroll-m-20" id="inspiration">
+          Inspiration
+        </h2>
+
+        <hr class="mt-1 mb-4 border-on-surface/25">
+
+        <%= yield :inspiration %>
+      </div>
+    <% end %>
   </div>
 
   <% if content_for?(:links) || current_page.data["component"].present? || [:features, :usage, :accessibility, :faq, :usage_links].any? { |c| content_for?(c) } %>
@@ -80,7 +92,7 @@
       <ul>
         <%= yield :links %>
 
-        <% [:installation, :features, :usage, :accessibility, :faq].each do |item| %>
+        <% [:installation, :features, :usage, :accessibility, :faq, :inspiration].each do |item| %>
           <% if (item == :installation && current_page.data["component"].present?) || content_for?(item) %>
             <li>
               <a class="text-sm underline-offset-4 hover:underline decoration-accent transition-all" href="#<%= item %>">
