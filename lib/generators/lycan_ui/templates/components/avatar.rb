@@ -4,7 +4,7 @@ module LycanUi
   class Avatar < Component
     attr_reader :args, :fallback
 
-    FALLBACK_CLASSES = <<~CLASSES
+    FALLBACK_CLASSES = <<~CLASSES.squish
       relative flex items-center justify-center h-10 w-10 shrink-0 overflow-hidden
       rounded-full bg-secondary-400 shadow-lg
     CLASSES
