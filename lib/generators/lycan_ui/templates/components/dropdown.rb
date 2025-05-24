@@ -108,7 +108,6 @@ module LycanUi
           dropdown_target: "item",
           action: SUBMENU_TRIGGER_ACTIONS,
           dropdown_submenu_param: @current_submenu_id,
-          dropdown_placement_param: "right-start",
           submenu: @current_submenu_id,
         },
       )
@@ -137,12 +136,13 @@ module LycanUi
       nil
     end
 
-    def item(name = nil, options = nil, html_options = nil, &block)
+    def link(name = nil, options = nil, html_options = nil, &block)
       html_options, options, name = options, name, block if block_given?
 
       html_options ||= {}
       disabled = html_options.delete(:disabled)
       close = html_options.delete(:close)
+      close = true if close.nil?
 
       html_options = merge_attributes(
         html_options,
@@ -180,6 +180,7 @@ module LycanUi
 
       disabled = html_options.delete(:disabled)
       close = html_options.delete(:close)
+      close = true if close.nil?
 
       html_options = merge_attributes(
         html_options,
@@ -209,6 +210,33 @@ module LycanUi
       else
         button_to(name, options, html_options)
       end
+    end
+
+    def button(name = nil, close: true, disabled: false, **attributes, &block)
+      close_action = close ? "dropdown#close" : ""
+
+      attributes = merge_attributes(
+        attributes,
+        role: "menuitem",
+        class: ITEM_CLASSES,
+        tabindex: "-1",
+        disabled:,
+      )
+      attributes = if @current_submenu_id.present?
+       merge_attributes(attributes, data: {
+         dropdown_target: "submenuItem",
+         action: "pointerenter->dropdown#focusItem pointerleave->dropdown#focusSubmenuTrigger #{close_action}",
+         dropdown_submenu_param: @current_submenu_id,
+         submenu: @current_submenu_id,
+       })
+      else
+        merge_attributes(attributes, data: {
+          dropdown_target: "item",
+          action: "pointerenter->dropdown#focusItem pointerleave->dropdown#focusTrigger #{close_action}",
+        })
+      end
+
+      tag.button(**attributes) { determine_content(name, &block) }
     end
   end
 end
