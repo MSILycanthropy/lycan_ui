@@ -4,7 +4,7 @@ title: Introduction
 
 <% content_for :description do %>
   <p class="text-xl font-medium text-on-surface/80">
-    An open-source collection of accessible and customizable components added to your Rails project using
+    An open-source collection of accessible components for any Rails project using
 
     <%= external_link_to "https://guides.rubyonrails.org/generators.html" do %>
       generators
@@ -15,19 +15,10 @@ title: Introduction
     <% end %>.
   </p>
 
-  <p class="mt-6 leading-7">
-    LycanUI empowers developers to design and build beautiful UIs without having to
-    reinvent the wheel at every turn.
-  </p>
-
   <p class="mt-6">
-    We provide fully implemented and accessible components
-    that are ready to use out of the box.
-  </p>
-
-  <p class="mt-6">
-    Everything is built with generators, so there are no extra dependencies in production.
-    Giving you <i>complete</i> control.
+    Lycan UI empowers developers to create accessible UIs that embody their unique style while staying true to the Rails Way.
+    With a strong focus on accessibility, seamless Hotwire integration, and an overall delightful developer experience rooted in Rails conventions,
+    Lycan UI strives to be the de-facto headless UI library for Rails applications.
   </p>
 
   <p class="mt-6">
@@ -56,98 +47,88 @@ title: Introduction
   <% end %>
 <% end %>
 
-<% content_for :faq do %>
-  <%= ui.accordion(multiple: true) do |accordion| %>
-    <%= accordion.item(class: '[&[open]>_summary_>_svg]:rotate-180') do %>
-      <%= accordion.trigger do %>
-        Why generators and not a gem or npm package?
+<% content_for :features do %>
+  <section class="space-y-5">
+    <div>
+      <h3 class="mb-2 text-xl font-bold">Generators</h3>
+      <p>
+        Unlike traditional component libraries,
+        Lycan UI leverages Rails generators to streamline your development workflow while ensuring you maintain complete ownership of your code.
+        Rather than hiding implementation details behind abstractions, our generators scaffold accessible,
+        customizable components directly into your application.
+        This means you get the convenience of rapid setup with the confidence that comes from having full control—every line o
+        f generated code lives in your codebase, ready to be modified, extended, or completely rewritten to match your exact requirements.
+        No black boxes, no vendor lock-in—just clean, understandable code that's entirely yours.
+      </p>
+    </div>
 
-        <%= lucide_icon('chevron-down', class: 'transition-all rotate-0') %>
-      <% end %>
+    <div>
+      <h3 class="mb-2 text-xl font-bold">The Rails Way</h3>
+      <p>
+        Lycan UI embraces the Rails Way by prioritizing convention over configuration, server-rendered HTML, and progressive enhancement.
+        Built with Hotwire at its core, our components leverage Turbo and Stimulus to deliver rich,
+        interactive experiences without the complexity of heavy JavaScript frameworks.
+      </p>
+    </div>
 
-      <%= accordion.content do %>
-        <div class="space-y-4">
-          <p>
-            To put it shortly, to give you <i>full</i> control over your UI. So that you can decide
-            exactly how each component should look and function.
-          </p>
+    <div>
+      <h3 class="mb-2 text-xl font-bold">Accessible By Design</h3>
+      <p>
+        Accessibility is front and center, ensuring your UI is inclusive and user-friendly from day one.
+        We follow
+        <%= external_link_to "https://www.w3.org/WAI/ARIA/apg/patterns/" do %>
+          WAI-ARIA design patterns
+        <% end %>
+        and handle all the annoying parts like aria attributes, role management, focus handling, and keyboard navigation.
+        Every component is built with accessibility as a core requirement,
+        not an afterthought—ensuring your Rails applications work seamlessly for users of all abilities without requiring additional configuration or specialized knowledge on your part.
+      </p>
+    </div>
 
-          <p>
-            We start you off with some sensible defaults, but then hand you the reigns.
-          </p>
+    <div>
+      <h3 class="mb-2 text-xl font-bold">Reasonable Defaults</h3>
+      <p>
+        Lycan UI comes with a curated collection of components that feature carefully chosen, reasonable defaults.
+        They are designed to look professional on their own and work harmoniously together as a cohesive design system.
+      </p>
+    </div>
+  </section>
+<% end %>
 
-          <p>
-            The big issue with UI components from a gem or an npm package is that the implementation and
-            design are tightly coupled. Customizing design or functionality can have tons of unintended
-            consequences, which the package may or may not support. Which is frankly, a huge pain in the ass.
-          </p>
-
-          <p>
-            With LycanUI, you have full control over both. So, whenever the need for intense customization
-            arises, all you have to do is.. do it.
-          </p>
-        </div>
-      <% end %>
-    <% end %>
-
-    <%= accordion.item(class: '[&[open]>_summary_>_svg]:rotate-180') do %>
-      <%= accordion.trigger do %>
-        Why Tailwind?
-
-        <%= lucide_icon('chevron-down', class: 'transition-all rotate-0') %>
-      <% end %>
-
-      <%= accordion.content do %>
-        <div class="space-y-4">
-          <p>
-            I'm a big fan of Tailwind. It's personally what I prefer. So this project
-            defaults to using Tailwind.
-          </p>
-
-          <p>
-            For an alternative that is built with no build in mind, check out
-
-            <%= external_link_to "https://github.com/lazaronixon/css-zero" do %>
-              CSS Zero
-            <% end %>.
-          </p>
-        </div>
-      <% end %>
-    <% end %>
-
-    <%= accordion.item(class: '[&[open]>_summary_>_svg]:rotate-180') do %>
-      <%= accordion.trigger do %>
-        Will there be a version that uses Phlex or View Component?
-
-        <%= lucide_icon('chevron-down', class: 'transition-all rotate-0') %>
-      <% end %>
-
-      <%= accordion.content do %>
-        <p>At this time there are not plans for Phlex or View Component compatibility.</p>
-
-        <p class="mt-4">
-          Both are super nice, but partials fits better with the minimalist philosophy of LycanUI.
-        </p>
-      <% end %>
-    <% end %>
-
-    <%= accordion.item(class: '[&[open]>_summary_>_svg]:rotate-180') do %>
-      <%= accordion.trigger do %>
-        Can I use this in my project?
-
-        <%= lucide_icon('chevron-down', class: 'transition-all rotate-0') %>
-      <% end %>
-
-      <%= accordion.content do %>
-        <p>Yep. Feel free to use it however you see fit. No attribution required.</p>
-
-        <p class="mt-4">
-          If you build something with it, feel free to let me know. Maybe I'll add a
-          page here with the stuff built.
-        </p>
-      <% end %>
-    <% end %>
-  <% end %>
+<% content_for :inspiration do %>
+  <section>
+    <p>Some of the projects that inspired this in no particular order:</p>
+    <ul class="list-disc ml-5 mt-6 space-y-2">
+      <li>
+        <span>CSS Zero</span>
+        <span>-</span>
+        <%= external_link_to "https://csszero.lazaronixon.com/" do %>
+          https://csszero.lazaronixon.com
+        <% end %>
+      </li>
+      <li>
+        <span>shadcn/ui</span>
+        <span>-</span>
+        <%= external_link_to "https://ui.shadcn.com/" do %>
+          https://ui.shadcn.com
+        <% end %>
+      </li>
+      <li>
+        <span>Melt UI</span>
+        <span>-</span>
+        <%= external_link_to "https://www.melt-ui.com/" do %>
+          https://www.melt-ui.com
+        <% end %>
+      </li>
+      <li>
+        <span>Skeleton</span>
+        <span>-</span>
+        <%= external_link_to "https://www.skeleton.dev/" do %>
+          https://www.skeleton.dev
+        <% end %>
+      </li>
+    </ul>
+  </section>
 <% end %>
 
 <%= render 'partials/doc' %>

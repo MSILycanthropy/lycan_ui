@@ -16,9 +16,22 @@
     Components
   </h4>
 
-  <% site.dig('docs').children.each do |node| %>
-    <% page = node.resources.format(:html) %>
-    <%= link_to node.name.titleize, page.request_path, class: "w-full block underline-offset-4 hover:underline decoration-accent #{'underline' if current_page?(page.request_path) }" %>
+  <% children = site.dig('docs').children %>
+  <% children.insert(5, "calendar") %>
+  <% children.each do |node| %>
+    <% if node.is_a?(String) %>
+      <div class="opacity-65 hover:cursor-not-allowed">
+        <span><%= node.titleize %></span>
+        <span>-</span>
+        <span class="text-xs">
+          Soon
+          <sup>TM</sup>
+        </span>
+      </div>
+    <% else %>
+      <% page = node.resources.format(:html) %>
+      <%= link_to node.name.titleize, page.request_path, class: "w-full block underline-offset-4 hover:underline decoration-accent #{'underline' if current_page?(page.request_path) }" %>
+    <% end %>
   <% end %>
 </div>
 

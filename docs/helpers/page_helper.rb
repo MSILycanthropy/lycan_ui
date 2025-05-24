@@ -35,10 +35,7 @@ module PageHelper
   def helper_code(helper, no_helper)
     classes = 'text-sm bg-surface px-1 rounded shadow-md'
 
-    safe_join([
-      tag.code(class: classes + ' uses-helper:inline', hidden: '') { helper },
-      tag.code(class: classes + ' no-helper:inline', hidden: '') { no_helper },
-    ])
+    tag.code(class: classes) { helper }
   end
 
   def read_erb(path)

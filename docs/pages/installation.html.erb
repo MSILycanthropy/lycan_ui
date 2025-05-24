@@ -10,16 +10,16 @@ title: Installation
       <p>Add the gem to the <%= code('development') %> group in your <%= code('Gemfile') %>,</p>
 
       <pre class="bg-zinc-900/25 border border-dashed border-surface rounded-lg flex shadow-lg p-6">
-        <code>group :development do <br />  gem 'lycan_ui'<br />end</code>
+        <code>group :development do <br />  gem 'lycan_ui', github: "MSILycanthropy/lycan_ui"<br />end</code>
       </pre>
 
-      <p>Run <%= code('bundle install') %> and then setup with,</p>
+      <p class="mt-4">Run <%= code('bundle install') %> and then setup with,</p>
 
       <pre class="bg-zinc-900/25 border border-dashed border-surface rounded-lg flex shadow-lg p-6">
         <code>rails generate lycan_ui:setup</code>
       </pre>
 
-      <p>Follow the prompts in your terminal and then.. you're done!</p>
+      <p class="mt-4">Follow the prompts in your terminal and then.. you're done!</p>
     </div>
   </div>
 <% end %>
