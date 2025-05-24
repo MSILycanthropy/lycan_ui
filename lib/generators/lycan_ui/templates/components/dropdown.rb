@@ -90,7 +90,7 @@ module LycanUi
     SUBMENU_TRIGGER_ACTIONS = <<~ACTIONS.squish
       pointerenter->dropdown#focusItem pointerleave->dropdown#focusTrigger
       pointerenter->dropdown#openSubmenu keydown.right->dropdown#openSubmenu
-      keydown.space->dropdown#openSubmenu keydown.enter->dropdown#openSubmenu
+      dropdown#openSubmenu
     ACTIONS
     def submenu_trigger(name = nil, **attributes, &block)
       final_attributes = merge_attributes(
@@ -113,7 +113,7 @@ module LycanUi
         },
       )
 
-      tag.div(**final_attributes) { determine_content(name, &block) }
+      tag.button(**final_attributes) { determine_content(name, &block) }
     end
 
     def submenu_content(**content_attributes, &)
