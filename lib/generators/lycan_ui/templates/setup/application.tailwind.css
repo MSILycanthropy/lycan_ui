@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
-@custom-variant hidden (&[hidden]);
+@custom-variant hidden (&[hidden]:where(:not([hidden='until-found'])));
 @custom-variant details (&::details-content);
 @custom-variant details-open (&[open]::details-content);
 
@@ -24,10 +24,8 @@
   --shadow-switch-checked: 1.25rem 0 0 0.125rem var(--color-accent) inset, 0 0 0 0.125rem var(--color-accent) inset
 }
 
-@layer utilities {
-  .interpolate-keywords {
-    interpolate-size: allow-keywords;
-  }
+@utility interpolate-keywords {
+  interpolate-size: allow-keywords;
 }
 
 @layer base {

@@ -37,15 +37,22 @@ module LycanUi
     CONTENT_CLASSES = <<~CLASSES.squish
       absolute z-50 min-w-32 overflow-y-auto overflow-x-hidden shadow-md
       bg-background text-on-background border border-surface p-1 rounded-md
+      data-[open=false]:invisible transition-[opacity_transform] will-change-[opacity,transform]
+      duration-150
+      data-[open=false]:opacity-0 opacity-100
+      data-[open=false]:scale-95 scale-100
+      data-[open=false]:data-[side=bottom]:-translate-y-2
+      data-[open=false]:data-[side=top]:translate-y-2
+      data-[open=false]:data-[side=left]:translate-x-2
+      data-[open=false]:data-[side=right]:-translate-x-2
     CLASSES
     def content(**content_attributes, &)
       final_attributes = merge_attributes(
         content_attributes,
         role: "menu",
-        hidden: true,
         class: CONTENT_CLASSES,
         aria: { labelledby: @labelledby },
-        data: { dropdown_target: "content" },
+        data: { open: false, dropdown_target: "content" },
       )
 
       tag.div(id: @controls, **final_attributes, &)
@@ -81,14 +88,14 @@ module LycanUi
     end
 
     SUBMENU_TRIGGER_ACTIONS = <<~ACTIONS.squish
-      mouseenter->dropdown#focusItem mouseleave->dropdown#focusTrigger
-      mouseenter->dropdown#openSubmenu keydown.right->dropdown#openSubmenu
-      keydown.space->dropdown#openSubmenu keydown.enter->dropdown#openSubmenu
+      pointerenter->dropdown#focusItem pointerleave->dropdown#focusTrigger
+      pointerenter->dropdown#openSubmenu keydown.right->dropdown#openSubmenu
+      dropdown#openSubmenu
     ACTIONS
     def submenu_trigger(name = nil, **attributes, &block)
       final_attributes = merge_attributes(
         attributes,
-        { class: "aria-expanded:bg-accent aria-expanded:text-on-accent"},
+        { class: "aria-expanded:bg-accent aria-expanded:text-on-accent" },
         class: ITEM_CLASSES,
         tabindex: "-1",
         role: "menuitem",
@@ -101,23 +108,24 @@ module LycanUi
           dropdown_target: "item",
           action: SUBMENU_TRIGGER_ACTIONS,
           dropdown_submenu_param: @current_submenu_id,
-          dropdown_placement_param: "right-start"
+          dropdown_placement_param: "right-start",
+          submenu: @current_submenu_id,
         },
       )
 
-      tag.div(**final_attributes) { determine_content(name, &block) }
+      tag.button(**final_attributes) { determine_content(name, &block) }
     end
 
     def submenu_content(**content_attributes, &)
       final_attributes = merge_attributes(
         content_attributes,
         role: "menu",
-        hidden: true,
         class: CONTENT_CLASSES,
         data: {
           dropdown_target: "submenu",
           action: "keydown->dropdown#submenuHandleKeydown",
-          dropdown_submenu_param: @current_submenu_id
+          dropdown_submenu_param: @current_submenu_id,
+          open: false,
         },
       )
 
@@ -134,6 +142,7 @@ module LycanUi
 
       html_options ||= {}
       disabled = html_options.delete(:disabled)
+      close = html_options.delete(:close)
 
       html_options = merge_attributes(
         html_options,
@@ -143,17 +152,18 @@ module LycanUi
         aria: { disabled: },
       )
 
+      close_action = close ? "dropdown#close" : ""
       html_options = if @current_submenu_id.present?
        merge_attributes(html_options, data: {
-          dropdown_target: "submenuItem",
-          action: "dropdown#close mouseenter->dropdown#focusItem mouseleave->dropdown#focusSubmenuTrigger",
-          dropdown_submenu_param: @current_submenu_id,
-          submenu: @current_submenu_id
+         dropdown_target: "submenuItem",
+         action: "pointerenter->dropdown#focusItem pointerleave->dropdown#focusSubmenuTrigger #{close_action}",
+         dropdown_submenu_param: @current_submenu_id,
+         submenu: @current_submenu_id,
        })
       else
         merge_attributes(html_options, data: {
           dropdown_target: "item",
-          action: "dropdown#close mouseenter->dropdown#focusItem mouseleave->dropdown#focusTrigger",
+          action: "pointerenter->dropdown#focusItem pointerleave->dropdown#focusTrigger #{close_action}",
         })
       end
 
@@ -169,6 +179,7 @@ module LycanUi
       html_options ||= {}
 
       disabled = html_options.delete(:disabled)
+      close = html_options.delete(:close)
 
       html_options = merge_attributes(
         html_options,
@@ -176,11 +187,22 @@ module LycanUi
         class: ITEM_CLASSES,
         tabindex: "-1",
         disabled:,
-        data: {
-          dropdown_target: "item",
-          action: "dropdown#close mouseenter->dropdown#focusItem mouseleave->dropdown#focusTrigger",
-        },
       )
+
+      close_action = close ? "dropdown#close" : ""
+      html_options = if @current_submenu_id.present?
+       merge_attributes(html_options, data: {
+         dropdown_target: "submenuItem",
+         action: "pointerenter->dropdown#focusItem pointerleave->dropdown#focusSubmenuTrigger #{close_action}",
+         dropdown_submenu_param: @current_submenu_id,
+         submenu: @current_submenu_id,
+       })
+      else
+        merge_attributes(html_options, data: {
+          dropdown_target: "item",
+          action: "pointerenter->dropdown#focusItem pointerleave->dropdown#focusTrigger #{close_action}",
+        })
+      end
 
       if block_given?
         button_to(options, html_options, &block)
