@@ -1,0 +1,33 @@
+<%= ui.popover do |popover| %>
+  <%= popover.trigger 'Trigger' %>
+
+  <%= popover.content do %>
+    <div class="flex flex-col gap-2.5">
+      <p class="mb-2 font-medium">Dimensions</p>
+      <fieldset class="flex items-center gap-5">
+        <%= ui.label "width", nil, class: "w-[75px] text-sm" do %>
+          Width
+        <% end %>
+        <%= ui.input "width", nil, type: "number", placeholder: "Width", class: 'h-8' %>
+      </fieldset>
+      <fieldset class="flex items-center gap-5">
+        <%= ui.label "height", nil, class: "w-[75px] text-sm" do %>
+          Height
+        <% end %>
+        <%= ui.input "height", nil, type: "number", placeholder: "Height", class: 'h-8' %>
+      </fieldset>
+      <fieldset class="flex items-center gap-5">
+        <%= ui.label "depth", nil, class: "w-[75px] text-sm" do %>
+          Depth
+        <% end %>
+        <%= ui.input "depth", nil, type: "number", placeholder: "Depth", class: 'h-8' %>
+      </fieldset>
+      <fieldset class="flex items-center gap-5">
+        <%= ui.label "weight", nil, class: "w-[75px] text-sm" do %>
+          Weight
+        <% end %>
+        <%= ui.input "weight", nil, type: "number", placeholder: "Weight", class: 'h-8' %>
+      </fieldset>
+    </div>
+  <% end %>
+<% end %>
