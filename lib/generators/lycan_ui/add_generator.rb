@@ -7,7 +7,8 @@ module LycanUi
     class AddGenerator < Rails::Generators::NamedBase
       source_root File.expand_path("templates", __dir__)
 
-      REQUIRES_FLOATING = [ "dropdown" ].freeze
+      REQUIRES_FLOATING = [ "dropdown", "popover" ].freeze
+      REQUIRES_FOCUS_TRAP = [ "popover" ].freeze
 
       alias_method :component, :file_name
 
@@ -54,11 +55,23 @@ module LycanUi
         end
       end
 
+      def install_focus_trap
+        return unless focus_trapping?
+
+        js_command = if importmaps?
+          "bin/importmap pin focus-trap"
+        else
+          "yarn add focus-trap"
+        end
+
+        run(js_command)
+      end
+
       def install_floating
         return unless floating?
 
         js_command = if importmaps?
-          "bin/importmaps pin @floating-ui/dom"
+          "bin/importmap pin @floating-ui/dom"
         else
           "yarn add @floating-ui/dom"
         end
@@ -67,6 +80,10 @@ module LycanUi
       end
 
       private
+
+      def focus_trapping?
+        REQUIRES_FOCUS_TRAP.include?(component)
+      end
 
       def floating?
         REQUIRES_FLOATING.include?(component)
