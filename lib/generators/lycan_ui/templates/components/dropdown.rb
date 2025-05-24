@@ -37,20 +37,22 @@ module LycanUi
     CONTENT_CLASSES = <<~CLASSES.squish
       absolute z-50 min-w-32 overflow-y-auto overflow-x-hidden shadow-md
       bg-background text-on-background border border-surface p-1 rounded-md
-      animate-in fade-in-0 zoom-in-95
-      data-[side=bottom]:slide-in-from-top-2
-      data-[side=top]:slide-in-from-bottom-2
-      data-[side=left]:slide-in-from-right-2
-      data-[side=right]:slide-in-from-left-2
+      data-[open=false]:invisible transition-[opacity_transform] will-change-[opacity,transform]
+      duration-150
+      data-[open=false]:opacity-0 opacity-100
+      data-[open=false]:scale-95 scale-100
+      data-[open=false]:data-[side=bottom]:-translate-y-2
+      data-[open=false]:data-[side=top]:translate-y-2
+      data-[open=false]:data-[side=left]:translate-x-2
+      data-[open=false]:data-[side=right]:-translate-x-2
     CLASSES
     def content(**content_attributes, &)
       final_attributes = merge_attributes(
         content_attributes,
         role: "menu",
-        hidden: true,
         class: CONTENT_CLASSES,
         aria: { labelledby: @labelledby },
-        data: { dropdown_target: "content" },
+        data: { open: false, dropdown_target: "content" },
       )
 
       tag.div(id: @controls, **final_attributes, &)
@@ -86,8 +88,8 @@ module LycanUi
     end
 
     SUBMENU_TRIGGER_ACTIONS = <<~ACTIONS.squish
-      mouseenter->dropdown#focusItem mouseleave->dropdown#focusTrigger
-      mouseenter->dropdown#openSubmenu keydown.right->dropdown#openSubmenu
+      pointerenter->dropdown#focusItem pointerleave->dropdown#focusTrigger
+      pointerenter->dropdown#openSubmenu keydown.right->dropdown#openSubmenu
       keydown.space->dropdown#openSubmenu keydown.enter->dropdown#openSubmenu
     ACTIONS
     def submenu_trigger(name = nil, **attributes, &block)
@@ -118,12 +120,12 @@ module LycanUi
       final_attributes = merge_attributes(
         content_attributes,
         role: "menu",
-        hidden: true,
         class: CONTENT_CLASSES,
         data: {
           dropdown_target: "submenu",
           action: "keydown->dropdown#submenuHandleKeydown",
           dropdown_submenu_param: @current_submenu_id,
+          open: false,
         },
       )
 
