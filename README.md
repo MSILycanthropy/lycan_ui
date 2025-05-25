@@ -8,7 +8,7 @@ Add the gem to the `development` group in your `Gemfile`,
 
 ```ruby
 group :development do
-  gem 'lycan_ui', github: 'MSILycanthropy/lycan_ui'
+  gem 'lycan_ui', github: 'MSILycanthropy/lycan_ui', require: false
 end
 ```
 

@@ -1,0 +1,29 @@
+<%# app/views/layouts/application.html.erb %>
+<%= turbo_frame_tag :dialog %>
+
+<%# Wherever you want to trigger your dialog, don't forget your aria attributes :) %>
+<%= ui.button as_child: true, aria: { controls: 'cool-remote-form' } do |attributes| %>
+  <%= link_to 'Open', '/edit_dialog_example', data: { turbo_frame: :dialog }, **attributes %>
+<% end %>
+
+<%# app/views/profiles/edit.html.erb %>
+<%= ui.dialog remote: true, id: 'cool-remote-form' do |dialog| %>
+  <%# Note: we don't use a `dialog.trigger` here since the `link_to` is the trigger. %>
+  <%= dialog.content class: 'sm:max-w-[425px]' do %>
+    <%= dialog.header do %>
+      <%= dialog.title 'Edit Remote Profile' %>
+      <%= dialog.description "Make changes to your remote profile here. Click save when you're done." %>
+    <% end %>
+
+    <%= dialog.form url: '/' do |form| %>
+      <fieldset>
+        <%= form.label :name, 'Favorite Show' %>
+        <%= form.text_field :name, placeholder: 'Type here...' %>
+      </fieldset>
+
+      <%= dialog.footer do %>
+        <%= form.button 'Save Changes' %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

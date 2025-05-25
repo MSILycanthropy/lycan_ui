@@ -23,12 +23,40 @@ component: dialog
 
       <%= render 'partials/example', path: "dialog/form", one: true, wrapper_classes: 'flex justify-center' %>
     </div>
+
+    <div>
+      <h4 id="remote" class="text-lg scroll-m-20 pb-1">
+        Remote Dialogs
+      </h4>
+      <p>
+        A common pattern with Turbo is server rendering Dialogs into a Turbo Frame. We support this out of the box
+        by passing <%= code('remote: true') %> to <%= code('ui.dialog') %>.
+      </p>
+      <p class="mt-3">
+        This does two of things:
+      </p>
+      <ul class="list-decimal ml-5">
+        <li>Wraps the dialog in a Turbo Frame with name <%= code('dialog') %></li>
+        <li>Disallows the use of the <%= code('trigger') %> slot</li>
+      </ul>
+
+      <% content_for(:example_render_override, flush: true) do %>
+        <%= ui.button as_child: true, aria: { controls: 'cool-remote-form' } do |attributes| %>
+          <%= link_to 'Open', '/edit_dialog_example', data: { turbo_frame: :dialog }, **attributes %>
+        <% end %>
+      <% end %>
+
+      <%= render 'partials/example', path: "dialog/remote", one: true, wrapper_classes: 'flex justify-center'%>
+    </div>
   </div>
 <% end %>
 
 <% content_for :usage_links do %>
   <li>
     <a class="text-sm underline-offset-4 hover:underline decoration-accent transition-all" href="#form">Usage with forms</a>
+  </li>
+  <li>
+    <a class="text-sm underline-offset-4 hover:underline decoration-accent transition-all" href="#remote">Usage with forms</a>
   </li>
 <% end %>
 

@@ -22,6 +22,18 @@
       </div>
     <% end %>
 
+    <% if content_for?(:what) %>
+      <div class="mt-6">
+        <h2 class="text-xl scroll-m-20" id="what">
+          So.. what'd that do?
+        </h2>
+
+        <hr class="mt-1 mb-4 border-on-background/25">
+
+        <%= yield :what %>
+      </div>
+    <% end %>
+
     <% if content_for?(:features) %>
       <div class="mt-6">
         <h2 class="text-xl scroll-m-20" id="features">

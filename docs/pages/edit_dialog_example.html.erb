@@ -1,0 +1,19 @@
+<%= ui.dialog remote: true, id: 'cool-remote-form' do |dialog| %>
+  <%= dialog.content class: 'sm:max-w-[425px]' do %>
+    <%= dialog.header do %>
+      <%= dialog.title 'Edit Remote Profile' %>
+      <%= dialog.description "Make changes to your remote profile here. Click save when you're done." %>
+    <% end %>
+
+    <%= dialog.form url: '/' do |form| %>
+      <fieldset>
+        <%= form.label :name, 'Favorite Show' %>
+        <%= form.text_field :name, placeholder: 'Type here...' %>
+      </fieldset>
+
+      <%= dialog.footer do %>
+        <%= form.button 'Save Changes' %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

@@ -10,7 +10,7 @@ title: Installation
       <p>Add the gem to the <%= code('development') %> group in your <%= code('Gemfile') %>,</p>
 
       <pre class="bg-zinc-900/25 border border-dashed border-surface rounded-lg flex shadow-lg p-6">
-        <code>group :development do <br />  gem 'lycan_ui', github: "MSILycanthropy/lycan_ui"<br />end</code>
+        <code>group :development do <br />  gem 'lycan_ui', github: 'MSILycanthropy/lycan_ui', require: false<br />end</code>
       </pre>
 
       <p class="mt-4">Run <%= code('bundle install') %> and then setup with,</p>
@@ -22,6 +22,37 @@ title: Installation
       <p class="mt-4">Follow the prompts in your terminal and then.. you're done!</p>
     </div>
   </div>
+<% end %>
+
+<% content_for :what do %>
+  <p class="mt-3">Installing does a number of things</p>
+
+  <ul class="list-decimal ml-8 space-y-2 mt-2">
+    <li>
+      Installs the icon package Lycan UI uses -
+      <%= external_link_to "https://github.com/heyvito/lucide-rails" do %>
+        <%= code('lucide-rails') %>
+      <% end %>
+    </li>
+    <li>
+      Installs the class merging utility Lycan UI uses -
+      <%= external_link_to "https://github.com/gjtorikian/tailwind_merge" do %>
+        <%= code('tailwind_merge') %>
+      <% end %>
+    </li>
+    <li>
+      Sets up your tailwind config
+    </li>
+    <li>
+      Copies over the <%= code('ui') %> helper
+    </li>
+    <li>
+      Installs the Ruby files for any components you picked during setup into the <%= code('app/components') %> directory
+    </li>
+    <li>
+      Installs the Javascript files for any components you picked during setup into the <%= code('app/javascript/controllers') %> directory
+    </li>
+  </ul>
 <% end %>
 
 <%= render 'partials/doc' %>
