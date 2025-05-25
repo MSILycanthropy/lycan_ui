@@ -2,14 +2,21 @@
 
 module LycanUi
   class Dialog < Component
-    def initialize(open: false, **attributes)
-      @open = open
+    def initialize(open: false, remote: false, **attributes)
+      @frame = if remote.present?
+        if remote.is_a?(String)
+          remote
+        else
+          "dialog"
+        end
+      end
 
       super(
         attributes,
         data: {
           controller: "dialog",
-          dialog_topen_value: open,
+          dialog_open_value: @frame.present? ? true : open,
+          dialog_frame_value: @frame,
         }
       )
     end
@@ -18,14 +25,20 @@ module LycanUi
       @labelledby = lycan_ui_id
       @controls = lycan_ui_id
 
-      tag.div(**attributes) { yield self }
+      content = tag.div(**attributes) { yield self }
+
+      return turbo_frame_tag(@frame) { content } if @frame.present?
+
+      content
     end
 
     def trigger(content = nil, **trigger_attributes, &block)
+      raise ArgumentError, "Remote dialog cannot have a trigger" if @frame.present?
+
       final_attributes = merge_attributes(
         trigger_attributes,
         data: { dialog_target: "trigger", action: "dialog#open" },
-        aria: { has_popup: true, expanded: false, controls: @controls },
+        aria: { controls: @controls },
       )
 
       render(Button.new(content, **final_attributes), &block)
@@ -48,7 +61,6 @@ module LycanUi
       final_attributes = merge_attributes(
         content_attributes,
         class: CONTENT_CLASSES,
-        open: @open,
         aria: { labelledby: @labelledby },
         data: { dialog_target: "content" },
       )
@@ -69,7 +81,7 @@ module LycanUi
         data: { action: "turbo:submit-end->dialog#closeOnFormSubmit" },
       )
 
-      if defined?(:lycan_ui_form_with)
+      if respond_to?(:lycan_ui_form_with)
         lycan_ui_form_with(**final_attributes, &)
       else
         form_with(**final_attributes, &)

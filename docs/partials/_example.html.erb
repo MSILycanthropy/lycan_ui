@@ -7,7 +7,11 @@
   <div class="rounded-lg shadow-lg bg-zinc-900/25 border border-dashed border-surface overflow-auto" role="tabpanel">
     <div class="h-96 flex justify-center items-center hidden:hidden" data-example-target="preview">
       <div class="<%= local_assigns[:wrapper_classes] %>">
-        <%= render "examples/#{local_assigns[:path] || current_page.data['component']}" %>
+        <% if content_for?(:example_render_override) %>
+          <%= yield :example_render_override %>
+        <% else %>
+          <%= render "examples/#{local_assigns[:path] || current_page.data['component']}" %>
+        <% end %>
       </div>
     </div>
 

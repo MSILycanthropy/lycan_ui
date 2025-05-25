@@ -36,10 +36,6 @@ pre, code {
   white-space: pre-wrap;
 }
 
-html:has(.drawer[open]:modal) {
-  overflow: hidden;
-}
-
 .drawer {
   max-width: 100vw;
 }

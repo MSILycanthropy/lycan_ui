@@ -18,6 +18,8 @@
 
   <% children = site.dig('docs').children %>
   <% children.insert(5, "calendar") %>
+  <% children.insert(7, "date field") %>
+  <% children.push("toaster") %>
   <% children.each do |node| %>
     <% if node.is_a?(String) %>
       <div class="opacity-65 hover:cursor-not-allowed">
