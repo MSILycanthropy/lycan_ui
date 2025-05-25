@@ -35,7 +35,7 @@ module LycanUi
       duration-150
       not-open:opacity-0 opacity-100
       not-open:scale-95 scale-100
-      not-open:data-[side=bottom]:-translate-y-2
+      not-open:data-[side=bottom]:-translate-y-2 translate-y-0
       not-open:data-[side=top]:translate-y-2
       not-open:data-[side=left]:translate-x-2
       not-open:data-[side=right]:-translate-x-2

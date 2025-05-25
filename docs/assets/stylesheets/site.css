@@ -36,14 +36,14 @@ pre, code {
   white-space: pre-wrap;
 }
 
-html:has(dialog[open]:modal) {
+html:has(.drawer[open]:modal) {
   overflow: hidden;
 }
 
-dialog {
+.drawer {
   max-width: 100vw;
 }
 
-dialog::backdrop {
+.drawer::backdrop {
   background-color: rgba(0, 0, 0, 0.65);
 }
