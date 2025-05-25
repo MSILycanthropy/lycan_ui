@@ -89,7 +89,7 @@ module LycanUi
 
     SUBMENU_TRIGGER_ACTIONS = <<~ACTIONS.squish
       pointerenter->dropdown#focusItem pointerleave->dropdown#focusTrigger
-      pointerenter->dropdown#openSubmenu keydown.right->dropdown#openSubmenu
+      pointerenter->dropdown#openSubmenu keydown.right->dropdown#openSubmenu:prevent
       dropdown#openSubmenu
     ACTIONS
     def submenu_trigger(name = nil, **attributes, &block)
