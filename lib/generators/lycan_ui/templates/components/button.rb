@@ -6,8 +6,8 @@ module LycanUi
 
     DEFAULT_CLASSES = <<~CLASSES.squish
       cursor-pointer inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium
-      transition-colors disabled:pointer-events-none disabled:opacity-50
-      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-surface
+      transition-colors disabled:pointer-events-none disabled:opacity-50 ring-offset-background
+      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2
     CLASSES
 
     SIZE_CLASSES = {
@@ -19,17 +19,17 @@ module LycanUi
 
     VARIANT_CLASSES = {
       primary:
-        "bg-primary text-on-primary hover:bg-primary/80",
+        "bg-primary text-on-primary hover:bg-primary/80 focus-visible:ring-primary",
       secondary:
-        "bg-secondary text-on-secondary hover:bg-secondary/80",
+        "bg-secondary text-on-secondary hover:bg-secondary/80 focus-visible:ring-secondary",
       danger:
-        "bg-danger text-on-danger hover:bg-danger/80",
+        "bg-danger text-on-danger hover:bg-danger/80 focus-visible:ring-danger",
       outline:
-        "border border-primary hover:bg-primary hover:text-on-primary",
+        "border border-primary hover:bg-primary hover:text-on-primary focus-visible:ring-primary",
       ghost:
-        "hover:bg-secondary/30 hover:text-on-secondary",
+        "hover:bg-secondary/30 hover:text-on-secondary focus-visible:ring-secondary/30",
       link:
-        "underline-offset-4 decoration-accent hover:underline",
+        "underline-offset-4 decoration-accent hover:underline focus-visible:ring-accent",
       none: nil,
     }.freeze
 

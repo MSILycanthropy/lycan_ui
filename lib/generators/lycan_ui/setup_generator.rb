@@ -13,6 +13,12 @@ module LycanUi
         Configuration.setup
       end
 
+      def install_lucide_rails
+        return if lucide_rails_installed?
+
+        run("bundle add lucide-rails")
+      end
+
       def install_tailwind_merge
         return unless tailwind?
         return if tailwind_merge_installed?
@@ -49,6 +55,10 @@ module LycanUi
       end
 
       private
+
+      def lucide_rails_installed?
+        Gem.loaded_specs.key?("lucide-rails")
+      end
 
       def tailwind_merge_installed?
         Gem.loaded_specs.key?("tailwind_merge")

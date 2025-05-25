@@ -55,7 +55,7 @@
       </aside>
 
       <div class="sm:hidden">
-        <dialog class="h-2/3 w-screen top-auto bottom-0 starting:-bottom-[100%] [&:not([open])]:-bottom-[100%] transition-discrete motion-safe:transition-all duration-500 ease-in-out fixed z-50 m-0 bg-surface shadow-2xl"
+        <dialog class="drawer h-2/3 w-screen top-auto bottom-0 not-open:backdrop:hidden starting:-bottom-[100%] [&:not([open])]:-bottom-[100%] transition-discrete motion-safe:transition-all duration-350 ease-in-out fixed z-50 m-0 bg-surface shadow-2xl"
                 data-action="close->drawer#showTrigger click->drawer#close"
                 data-drawer-target="dialog">
           <div class="px-4 mt-2 space-y-4" data-action="click->drawer#nothing:stop">

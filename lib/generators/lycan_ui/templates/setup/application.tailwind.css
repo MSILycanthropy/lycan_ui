@@ -83,4 +83,8 @@
     --internal-danger: var(--color-rose-800);
     --internal-on-danger: white;
   }
+
+  button {
+    cursor: pointer;
+  }
 }

@@ -41,7 +41,7 @@ module LycanUi
       duration-150
       data-[open=false]:opacity-0 opacity-100
       data-[open=false]:scale-95 scale-100
-      data-[open=false]:data-[side=bottom]:-translate-y-2
+      data-[open=false]:data-[side=bottom]:-translate-y-2 translate-y-0
       data-[open=false]:data-[side=top]:translate-y-2
       data-[open=false]:data-[side=left]:translate-x-2
       data-[open=false]:data-[side=right]:-translate-x-2
@@ -89,7 +89,7 @@ module LycanUi
 
     SUBMENU_TRIGGER_ACTIONS = <<~ACTIONS.squish
       pointerenter->dropdown#focusItem pointerleave->dropdown#focusTrigger
-      pointerenter->dropdown#openSubmenu keydown.right->dropdown#openSubmenu
+      pointerenter->dropdown#openSubmenu keydown.right->dropdown#openSubmenu:prevent
       dropdown#openSubmenu
     ACTIONS
     def submenu_trigger(name = nil, **attributes, &block)
