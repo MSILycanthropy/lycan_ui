@@ -1,0 +1,26 @@
+<%= ui.dialog do |dialog| %>
+  <%= dialog.trigger 'Open' %>
+
+  <%= dialog.content class: 'sm:max-w-[425px]' do %>
+    <%= dialog.header do %>
+      <%= dialog.title 'Edit Profile' %>
+      <%= dialog.description "Make changes to your profile here. Click save when you're done." %>
+    <% end %>
+
+    <%= dialog.form url: '/' do |form| %>
+      <fieldset>
+        <%= form.label :name, 'Name' %>
+        <%= form.text_field :name, placeholder: 'Type here...' %>
+      </fieldset>
+
+      <fieldset>
+        <%= form.label :username, 'Username' %>
+        <%= form.text_field :username, placeholder: 'Type here...' %>
+      </fieldset>
+
+      <%= dialog.footer do %>
+        <%= form.button 'Save Changes' %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

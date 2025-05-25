@@ -12,4 +12,24 @@ component: dialog
   </div>
 <% end %>
 
+<% content_for :usage do %>
+  <div class="space-y-3">
+    <div>
+      <h4 id="forms" class="text-lg scroll-m-20 pb-1">
+        Usage with forms
+      </h4>
+      <p>To work with forms within your dialog, simply use the <%= code('form') %> method.</p>
+      <p class="text-sm text-on-background/75">Note: This demo is a bit odd, since the form action will always fail.</p>
+
+      <%= render 'partials/example', path: "dialog/form", one: true, wrapper_classes: 'flex justify-center' %>
+    </div>
+  </div>
+<% end %>
+
+<% content_for :usage_links do %>
+  <li>
+    <a class="text-sm underline-offset-4 hover:underline decoration-accent transition-all" href="#form">Usage with forms</a>
+  </li>
+<% end %>
+
 <%= render 'partials/doc' %>

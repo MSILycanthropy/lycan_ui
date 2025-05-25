@@ -33,9 +33,7 @@ module PageHelper
   end
 
   def helper_code(helper, no_helper)
-    classes = 'text-sm bg-surface px-1 rounded shadow-md'
-
-    tag.code(class: classes) { helper }
+    code(helper)
   end
 
   def read_erb(path)

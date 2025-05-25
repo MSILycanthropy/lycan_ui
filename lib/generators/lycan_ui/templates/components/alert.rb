@@ -13,7 +13,7 @@ module LycanUi
     }.freeze
 
     def initialize(variant: :primary, **attributes)
-      super(attributes, class: [ DEFAULT_CLASSES, VARIANT_CLASSES[variant] ])
+      super(attributes, role: "alert", class: [ DEFAULT_CLASSES, VARIANT_CLASSES[variant] ])
     end
 
     def template(&)

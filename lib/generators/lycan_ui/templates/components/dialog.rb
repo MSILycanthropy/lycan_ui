@@ -62,6 +62,20 @@ module LycanUi
       end
     end
 
+    def form(**form_attributes, &)
+      final_attributes = merge_attributes(
+        form_attributes,
+        class: "contents",
+        data: { action: "turbo:submit-end->dialog#closeOnFormSubmit" },
+      )
+
+      if defined?(:lycan_ui_form_with)
+        lycan_ui_form_with(**final_attributes, &)
+      else
+        form_with(**final_attributes, &)
+      end
+    end
+
     def header(**header_attributes, &)
       final_attributes = merge_attributes(
         header_attributes,
