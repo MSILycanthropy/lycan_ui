@@ -6,7 +6,7 @@ module LycanUi
 
     CLASSES = <<~CLASSES.squish
       appearance-none bg-background text-on-background rounded-md border border-surface
-      px-3 py-2 pr-10 w-full focus:outline-none ring-primary ring-offset-2
+      px-3 py-2 pr-10 w-full focus-visible:outline-none ring-primary ring-offset-2
       ring-offset-background focus-visible:ring-2 peer/select cursor-pointer
       scheme-light
     CLASSES
