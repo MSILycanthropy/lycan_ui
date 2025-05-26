@@ -2,7 +2,7 @@
 
 VERSION=$1
 
-printf "module LycanUi\n  VERSION = \"$VERSION\"\nend\n" > ./lib/lycan_ui/version.rb
+printf "# frozen_string_literal: true\n\nmodule LycanUi\n  VERSION = \"$VERSION\"\nend\n" > ./lib/lycan_ui/version.rb
 bundle
 git add Gemfile.lock lib/lycan_ui/version.rb
 git commit -m "Bump for $VERSION"
