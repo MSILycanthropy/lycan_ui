@@ -12,4 +12,30 @@ component: popover
   </div>
 <% end %>
 
+<% content_for :features do %>
+  <ul class="space-y-1">
+    <li class="flex gap-3 items-center">
+      <%= lucide_icon('check-check', class: 'text-green-600') %>
+
+      <p>
+        Customizable positioning
+      </p>
+    </li>
+    <li class="flex gap-3 items-center">
+      <%= lucide_icon('check-check', class: 'text-green-600') %>
+
+      <p>
+        Fully managed focus
+      </p>
+    </li>
+    <li class="flex gap-3 items-center">
+      <%= lucide_icon('check-check', class: 'text-green-600') %>
+
+      <p>
+        Full keyboard navigation
+      </p>
+    </li>
+  </ul>
+<% end %>
+
 <%= render 'partials/doc' %>
