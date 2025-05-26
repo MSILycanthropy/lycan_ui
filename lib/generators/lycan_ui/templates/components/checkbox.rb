@@ -5,7 +5,7 @@ module LycanUi
     attr_reader :object_name, :method, :checked_value, :unchecked_value
 
     DEFAULT_CLASSES = <<~CLASSES.squish
-      appearance-none size-4 border border-accent rounded transition-all
+      appearance-none size-4 border border-accent rounded  motion-safe:transition-all
       ease-[ease] relative cursor-pointer
       after:top-[45%] after:left-1/2 after:w-1.5 after:h-2.5 after:opacity-0
       checked:bg-accent checked:border-transparent checked:scale-110 after:absolute

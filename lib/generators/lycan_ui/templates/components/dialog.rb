@@ -47,7 +47,8 @@ module LycanUi
     CONTENT_CLASSES = <<~CLASSES.squish
       fixed left-1/2 top-1/2 z-50 open:grid max-w-lg -translate-x-1/2 -translate-y-1/2
       gap-4 border border-surface bg-background p-6 shadow-lg rounded-lg
-      backdrop:bg-black/65 not-open:backdrop:hidden transition-[opacity_transform_display] transition-discrete
+      backdrop:bg-black/65 not-open:backdrop:hidden
+      motion-safe:transition-[opacity_transform_display] transition-discrete
       starting:opacity-0 not-open:opacity-0 opacity-100
       starting:scale-95 not-open:scale-95 scale-100
       starting:-translate-y-[48%] not-open:-translate-y-[48%]

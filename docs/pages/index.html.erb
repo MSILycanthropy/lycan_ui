@@ -4,42 +4,45 @@ title: Introduction
 
 <% content_for :description do %>
   <p class="text-xl font-medium">
-    An open-source collection of accessible components for any Rails project using
-
-    <%= external_link_to "https://guides.rubyonrails.org/generators.html" do %>
-      generators
-    <% end %> and
-
-    <%= external_link_to "https://tailwindcss.com/" do %>
-      Tailwind CSS
-    <% end %>.
+    An open-source collection of accessible components for any Rails project.
   </p>
 
   <p class="mt-6">
-    Lycan UI empowers developers to create accessible UIs that embody their unique style while staying true to the Rails Way.
-    With a strong focus on accessibility, seamless Hotwire integration, and an overall delightful developer experience rooted in Rails conventions,
-    Lycan UI strives to be the de-facto headless UI library for Rails applications.
+    With Lycan UI, we strive to create the definitive way for Rails developers to build wonderful interfaces.
+    Whether that's through using our full ecosystem via the gem, or just copy pasting from our GitHub. It's all
+    open and up for grabs. Use what you need and leave behind what you don't.
   </p>
 
   <p class="mt-6">
-    If you notice any problems or bugs, you are encouraged to open an issue
+    We've build Lycan UI with these core principles
+  </p>
+
+  <ul class="list-decimal ml-8 space-y-2 mt-2">
+    <li>All the components are yours, forever, for free.</li>
+    <li>Stick to the Rails way as much as possible, keep it simple.</li>
+    <li>Accessibility is a core requirement, not an afterthought.</li>
+    <li>Provide reasonable defaults, but allow escape hatches where necessary.</li>
+  </ul>
+
+  <p class="mt-6">
+    If you encounter any problems or bugs, you are encouraged to open an issue on
 
     <%= external_link_to repo_url do %>
       Github
-    <% end %>, so that you or a community member can fix them.
+    <% end %>.
   </p>
 
   <%= ui.alert(variant: :danger, class: 'mt-6 [&>svg]:left-3 [&>svg]:top-3') do |alert| %>
     <%= lucide_icon('construction', class: 'inline mr-2') %>
 
     <%= alert.title do %>
-      LycanUI is still heavily under development.
+      Lycan UI is still in early development
     <% end %>
 
     <%= alert.description do %>
       <div class="flex items-center gap-1">
-        Many components may be WIP, broken or completely unimplemented.
-        Expect there to be breaking changes. And lots of new things.
+        Many components may be unfinished, broken or completely unimplemented.
+        Expect there to be breaking changes
 
         <%= lucide_icon('rocket', class: 'inline size-4') %>
       </div>
@@ -52,42 +55,42 @@ title: Introduction
     <div>
       <h3 class="text-lg scroll-m-20 pb-1">Generators</h3>
       <p>
-        Unlike traditional component libraries,
-        Lycan UI leverages Rails generators to streamline your development workflow while ensuring you maintain complete ownership of your code.
-        Rather than hiding implementation details behind abstractions, we scaffold accessible,
-        customizable components directly into your application.
-        No black boxes, no vendor lock-in. Just clean, understandable code that's entirely yours.
+        Most component libraries generally have you install some gem or npm package that hides away all the code from you.
+        Making it incredibly frustrating to customize them to fit the ever-changing design needs of your application.
+        We sidestep by utilizing
+        <%= external_link_to "https://guides.rubyonrails.org/generators.html" do %>
+          Rails generators
+        <% end %>. So, all of the code is effectively copy pasted right into your application.
       </p>
+      <p class="mt-2">No more hacky CSS overrides, no more weird JS workarounds.</p>
     </div>
 
     <div>
       <h3 class="text-lg scroll-m-20 pb-1">The Rails Way</h3>
       <p>
-        Lycan UI embraces the Rails Way by prioritizing convention over configuration, server-rendered HTML, and progressive enhancement.
-        Built with Hotwire at its core, our components leverage Turbo and Stimulus to deliver rich,
-        interactive experiences.
+        Everything that gets generated tries it's best to stick to plain ol' Rails. Our components are just Ruby objects.
+        We don't use any extra component systems like Phlex or View Component. It's all built on top of Rails helpers,
+        with a sprinkle of Stimulus and a dash of Turbo to pull everything together.
       </p>
     </div>
 
     <div>
       <h3 class="text-lg scroll-m-20 pb-1">Accessible By Design</h3>
       <p>
-        Accessibility is front and center, ensuring your UI is inclusive and user-friendly from day one.
         We follow
         <%= external_link_to "https://www.w3.org/WAI/ARIA/apg/patterns/" do %>
           WAI-ARIA design patterns
         <% end %>
-        and handle all the annoying parts like aria attributes, role management, focus handling, and keyboard navigation.
-        Every component is built with accessibility as a core requirement,
-        not an afterthought.
+        and handle all the annoying parts like aria attributes, role management, focus, and keyboard navigation.
       </p>
     </div>
 
     <div>
       <h3 class="text-lg scroll-m-20 pb-1">Reasonable Defaults</h3>
       <p>
-        Lycan UI comes with a curated collection of components that feature carefully chosen, reasonable defaults.
-        They are designed to look professional on their own and work harmoniously together as a cohesive design system.
+        Lycan UI is built with the philosophy of Reasonable Defaults with easy escape hatches.
+        We've picked some nice defaults for styling and functionality, but it's all (hopefully) quite easy to
+        modify and tweak to your liking.
       </p>
     </div>
   </section>

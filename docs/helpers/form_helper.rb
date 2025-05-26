@@ -80,6 +80,10 @@ module FormHelper
     def textarea(method, options = {})
       @template.ui.textarea(@object_name, method, objectify_options(options))
     end
+
+    def select(method, choices = nil, options = {}, html_options = {})
+      @template.ui.select(@object_name, method, choices, options, html_options)
+    end
   end
 
   def lycan_ui_form_with(*, **, &)
