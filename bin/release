@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+VERSION=$1
+
+printf "module LycanUi\n  VERSION = \"$VERSION\"\nend\n" > ./lib/lycan_ui/version.rb
+bundle
+git add Gemfile.lock lib/lycan_ui/version.rb
+git commit -m "Bump for $VERSION"
+git push
+git tag v$VERSION
+git push --tags
+gem build lycan_ui.gemspec
+gem push "lycan_ui-$VERSION.gem" --host https://rubygems.org
+rm "lycan_ui-$VERSION.gem"
