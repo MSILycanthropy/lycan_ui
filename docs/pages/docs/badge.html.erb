@@ -11,25 +11,6 @@ component: badge
   </div>
 <% end %>
 
-<% content_for :features do %>
-  <ul class="space-y-1">
-    <li class="flex gap-3 items-center">
-      <%= lucide_icon('check-check', class: 'text-green-600') %>
-
-      <p>
-        Lazy loading of avatars with specified fallback
-      </p>
-    </li>
-    <li class="flex gap-3 items-center">
-      <%= lucide_icon('check-check', class: 'text-green-600') %>
-
-      <p>
-        Gracefully falls back if image loading fails
-      </p>
-    </li>
-  </ul>
-<% end %>
-
 <% content_for :usage do %>
   <div class="space-y-3">
     <% [:secondary, :outline, :danger].each do |variant| %>
