@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.authors     = [ "Ethan Kircher" ]
   spec.email       = [ "ethanmichaelk@gmail.com" ]
   spec.homepage    = "https://github.com/MSILycanthropy/lycan_ui"
-  spec.summary     = "View Component based UI framework for Rails."
+  spec.summary     = "Accessible, open source UI components for Rails."
   spec.description = spec.summary
   spec.license     = "MIT"
 
