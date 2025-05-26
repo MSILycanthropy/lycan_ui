@@ -31,8 +31,8 @@ module LycanUi
     CONTENT_CLASSES = <<~CLASSES.squish
       absolute z-50 min-w-32 overflow-y-auto overflow-x-hidden shadow-md
       bg-background text-on-background border border-surface p-4 rounded-md
-      not-open:invisible not-open:block transition-[opacity_transform] will-change-[opacity,transform]
-      duration-150
+      not-open:invisible not-open:block motion-safe:transition-[opacity_transform]
+      will-change-[opacity,transform] duration-150
       not-open:opacity-0 opacity-100
       not-open:scale-95 scale-100
       not-open:data-[side=bottom]:-translate-y-2 translate-y-0

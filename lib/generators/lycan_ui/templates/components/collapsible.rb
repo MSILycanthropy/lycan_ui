@@ -23,7 +23,7 @@ module LycanUi
     end
 
     CONTENT_CLASSES = <<~CLASSES
-      overflow-hidden interpolate-keywords transition-discrete starting:h-0 hidden:h-0 h-auto transition-all duration-300
+      overflow-hidden interpolate-keywords transition-discrete starting:h-0 hidden:h-0 h-auto motion-safe:transition-all duration-300
     CLASSES
     def content(**content_attributes, &)
       final_attributes = merge_attributes(

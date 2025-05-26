@@ -16,7 +16,7 @@ module LycanUi
       @checked_value = checked_value
       @unchecked_value = unchecked_value
 
-      super(options, class: DEFAULT_CLASSES)
+      super(options, role: "switch", class: DEFAULT_CLASSES)
     end
 
     def template

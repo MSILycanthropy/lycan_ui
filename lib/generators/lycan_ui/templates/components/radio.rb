@@ -6,7 +6,7 @@ module LycanUi
 
     DEFAULT_CLASSES = <<~CLASSES.squish
       flex size-4 cursor-pointer appearance-none items-center justify-center
-      rounded-full border-2 border-surface transition-all
+      rounded-full border-2 border-surface motion-safe:transition-all
       before:size-0 before:rounded-full before:bg-accent
       checked:border-accent checked:before:size-2
       motion-safe:before:transition-all
