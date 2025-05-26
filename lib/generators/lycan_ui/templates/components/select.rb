@@ -5,10 +5,12 @@ module LycanUi
     attr_reader :object_name, :method, :choices, :options
 
     CLASSES = <<~CLASSES.squish
-      appearance-none bg-background text-on-background rounded-md border border-surface
+      appearance-none bg-surface text-on-surface rounded-md border border-surface
       px-3 py-2 pr-10 w-full focus-visible:outline-none ring-primary ring-offset-2
       ring-offset-background focus-visible:ring-2 peer/select cursor-pointer
       scheme-light
+
+      [&_option]:bg-background
     CLASSES
     def initialize(object_name, method, choices = nil, options = {}, html_options = {})
       @object_name = object_name
@@ -20,8 +22,8 @@ module LycanUi
     end
 
     ICON_CLASSES = <<~CLASSES.squish
-      size-4 self-center place-self-end mr-2 text-on-background
-      pointer-events-none group-hover/select:text-on-background
+      size-4 self-center place-self-end mr-2 text-on-surface/80
+      pointer-events-none group-hover/select:text-on-surface
       peer-open/select:rotate-180 motion-safe:transition-transform
     CLASSES
     def render_in(view_context, &)
