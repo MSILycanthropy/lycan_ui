@@ -7,7 +7,7 @@ component: popover
     Displays rich content, triggered by a button.
   </p>
 
-  <div class="pt-6">
+  <div class="pt-4">
     <%= render 'partials/example', wrapper_classes: 'flex justify-center' %>
   </div>
 <% end %>
@@ -36,6 +36,16 @@ component: popover
       </p>
     </li>
   </ul>
+<% end %>
+
+<% content_for :accessibility do %>
+  <p>
+    Adheres to the
+
+    <%= external_link_to 'https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/' do %>
+      <span>Dialog WAI-ARIA design pattern</span>
+    <% end %>
+  </p>
 <% end %>
 
 <%= render 'partials/doc' %>

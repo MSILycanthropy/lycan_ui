@@ -7,9 +7,19 @@ component: collapsible
     An interactive component which expands/collapses a panel.
   </p>
 
-  <div class="pt-6">
+  <div class="pt-4">
     <%= render 'partials/example', wrapper_classes: 'flex justify-center' %>
   </div>
+<% end %>
+
+<% content_for :accessibility do %>
+  <p>
+    Adheres to the
+
+    <%= external_link_to 'https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/' do %>
+      <span>Disclosure WAI-ARIA design pattern</span>
+    <% end %>
+  </p>
 <% end %>
 
 <%= render 'partials/doc' %>

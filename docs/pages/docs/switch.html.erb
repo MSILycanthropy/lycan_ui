@@ -6,7 +6,7 @@ component: switch
 <% content_for :description do %>
   <p>A control that allows the user to toggle between checked and not checked.</p>
 
-  <div class="pt-6">
+  <div class="pt-4">
     <%= render 'partials/example', wrapper_classes: 'flex justify-center' %>
   </div>
 <% end %>
@@ -35,6 +35,16 @@ component: switch
   <li>
     <a class="text-sm underline-offset-4 hover:underline decoration-accent transition-all" href="#form">Usage in forms</a>
   </li>
+<% end %>
+
+<% content_for :accessibility do %>
+  <p>
+    Adheres to the
+
+    <%= external_link_to 'https://www.w3.org/WAI/ARIA/apg/patterns/switch/' do %>
+      <span>Switch WAI-ARIA design pattern</span>
+    <% end %>
+  </p>
 <% end %>
 
 <%= render 'partials/doc' %>

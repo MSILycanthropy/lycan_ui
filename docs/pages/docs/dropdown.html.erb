@@ -7,7 +7,7 @@ component: dropdown
     Displays a menu to the user, which contains links or actions.
   </p>
 
-  <div class="pt-6">
+  <div class="pt-4">
     <%= render 'partials/example', wrapper_classes: 'flex justify-center' %>
   </div>
 <% end %>
@@ -50,6 +50,22 @@ component: dropdown
       </p>
     </li>
   </ul>
+<% end %>
+
+<% content_for :accessibility do %>
+  <p>
+    Adheres to the
+
+    <%= external_link_to 'https://www.w3.org/WAI/ARIA/apg/patterns/menubar/' do %>
+      <span>Menu WAI-ARIA design pattern</span>
+    <% end %>
+
+    and
+
+    <%= external_link_to 'https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/' do %>
+      <span>Menu Button WAI-ARIA design pattern</span>
+    <% end %>
+  </p>
 <% end %>
 
 <%= render 'partials/doc' %>
